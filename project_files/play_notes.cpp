@@ -111,7 +111,7 @@ void playNotesWav(const vector<pair<int, int>>& notes, bool isChord) {
 }
 
 int main() {
-    string folderPath = "C:\\Users\\david\\Documents\\Notes";
+    string folderPath = std::filesystem::path;
 
     loadWavFiles(folderPath);
 
