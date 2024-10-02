@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Google Sign-In</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #3d3d5a;
+        }
+        </style>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <meta name="google-signin-client_id" content="179842762256-iql2t6f2j4muretmadvb2hjc0ullt641.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script> 
+    </head>
+    <body>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <div id="welcome-message"></div>
+
+        <script>
+            function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            var email = profile.getEmail();
+
+            document.getElementById('welcome-message').innerText = 'Hello, ' + email;
+        }
+        </script>
+    </body>
+   
+</html>
