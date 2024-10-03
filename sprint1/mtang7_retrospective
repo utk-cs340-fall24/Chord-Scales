@@ -1,1 +1,4 @@
-
+It was hard at first trying to find an audio library that was able to work well in my folder workspace, the linking stage keeps giving me errors even though I have the dll files
+from the library in the same folder as my exe file. But ultimately I was able to find a library that was working for my program. I also had trouble finding the online database
+that has .wav files for guitar notes, so I had to instead try to find some sort of online software that allows me to generate notes sound of the guitar and export it as a 
+.wav file.
