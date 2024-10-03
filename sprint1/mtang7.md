@@ -24,8 +24,8 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 
 ### Files you worked on
 
-* C:Chord-Scales/project_files/play_notes.cpp
-
+* https://github.com/utk-cs340-fall24/Chord-Scales/blob/main/project_files/play_notes.cpp
+  
 ### What you accomplished
 
 * I've finished part of the code for the play notes to work 
