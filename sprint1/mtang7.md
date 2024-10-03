@@ -25,6 +25,7 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 ### Files you worked on
 
 * https://github.com/utk-cs340-fall24/Chord-Scales/blob/main/project_files/play_notes.cpp
+* https://github.com/utk-cs340-fall24/Chord-Scales/tree/main/project_files/.wav_files
   
 ### What you accomplished
 
