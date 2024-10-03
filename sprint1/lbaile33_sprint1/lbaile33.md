@@ -6,7 +6,7 @@ Name: Lorenzo Bailey, github id: lbaile33, groupname: Chordscales
 - Responsive Design Setup (Webpage works on multiple screentypes | issue number: #9 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/9
 - Scale/Chord Dropdown Setup | issue number: #10 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/10
 - Interactive Fretboard (Hover/Click on Notes possible to add sound feature for onClick later) | issue number: #11 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/11
-- Add new shapes for the fretboard such as triads and classic | issue number: 12 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/12
+- Add new shapes for the fretboard such as triads and classic | issue number: #12 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/12
 
 # What did you not do
 - Graphic design for fretboard, im not sure if i am satisfied with the current setup design but didn't find time to change it this sprint
