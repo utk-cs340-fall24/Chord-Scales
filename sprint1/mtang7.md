@@ -17,7 +17,8 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 
 ### Issues you worked on
 
-[#1] Implement part of the code for playing the notes(https://github.com/utk-cs340-fall22/ClassInfo/issues/1) Sample Issue
+[#1] Implement part of the code for playing the notes(https://github.com/utk-cs340-fall24/Chord-Scales/tree/main/sprint1/issues/8) Play notes
+[#2] Get the .wav files for all the notes(https://github.com/utk-cs340-fall24/Chord-Scales/tree/main/sprint1/issues/7) notes .wav files 
 
 ### Files you worked on
 
