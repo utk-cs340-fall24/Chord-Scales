@@ -1,1 +1,156 @@
 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   1) #define MINIAUDIO_IMPLEMENTATION
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   2) #include "miniaudio.h"
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   3) #include <iostream>
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   4) #include <vector>
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   5) #include <thread>
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   6) #include <unordered_map>
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   7) #include <filesystem>
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   8) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400   9) using namespace std;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  10) namespace fs = std::filesystem;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  11) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  12) const double duration = 0.8; // Duration for each note in seconds
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  13) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  14) // Define the structure of the fretboard
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  15) vector<vector<string>> fretboard_files(6, vector<string>(12));
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  16) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  17) // Map string numbers to string labels (E, A, D, G, B, e)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  18) unordered_map<int, string> stringLabels = {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  19)     {0, "E"}, // 6th string (E)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  20)     {1, "A"}, // 5th string (A)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  21)     {2, "D"}, // 4th string (D)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  22)     {3, "G"}, // 3rd string (G)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  23)     {4, "B"}, // 2nd string (B)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  24)     {5, "e"}  // 1st string (e)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  25) };
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  26) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  27) // Function to map the folder's .wav files to the correct fretboard positions
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  28) void loadWavFiles(const string& folderPath) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  29)     for (const auto& entry : fs::directory_iterator(folderPath)) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  30)         if (entry.is_regular_file() && entry.path().extension() == ".wav") {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  31)             string filename = entry.path().filename().string();
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  32) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  33)             // Extract the string label and fret number from the file name (e.g., 
+"E_0.wav" or "e_0.wav")
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  34)             char stringLabel[3];
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  35)             int fretNum;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  36)             if (sscanf(filename.c_str(), "%2[^_]_%d.wav", stringLabel, &fretNum) == 2) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  37)                 // Find the corresponding string number
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  38)                 int stringNum = -1;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  39)                 for (const auto& [key, label] : stringLabels) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  40)                     if (label == stringLabel) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  41)                         stringNum = key;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  42)                         break;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  43)                     }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  44)                 }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  45) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  46)                 // Ensure the string number and fret number are valid
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  47)                 if (stringNum >= 0 && fretNum >= 0 && fretNum < 12) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  48)                     fretboard_files[stringNum][fretNum] = entry.path().string();
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  49)                 }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  50)             }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  51)         }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  52)     }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  53) }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  54) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  55) // Play a .wav file
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  56) void playWavFile(const string& filename) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  57)     ma_result result;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  58)     ma_device_config deviceConfig;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  59)     ma_device device;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  60)     ma_sound sound;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  61)     ma_engine engine;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  62) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  63)     result = ma_engine_init(NULL, &engine);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  64)     if (result != MA_SUCCESS) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  65)         cerr << "Failed to initialize MiniAudio engine." << endl;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  66)         return;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  67)     }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  68) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  69)     result = ma_sound_init_from_file(&engine, filename.c_str(), 0, NULL, NULL, &sound);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  70)     if (result != MA_SUCCESS) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  71)         cerr << "Failed to load sound file: " << filename << endl;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  72)         ma_engine_uninit(&engine);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  73)         return;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  74)     }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  75) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  76)     ma_sound_start(&sound);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  77)     this_thread::sleep_for(chrono::milliseconds(static_cast<int>(1000 * duration)));
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  78)     ma_sound_stop(&sound);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  79) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  80)     ma_sound_uninit(&sound);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  81)     ma_engine_uninit(&engine);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  82) }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  83) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  84) // Play a single note for a given duration using the .wav file
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  85) void playSingleNoteWav(int stringNum, int fretNum) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  86)     string filePath = fretboard_files[stringNum][fretNum];
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  87)     if (!filePath.empty()) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  88)         playWavFile(filePath);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  89)     } else {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  90)         cerr << "No .wav file found for string " << stringLabels[stringNum] << " fret " 
+<< fretNum << endl;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  91)     }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  92) }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  93) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  94) // Play notes as a scale or chord
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  95) void playNotesWav(const vector<pair<int, int>>& notes, bool isChord) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  96)     if (isChord) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  97)         // Play all notes together (chord)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  98)         vector<thread> threads;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400  99)         for (const auto& note : notes) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 100)             threads.push_back(thread(playSingleNoteWav, note.first, note.second));
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 101)         }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 102)         for (auto& t : threads) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 103)             if (t.joinable()) t.join();
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 104)         }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 105)     } else {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 106)         // Play each note in sequence (scale)
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 107)         for (const auto& note : notes) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 108)             playSingleNoteWav(note.first, note.second);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 109)         }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 110)     }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 111) }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 112) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 113) int main() {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 115) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 116)     loadWavFiles(folderPath);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 117) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 118)     while (true) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 119)         vector<pair<int, int>> selectedNotes;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 120)         cout << "Enter the string number (0 to 5) and fret number (0 to 11) separated 
+by a space (e.g., '0 0'). Type 'done' when finished:" << endl;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 121)         
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 122)         string input;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 123)         while (true) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 124)             cin >> input;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 125)             if (input == "done") break;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 126) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 127)             int stringNum = stoi(input);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 128)             int fretNum;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 129)             cin >> fretNum;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 130) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 131)             if (stringNum >= 0 && stringNum < 6 && fretNum >= 0 && fretNum < 12) {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 132)                 selectedNotes.push_back({stringNum, fretNum});
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 133)             } else {
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 134)                 cout << "Invalid input, try again." << endl;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 135)             }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 136)         }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 137) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 138)         string playMode;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 139)         cout << "Do you want to play as a 'chord' or 'scale'? ";
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 140)         cin >> playMode;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 141) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 142)         bool isChord = (playMode == "chord");
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 143)         playNotesWav(selectedNotes, isChord);
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 144) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 145)         string repeat;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 146)         cout << "Do you want to play another sequence? (yes/no): ";
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 147)         cin >> repeat;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 148)         if (repeat == "no") break;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 149)     }
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 150) 
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 151)     return 0;
+623aa7b7 project_files/play_notes     (CozyRainningInn 2024-09-30 09:50:37 -0400 152) }
+
