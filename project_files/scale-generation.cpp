@@ -71,29 +71,39 @@ int main(int argc, char *argv[]){
         OurScale[1] = A_string[(indexOfNote + 2) % A_string.size()];
         OurScale[2] = A_string[(indexOfNote + 4) % A_string.size()];
         if(pentatonic == 0){
-            OurScale[3] = A_string[(indexOfNote + 5) % A_string.size()];
-        }if(quality == "Lydian"){
-            OurScale[3] = A_string[(indexOfNote + 6) % A_string.size()];
-        }else{
-            OurScale[3] = A_string[(indexOfNote + 5) % A_string.size()];
+            if(quality == "Lydian"){
+                OurScale[3] = A_string[(indexOfNote + 6) % A_string.size()];
+            }else{
+                OurScale[3] = A_string[(indexOfNote + 5) % A_string.size()];
+            }
         }
         OurScale[4] = A_string[(indexOfNote + 7) % A_string.size()];
         OurScale[5] = A_string[(indexOfNote + 9) % A_string.size()];
         if(pentatonic == 0){
-            OurScale[6] = A_string[(indexOfNote + 11) % A_string.size()];
-        }if(quality == "Mixolydian"){
-             OurScale[6] = A_string[(indexOfNote + 1) % A_string.size()];
+            if(quality == "Mixolydian"){
+                OurScale[6] = A_string[(indexOfNote + 1) % A_string.size()];
+            }else{
+                OurScale[6] = A_string[(indexOfNote + 11) % A_string.size()];
+            }
         }
-    }if(quality == "Minor"){
+    }if(quality == "Minor" || quality == "Dorian" || quality == "Phrygian" || quality == "Aeolian"){
         OurScale[0] = A_string[indexOfNote % A_string.size()];
         if(pentatonic == 0){
-            OurScale[1] = A_string[(indexOfNote + 2) % A_string.size()];
+            if(quality == "Dorian"){
+                OurScale[1] = A_string[(indexOfNote + 1) % A_string.size()];
+            }else{
+                OurScale[1] = A_string[(indexOfNote + 2) % A_string.size()];
+            }
         }
         OurScale[2] = A_string[(indexOfNote + 3) % A_string.size()];
         OurScale[3] = A_string[(indexOfNote + 5) % A_string.size()];
         OurScale[4] = A_string[(indexOfNote + 7) % A_string.size()];
         if(pentatonic == 0){
-            OurScale[5] = A_string[(indexOfNote + 8) % A_string.size()];
+            if(quality == "Dorian"){
+                OurScale[5] = A_string[(indexOfNote + 9) % A_string.size()];
+            }else{
+                OurScale[5] = A_string[(indexOfNote + 8) % A_string.size()];
+            }
         }
         OurScale[6] = A_string[(indexOfNote + 10) % A_string.size()];
     }if(quality == "Augmented"){
@@ -104,11 +114,11 @@ int main(int argc, char *argv[]){
         OurScale[4] = A_string[(indexOfNote + 8) % A_string.size()];
         OurScale[5] = A_string[(indexOfNote + 11) % A_string.size()];
         OurScale[6] = A_string[(indexOfNote + 12) % A_string.size()];
-    }if(quality == "Diminished"){
+    }if(quality == "Diminished" || quality == "Locrian"){
         //diminished scale doesn't include all notes
         //don't know that we need to change this as diminished scales are not normal
         OurScale[0] = A_string[indexOfNote % A_string.size()];
-        OurScale[1] = A_string[(indexOfNote + 2) % A_string.size()];
+        OurScale[1] = A_string[(indexOfNote + 1) % A_string.size()];
         OurScale[2] = A_string[(indexOfNote + 3) % A_string.size()];
         OurScale[3] = A_string[(indexOfNote + 5) % A_string.size()];
         OurScale[4] = A_string[(indexOfNote + 6) % A_string.size()];
