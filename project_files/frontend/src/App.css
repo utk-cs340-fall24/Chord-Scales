@@ -1,10 +1,9 @@
 body {
-  background-color: #2b2b2b;
-  color: white;
+  background: linear-gradient(135deg, #1c1b18, #3e3d36);
+  color: #e0e0e0; 
   margin: 0;
   font-family: Arial, sans-serif;
 }
-
 
 .logo {
   position: absolute;
@@ -12,8 +11,9 @@ body {
   right: 20px;
   width: 100px; /* Adjust the width of the logo */
   height: auto;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2); 
 }
-
 
 .App {
   text-align: center;
@@ -21,9 +21,9 @@ body {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2e2d2b; 
   padding: 20px;
-  color: white;
+  color: #f4f4f2; 
   position: relative;
 }
 
@@ -36,12 +36,28 @@ body {
 
 .selection-container label {
   margin-right: 10px;
+  color: #f4f4f2; 
 }
 
 .selection-container select {
   margin: 0 20px;
   padding: 8px;
   font-size: 1rem;
+  border: 1px solid #5c5a58; 
+  border-radius: 5px;
+  background-color: #3e3d36; 
+  color: #e0e0e0; 
+  transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.selection-container select:focus {
+  box-shadow: 0 0 5px #d4a373; 
+  border-color: #d4a373; 
+}
+
+.selection-container select:hover {
+  border-color: #d4a373;
+  background-color: #4b4a43; 
 }
 
 .guitar-neck {
@@ -49,10 +65,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #3a3a3a;
+  background-color: #2b2a27; 
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
   max-width: 100%; /* Ensures the fretboard doesn't overflow */
   overflow-x: auto; /* Allows horizontal scrolling on small screens */
 }
@@ -63,47 +79,49 @@ body {
   align-items: center;
   width: 100%;
   margin-bottom: 5px;
-  border-top: 2px solid #ccc;
+  border-top: 2px solid #7d7567; 
 }
 
 .guitar-fret {
   position: relative;
-  width: 8vw; /* Flexible width that adjusts to the viewport */
+  width: 8vw; 
   height: 8vw;
-  max-width: 60px; /* Ensure frets don't get too large on big screens */
+  max-width: 60px; 
   max-height: 60px;
-  background-color: #444;
-  border: 1px solid #222;
+  background-color: #4f4e4a; 
+  border: 1px solid #33312e;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
   margin-right: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .guitar-fret.highlight {
-  background-color: #8d1f1f;
-  color: black;
+  background-color: #b24c32; 
+  color: #f4f4f2; 
 }
 
 .note-label {
   font-size: 0.9rem;
   font-weight: bold;
-  color: white;
+  color: #f4f4f2; 
 }
 
 .fret:hover {
-  background-color: lightgrey;
+  background-color: #8b8a83; 
   color: black;
   cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .hovered-info {
   margin-top: 20px;
-  background-color: #444;
-  color: white;
+  background-color: #3e3d36;
+  color: #f4f4f2;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #b2a680; 
   border-radius: 5px;
   font-size: 1.2em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -122,25 +140,5 @@ body {
 
   .selection-container select {
     font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .guitar-fret {
-    width: 15vw;
-    height: 15vw;
-  }
-
-  .note-label {
-    font-size: 0.7rem;
-  }
-
-  .selection-container {
-    flex-direction: column;
-  }
-
-  .selection-container select {
-    margin-bottom: 10px;
-    font-size: 0.8rem;
   }
 }
