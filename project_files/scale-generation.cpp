@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,11 +19,16 @@ int main(int argc, char *argv[]){
     cin >> scaleChord;
 
     string quality;
+    int sus;
 
     if(scaleChord == "Chord"){
         cout << "Major, Minor, Diminished, Augmented?" << endl;
 
         cin >> quality;
+
+        cout << "Suspended chord? (0), 2, 4" << endl;
+        
+        cin >> sus;
     }
 
     bool pentatonic;
@@ -31,6 +37,7 @@ int main(int argc, char *argv[]){
         cin >> pentatonic;
 
         cout << "Mode: Ionian(Major), Dorian, Phrygian, Lydian, Mixolydian, Aeolian(Minor), Locrian(Diminished)" << endl;
+        cin >> quality;
     }
 
     cout << "Enter root note" << endl;
@@ -138,7 +145,13 @@ int main(int argc, char *argv[]){
     }if(scaleChord == "Chord"){
 
         final.push_back(OurScale.at(0));
-        final.push_back(OurScale.at(2));
+        if(sus == 2){
+            final.push_back(OurScale.at(1));
+        }if(sus == 4){
+            final.push_back(OurScale.at(3));
+        }if(sus == 0){
+            final.push_back(OurScale.at(2));
+        }
         final.push_back(OurScale.at(4));
 
         if(extended != 0){
@@ -162,5 +175,48 @@ int main(int argc, char *argv[]){
     //As of this point I have the chord and scale generation done for most common cases, major/minor/diminished/augmented chords/scales
     //Because of this I want to try and translate these chords/scales to their fretboard positions.
     //Below I take a chord/scale and output the fret of each note within it
+
+    vector<int> E_final;
+    vector<int> A_final;
+    vector<int> D_final;
+    vector<int> G_final;
+    vector<int> B_final;
+    vector<int> e_final;
+
+    for(int i = 0; i < final.size(); i++){
+        for(int s = 0; s < E_string.size(); s++){
+            if(final.at(i) == e_string.at(s)){
+                e_final.push_back(s);
+            }
+            if(final.at(i) == B_string.at(s)){
+                B_final.push_back(s);
+            }
+            if(final.at(i) == G_string.at(s)){
+                G_final.push_back(s);
+            }
+            if(final.at(i) == D_string.at(s)){
+                D_final.push_back(s);
+            }
+            if(final.at(i) == A_string.at(s)){
+                A_final.push_back(s);
+            }
+            if(final.at(i) == E_string.at(s)){
+                E_final.push_back(s);
+            }
+        }
+    }
+
+    sort(e_final.begin(), e_final.end());
+    sort(B_final.begin(), B_final.end());
+    sort(G_final.begin(), G_final.end());
+    sort(D_final.begin(), D_final.end());
+    sort(A_final.begin(), A_final.end());
+    sort(E_final.begin(), E_final.end());
+
+    //creating many possible variations of the same chord, all using all six strings
+    for(int i = 0; i < final.size(); i++){
+        
+    }
+
 
 }
