@@ -12,6 +12,7 @@ int main(int argc, char *argv[]){
     vector<string> G_string = {"G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#"};
     vector<string> B_string = {"B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#"};
     vector<string> e_string = {"E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#"};
+    vector<vector<string>> strings = {E_string, A_string, D_string, G_string, B_string, e_string};
 
     cout << "Scale or Chord?" <<endl;
 
@@ -31,13 +32,22 @@ int main(int argc, char *argv[]){
         cin >> sus;
     }
 
+    bool blues;
     bool pentatonic;
     if(scaleChord == "Scale"){
-        cout << "Pentatonic? (0/1)" << endl;
-        cin >> pentatonic;
+        cout << "Blues scale? (0/1)" << endl;
+        cin >> blues;
 
-        cout << "Mode: Ionian(Major), Dorian, Phrygian, Lydian, Mixolydian, Aeolian(Minor), Locrian(Diminished)" << endl;
-        cin >> quality;
+        if(blues == 0){
+            cout << "Pentatonic? (0/1)" << endl;
+            cin >> pentatonic;
+
+            cout << "Mode: Ionian(Major), Dorian, Phrygian, Lydian, Mixolydian, Aeolian(Minor), Locrian(Diminished)" << endl;
+            cin >> quality;
+        }else{
+            pentatonic = true;
+        }
+
     }
 
     cout << "Enter root note" << endl;
@@ -93,26 +103,29 @@ int main(int argc, char *argv[]){
                 OurScale[6] = A_string[(indexOfNote + 11) % A_string.size()];
             }
         }
-    }if(quality == "Minor" || quality == "Dorian" || quality == "Phrygian" || quality == "Aeolian"){
+    }if(quality == "Minor" || quality == "Dorian" || quality == "Phrygian" || quality == "Aeolian" || blues == 1){
         OurScale[0] = A_string[indexOfNote % A_string.size()];
         if(pentatonic == 0){
             if(quality == "Dorian"){
-                OurScale[1] = A_string[(indexOfNote + 1) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 1) % A_string.size()]);
             }else{
-                OurScale[1] = A_string[(indexOfNote + 2) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 2) % A_string.size()]);
             }
         }
-        OurScale[2] = A_string[(indexOfNote + 3) % A_string.size()];
-        OurScale[3] = A_string[(indexOfNote + 5) % A_string.size()];
-        OurScale[4] = A_string[(indexOfNote + 7) % A_string.size()];
+        OurScale.push_back(A_string[(indexOfNote + 3) % A_string.size()]);
+        OurScale.push_back(A_string[(indexOfNote + 5) % A_string.size()]);
+        if(blues == true){
+            OurScale.push_back(A_string[(indexOfNote + 6) % A_string.size()]);
+        }
+        OurScale.push_back(A_string[(indexOfNote + 7) % A_string.size()]);
         if(pentatonic == 0){
             if(quality == "Dorian"){
-                OurScale[5] = A_string[(indexOfNote + 9) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 9) % A_string.size()]);
             }else{
-                OurScale[5] = A_string[(indexOfNote + 8) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 8) % A_string.size()]);
             }
-        }
-        OurScale[6] = A_string[(indexOfNote + 10) % A_string.size()];
+        } 
+        OurScale.push_back(A_string[(indexOfNote + 10) % A_string.size()]);
     }if(quality == "Augmented"){
          OurScale[0] = A_string[indexOfNote % A_string.size()];
         OurScale[1] = A_string[(indexOfNote + 3) % A_string.size()];
@@ -182,6 +195,7 @@ int main(int argc, char *argv[]){
     vector<int> G_final;
     vector<int> B_final;
     vector<int> e_final;
+    vector<vector<int>> chord_scale = {E_final, A_final, D_final, G_final, B_final, e_final};
 
     for(int i = 0; i < final.size(); i++){
         for(int s = 0; s < E_string.size(); s++){
@@ -213,10 +227,19 @@ int main(int argc, char *argv[]){
     sort(A_final.begin(), A_final.end());
     sort(E_final.begin(), E_final.end());
 
+    vector<std::vector<int>*> vectorList;
     //creating many possible variations of the same chord, all using all six strings
-    for(int i = 0; i < final.size(); i++){
-        
+    for(int i = 0; i < chord_scale.size(); i++){
+        vector<int>* vec = new vector<int>(6); 
+        for(int s = 0; i < chord_scale.at(i).size(); i++){
+            for(int q = 0; q < chord_scale.size(); q++){
+                vec->push_back(chord_scale[q][i]);
+            }
+        }
     }
 
+    for (auto vec : vectorList) {
+        delete vec;
+    }
 
 }
