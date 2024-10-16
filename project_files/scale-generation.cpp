@@ -227,19 +227,37 @@ int main(int argc, char *argv[]){
     sort(A_final.begin(), A_final.end());
     sort(E_final.begin(), E_final.end());
 
-    vector<std::vector<int>*> vectorList;
-    //creating many possible variations of the same chord, all using all six strings
-    for(int i = 0; i < chord_scale.size(); i++){
-        vector<int>* vec = new vector<int>(6); 
-        for(int s = 0; i < chord_scale.at(i).size(); i++){
-            for(int q = 0; q < chord_scale.size(); q++){
-                vec->push_back(chord_scale[q][i]);
+    vector<vector<int>> vectorList;
+    bool first = false;
+    bool third = false;
+    bool fifth = false;
+    for (int i = 0; i < chord_scale[0].size(); i++) { 
+        for (int j = 0; j < chord_scale[1].size(); j++) { 
+            for (int k = 0; k < chord_scale[2].size(); k++) { 
+                for (int l = 0; l < chord_scale[3].size(); l++) { 
+                    for (int m = 0; m < chord_scale[4].size(); m++) { 
+                        for (int n = 0; n < chord_scale[5].size(); n++) { 
+
+                            std::vector<int> combination;
+
+                            combination.push_back(chord_scale[0][i]); 
+                            combination.push_back(chord_scale[0][j]); 
+                            combination.push_back(chord_scale[1][k]); 
+                            combination.push_back(chord_scale[1][l]); 
+                            combination.push_back(chord_scale[2][m]); 
+                            combination.push_back(chord_scale[2][n]); 
+
+                            for(int x = 0; x < combination.size(); x++){
+                                if(combination.at(i) == final.at(0)){
+                                    first = true;
+                                }
+                            }
+
+                            vectorList.push_back(combination);
+                        }
+                    }
+                }
             }
         }
     }
-
-    for (auto vec : vectorList) {
-        delete vec;
-    }
-
 }
