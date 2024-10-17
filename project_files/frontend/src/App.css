@@ -142,3 +142,30 @@ body {
     font-size: 0.9rem;
   }
 }
+
+.playlist-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #2e2d2b;
+  color: #f4f4f2;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  max-width: 300px;
+}
+
+.playlist-container h3 {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+}
+
+.playlist-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.playlist-container li {
+  margin-bottom: 5px;
+  font-size: 1em;
+}
