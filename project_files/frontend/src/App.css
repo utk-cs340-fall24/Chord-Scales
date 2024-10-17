@@ -169,3 +169,49 @@ body {
   margin-bottom: 5px;
   font-size: 1em;
 }
+
+/* Metronome Styles */
+
+.metronome-container {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 300px;
+  text-align: center;
+  background-color: #6A2A00;
+}
+
+.metronome-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.metronome-controls label {
+  margin-right: 10px;
+}
+
+.metronome-controls input {
+  width: 60px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.metronome-controls button {
+  padding: 5px 15px;
+}
+
+
+.beat-indicator {
+  width: 20px;
+  height: 20px;
+  background-color: #ddd;
+  margin: 10px auto;
+  border-radius: 50%;
+  transition: background-color 0.1s;
+}
+
+.beat-indicator.active {
+  background-color: #ff4d4d;
+}

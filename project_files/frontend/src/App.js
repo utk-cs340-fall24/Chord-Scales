@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Fretboard from './Fretboard';
+import Metronome from './Metronome';
 
 function App() {
   const [rootNote, setRootNote] = useState('');
@@ -104,6 +105,11 @@ function App() {
           ))}
         </ul>
       </div>
+
+      <div className="metronome-section">
+        <Metronome />
+      </div>
+
     </div>
   );
 }
