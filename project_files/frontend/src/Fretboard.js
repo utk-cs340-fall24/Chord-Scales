@@ -14,16 +14,6 @@ const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote }) => {
     displayedNotes = [scaleNotes[0], scaleNotes[3], scaleNotes[4]];
   }
 
-  const playTestSound = () => {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    oscillator.type = 'sine'; // Sine wave for a basic sound
-    oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // Set frequency (A4)
-    oscillator.connect(audioContext.destination);
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.2); // Play for 0.2 seconds
-  };
-
   return (
     <div className="guitar-neck">
       {strings.map((string, stringIndex) => (
@@ -37,7 +27,6 @@ const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote }) => {
                 className={`guitar-fret ${displayedNotes.includes(noteAtFret) ? 'highlight' : ''}`}
                 onMouseEnter={() => setHoveredNote({ string, fret, note: noteAtFret })}
                 onMouseLeave={() => setHoveredNote(null)}
-                onClick={playTestSound} // Add click event to play sound
               >
                 <p className="note-label">{noteAtFret}</p>
               </div>
