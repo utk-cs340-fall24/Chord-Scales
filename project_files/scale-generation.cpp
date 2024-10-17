@@ -5,7 +5,8 @@
 
 using namespace std;
 
-void validChord(vector<vector<int>>& chord_scale, vector<int>& current_chord, int index, vector<vector<int>>& valid_chords){
+/*
+void validChord(vector<vector<pair< int, int>>>& chord_scale, vector<int>& current_chord, int index, vector<vector<int>>& valid_chords){
     if (index == chord_scale.size()) {
         // Output the current chord combination
         cout << "Chord: ";
@@ -22,6 +23,7 @@ void validChord(vector<vector<int>>& chord_scale, vector<int>& current_chord, in
         current_chord.pop_back();  
     }
 }
+*/
 
 int main(int argc, char *argv[]){
     //each vector will contain 12 notes (the first twelve frets) the first being the open string
@@ -208,37 +210,38 @@ int main(int argc, char *argv[]){
     //Because of this I want to try and translate these chords/scales to their fretboard positions.
     //Below I take a chord/scale and output the fret of each note within it
 
-    vector<int> E_final;
-    vector<int> A_final;
-    vector<int> D_final;
-    vector<int> G_final;
-    vector<int> B_final;
-    vector<int> e_final;
+    vector<pair<int, int>> E_final;
+    vector<pair<int, int>> A_final;
+    vector<pair<int, int>> D_final;
+    vector<pair<int, int>> G_final;
+    vector<pair<int, int>> B_final;
+    vector<pair<int, int>> e_final;
 
+    //with each pair, the first element is the string and the second is the fret on that string
     for(int i = 0; i < final.size(); i++){
         for(int s = 0; s < E_string.size(); s++){
             if(final.at(i) == e_string.at(s)){
-                e_final.push_back(s);
+                e_final.push_back(make_pair(5, s));
             }
             if(final.at(i) == B_string.at(s)){
-                B_final.push_back(s);
+                B_final.push_back(make_pair(4, s));
             }
             if(final.at(i) == G_string.at(s)){
-                G_final.push_back(s);
+                G_final.push_back(make_pair(3, s));
             }
             if(final.at(i) == D_string.at(s)){
-                D_final.push_back(s);
+                D_final.push_back(make_pair(2, s));
             }
             if(final.at(i) == A_string.at(s)){
-                A_final.push_back(s);
+                A_final.push_back(make_pair(1, s));
             }
             if(final.at(i) == E_string.at(s)){
-                E_final.push_back(s);
+                E_final.push_back(make_pair(0,s));
             }
         }
     }
 
-    vector<vector<int>> chord_scale;
+    vector<vector<pair<int, int>>> chord_scale;
     chord_scale.push_back(E_final);
     chord_scale.push_back(A_final);
     chord_scale.push_back(D_final);
@@ -250,17 +253,15 @@ int main(int argc, char *argv[]){
         vector<int> current_chord;
         vector<vector<int>> valid_chords;
 
-        validChord(chord_scale, current_chord, 0, valid_chords);
+        //validChord(chord_scale, current_chord, 0, valid_chords);
 
-        /*
+        
         for(int i = 0; i < chord_scale.size(); i++){
-            cout << "String " << i << endl;
             for(int s = 0; s < chord_scale[i].size(); s++){ 
-                cout << chord_scale[i][s] << " ";
+                cout << chord_scale[i][s].first << " " << chord_scale[i][s].second << endl;
             }
-            cout << endl;
         }
-        */
+        
     }
 }
 
