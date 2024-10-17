@@ -7,28 +7,17 @@ function App() {
   const [scaleType, setScaleType] = useState('major');
   const [shapeType, setShapeType] = useState('fullScale');
   const [hoveredNote, setHoveredNote] = useState(null);
-  const [playlist, setPlaylist] = useState([]); // New state for playlist
+  const [playlist, setPlaylist] = useState([]);
 
   const rootNotes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
   const scaleTypes = ['major', 'minor', 'diminished', 'augmented', 'pentatonic'];
   const shapeTypes = ['fullScale', 'triads', 'classic'];
 
-  const playTestSound = () => {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
-    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.2);
-  };
-
-  const handleNoteClick = (note) => {
-    console.log(`Note clicked: ${note}`);
-    playTestSound();
+  const handleNoteClick = (string, fret) => {
+    const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${string}_${fret}.wav`);
+    audio.play().catch((error) => {
+      console.error(`Error playing sound: ${error}`);
+    });
   };
 
   const addToPlaylist = () => {
