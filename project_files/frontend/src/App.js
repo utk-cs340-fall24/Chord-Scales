@@ -13,6 +13,23 @@ function App() {
   const scaleTypes = ['major', 'minor', 'diminished', 'augmented', 'pentatonic'];
   const shapeTypes = ['fullScale', 'triads', 'classic'];
 
+  // Function to play a test sound
+  const playTestSound = () => {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    oscillator.type = 'sine'; // Sine wave for a basic sound
+    oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // Set frequency (A4)
+    oscillator.connect(audioContext.destination);
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.2); // Play for 0.2 seconds
+  };
+
+  // Handle note click by playing a test sound
+  const handleNoteClick = (note) => {
+    console.log(`Note clicked: ${note}`);
+    playTestSound(); // Play sound when a note is clicked
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -29,7 +46,7 @@ function App() {
           value={rootNote}
           onChange={(e) => setRootNote(e.target.value)}
         >
-          <option value="">Select</option>
+          <option value="">Select123</option>
           {rootNotes.map((note) => (
             <option key={note} value={note}>
               {note}
@@ -66,12 +83,13 @@ function App() {
       </div>
 
       <div className="fretboard-container">
-        {/* Pass setHoveredNote and shapeType as props to Fretboard */}
+        {/* Pass setHoveredNote, shapeType, and handleNoteClick as props to Fretboard */}
         <Fretboard 
           rootNote={rootNote} 
           scaleType={scaleType} 
           shapeType={shapeType} 
-          setHoveredNote={setHoveredNote} 
+          setHoveredNote={setHoveredNote}
+          handleNoteClick={handleNoteClick} // Pass handleNoteClick to Fretboard
         />
       </div>
 
