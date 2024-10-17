@@ -1,8 +1,27 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <set>
 
 using namespace std;
+
+void validChord(vector<vector<int>>& chord_scale, vector<int>& current_chord, int index, vector<vector<int>>& valid_chords){
+    if (index == chord_scale.size()) {
+        // Output the current chord combination
+        cout << "Chord: ";
+        for (int note : current_chord) {
+            cout << note << " ";
+        }
+        cout << endl;
+        return;
+    }
+
+    for (int i = 0; i < chord_scale[index].size(); i++) {
+        current_chord.push_back(chord_scale[index][i]);  
+        validChord(chord_scale, current_chord, index + 1, valid_chords); 
+        current_chord.pop_back();  
+    }
+}
 
 int main(int argc, char *argv[]){
     //each vector will contain 12 notes (the first twelve frets) the first being the open string
@@ -195,7 +214,6 @@ int main(int argc, char *argv[]){
     vector<int> G_final;
     vector<int> B_final;
     vector<int> e_final;
-    vector<vector<int>> chord_scale = {E_final, A_final, D_final, G_final, B_final, e_final};
 
     for(int i = 0; i < final.size(); i++){
         for(int s = 0; s < E_string.size(); s++){
@@ -220,44 +238,29 @@ int main(int argc, char *argv[]){
         }
     }
 
-    sort(e_final.begin(), e_final.end());
-    sort(B_final.begin(), B_final.end());
-    sort(G_final.begin(), G_final.end());
-    sort(D_final.begin(), D_final.end());
-    sort(A_final.begin(), A_final.end());
-    sort(E_final.begin(), E_final.end());
+    vector<vector<int>> chord_scale;
+    chord_scale.push_back(E_final);
+    chord_scale.push_back(A_final);
+    chord_scale.push_back(D_final);
+    chord_scale.push_back(G_final);
+    chord_scale.push_back(B_final);
+    chord_scale.push_back(e_final);
 
-    vector<vector<int>> vectorList;
-    bool first = false;
-    bool third = false;
-    bool fifth = false;
-    for (int i = 0; i < chord_scale[0].size(); i++) { 
-        for (int j = 0; j < chord_scale[1].size(); j++) { 
-            for (int k = 0; k < chord_scale[2].size(); k++) { 
-                for (int l = 0; l < chord_scale[3].size(); l++) { 
-                    for (int m = 0; m < chord_scale[4].size(); m++) { 
-                        for (int n = 0; n < chord_scale[5].size(); n++) { 
+    if(scaleChord == "Chord"){
+        vector<int> current_chord;
+        vector<vector<int>> valid_chords;
 
-                            std::vector<int> combination;
+        validChord(chord_scale, current_chord, 0, valid_chords);
 
-                            combination.push_back(chord_scale[0][i]); 
-                            combination.push_back(chord_scale[0][j]); 
-                            combination.push_back(chord_scale[1][k]); 
-                            combination.push_back(chord_scale[1][l]); 
-                            combination.push_back(chord_scale[2][m]); 
-                            combination.push_back(chord_scale[2][n]); 
-
-                            for(int x = 0; x < combination.size(); x++){
-                                if(combination.at(i) == final.at(0)){
-                                    first = true;
-                                }
-                            }
-
-                            vectorList.push_back(combination);
-                        }
-                    }
-                }
+        /*
+        for(int i = 0; i < chord_scale.size(); i++){
+            cout << "String " << i << endl;
+            for(int s = 0; s < chord_scale[i].size(); s++){ 
+                cout << chord_scale[i][s] << " ";
             }
+            cout << endl;
         }
+        */
     }
 }
+
