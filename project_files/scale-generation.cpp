@@ -5,25 +5,61 @@
 
 using namespace std;
 
-/*
-void validChord(vector<vector<pair< int, int>>>& chord_scale, vector<int>& current_chord, int index, vector<vector<int>>& valid_chords){
+bool valid_chord(const vector<pair<int, int>>& current_chord, const vector<vector<string>> strings, vector<string> final, string quality){
+    bool first = false;
+    bool third = false;
+    bool fifth = false;
+    bool playable = true;
+    int min_val = 1000;
+    int max_val = 0;
+    for(const auto& note: current_chord){
+        //cout << note.first << " " << note.second << endl;
+        
+        for(int i = 0; i < final.size(); i++){
+            //cout << strings[note.first][note.second] << " == " << final.at(i) << endl;
+            if(strings[note.first][note.second] == final.at(i)){
+                if(i == 0){   
+                    first = true;
+                }if(i == 1){
+                    third = true;
+                }if(i == 2){
+                    fifth = true;
+                }
+            }
+            
+            if(note.second > max_val && note.second != 0){
+                max_val = note.second;
+            }
+            if(note.second < min_val && note.second != 0){
+                min_val = note.second;
+            }
+        }
+    }
+    if((max_val - min_val) > 2){
+        return false;
+    }
+    return first && third && fifth;
+}
+
+void Chord_gen(vector<vector<pair<int, int>>>& chord_scale, vector<pair<int, int>>& current_chord, int index, vector<vector<pair<int, int>>>& valid_chords, const vector<vector<string>> strings, vector<string> final, string quality){
     if (index == chord_scale.size()) {
         // Output the current chord combination
-        cout << "Chord: ";
-        for (int note : current_chord) {
-            cout << note << " ";
+        if(valid_chord(current_chord, strings, final, quality) == true){
+            for (const auto& note : current_chord) {
+                //cout << "(" << note.second << ", String " << note.first << ") ";  // Print the pair (note, string)
+                valid_chords.push_back(current_chord);
+            }
         }
-        cout << endl;
         return;
     }
 
     for (int i = 0; i < chord_scale[index].size(); i++) {
         current_chord.push_back(chord_scale[index][i]);  
-        validChord(chord_scale, current_chord, index + 1, valid_chords); 
+        Chord_gen(chord_scale, current_chord, index + 1, valid_chords, strings, final, quality); 
         current_chord.pop_back();  
     }
 }
-*/
+
 
 int main(int argc, char *argv[]){
     //each vector will contain 12 notes (the first twelve frets) the first being the open string
@@ -250,17 +286,20 @@ int main(int argc, char *argv[]){
     chord_scale.push_back(e_final);
 
     if(scaleChord == "Chord"){
-        vector<int> current_chord;
-        vector<vector<int>> valid_chords;
+        vector<pair<int, int>> current_chord;
+        vector<vector<pair<int, int>>> valid_chords;
 
-        //validChord(chord_scale, current_chord, 0, valid_chords);
+        //after this call we should have filled valid_chords with chords
+        Chord_gen(chord_scale, current_chord, 0, valid_chords, strings, final, quality);
+
+       for(int i = 0; i < valid_chords.size(); i++){
+        for (const auto& note : valid_chords[i]) {
+            cout << "(" << note.second << ", String " << note.first << ") "; 
+        }
+            cout << endl;
+       }
 
         
-        for(int i = 0; i < chord_scale.size(); i++){
-            for(int s = 0; s < chord_scale[i].size(); s++){ 
-                cout << chord_scale[i][s].first << " " << chord_scale[i][s].second << endl;
-            }
-        }
         
     }
 }
