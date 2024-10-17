@@ -5,13 +5,38 @@ import Fretboard from './Fretboard';
 function App() {
   const [rootNote, setRootNote] = useState('');
   const [scaleType, setScaleType] = useState('major');
-  const [shapeType, setShapeType] = useState('fullScale'); // New state for shape
-  const [hoveredNote, setHoveredNote] = useState(null); // Track hovered note state
+  const [shapeType, setShapeType] = useState('fullScale');
+  const [hoveredNote, setHoveredNote] = useState(null);
+  const [playlist, setPlaylist] = useState([]); // New state for playlist
 
-  // Updated root notes with sharps
   const rootNotes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
   const scaleTypes = ['major', 'minor', 'diminished', 'augmented', 'pentatonic'];
   const shapeTypes = ['fullScale', 'triads', 'classic'];
+
+  const playTestSound = () => {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
+    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.2);
+  };
+
+  const handleNoteClick = (note) => {
+    console.log(`Note clicked: ${note}`);
+    playTestSound();
+  };
+
+  const addToPlaylist = () => {
+    if (rootNote && scaleType && shapeType) {
+      const newEntry = `${rootNote} ${scaleType} (${shapeType})`;
+      setPlaylist((prevPlaylist) => [...prevPlaylist, newEntry]);
+    }
+  };
 
   return (
     <div className="App">
@@ -21,7 +46,6 @@ function App() {
         <p>Select a root note, scale/chord, and shape to visualize on the fretboard</p>
       </header>
 
-      {/* Selection container for dropdowns */}
       <div className="selection-container">
         <label htmlFor="root-note">Root Note: </label>
         <select
@@ -50,7 +74,6 @@ function App() {
           ))}
         </select>
 
-        {/* Shape Selection Dropdown */}
         <label htmlFor="shape-type">Shape: </label>
         <select
           id="shape-type"
@@ -63,24 +86,35 @@ function App() {
             </option>
           ))}
         </select>
+
+        <button onClick={addToPlaylist}>Add to Playlist</button>
       </div>
 
       <div className="fretboard-container">
-        {/* Pass setHoveredNote and shapeType as props to Fretboard */}
         <Fretboard 
           rootNote={rootNote} 
           scaleType={scaleType} 
           shapeType={shapeType} 
-          setHoveredNote={setHoveredNote} 
+          setHoveredNote={setHoveredNote}
+          handleNoteClick={handleNoteClick}
         />
       </div>
 
-      {/* Hovered info below fretboard */}
       {hoveredNote && (
         <div className="hovered-info">
           <p>Hovered Note: {hoveredNote.note} (String: {hoveredNote.string}, Fret: {hoveredNote.fret})</p>
         </div>
       )}
+
+      {/* Playlist display */}
+      <div className="playlist-container">
+        <h3>Playlist</h3>
+        <ul>
+          {playlist.map((entry, index) => (
+            <li key={index}>{entry}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

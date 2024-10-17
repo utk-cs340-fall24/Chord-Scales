@@ -55,10 +55,8 @@ void loadWavFiles(const string& folderPath) {
 // Play a .wav file
 void playWavFile(const string& filename) {
     ma_result result;
-    ma_device_config deviceConfig;
-    ma_device device;
-    ma_sound sound;
     ma_engine engine;
+    ma_sound sound;
 
     result = ma_engine_init(NULL, &engine);
     if (result != MA_SUCCESS) {
@@ -111,7 +109,8 @@ void playNotesWav(const vector<pair<int, int>>& notes, bool isChord) {
 }
 
 int main() {
-    string folderPath = std::filesystem::path;
+    // Updated folder path to the .wavfiles directory in the current working directory
+    string folderPath = fs::current_path().string() + "/.wavfiles";
 
     loadWavFiles(folderPath);
 

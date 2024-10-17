@@ -1,0 +1,259 @@
+File: App.css
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400   1) body {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400   4)   margin: 0;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400   5)   font-family: Arial, sans-serif;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400   6) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400   7) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400   8) .logo {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400   9)   position: absolute;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  10)   top: 20px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  11)   right: 20px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  12)   width: 100px; /* Adjust the width of the logo */
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  13)   height: auto;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  16) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  17) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  18) .App {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  19)   text-align: center;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  20)   padding: 20px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  21) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  22) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  23) .App-header {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  25)   padding: 20px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  27)   position: relative;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  28) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  29) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  30) .selection-container {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  31)   margin: 20px auto;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  32)   display: flex;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  33)   justify-content: center;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  34)   flex-wrap: wrap; /* Allows wrapping on smaller screens */
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  35) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  36) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  37) .selection-container label {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  38)   margin-right: 10px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  40) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  41) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  42) .selection-container select {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  43)   margin: 0 20px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  44)   padding: 8px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  45)   font-size: 1rem;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  61) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  62) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  63) .guitar-neck {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  64)   display: flex;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  65)   flex-direction: column;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  66)   justify-content: center;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  67)   align-items: center;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  69)   padding: 10px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  70)   border-radius: 10px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  72)   max-width: 100%; /* Ensures the fretboard doesn't overflow */
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  73)   overflow-x: auto; /* Allows horizontal scrolling on small screens */
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  74) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  75) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  76) .guitar-string {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  77)   display: flex;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  78)   justify-content: space-between;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  79)   align-items: center;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  80)   width: 100%;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  81)   margin-bottom: 5px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  83) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  84) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  85) .guitar-fret {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  86)   position: relative;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  88)   height: 8vw;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  90)   max-height: 60px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  93)   display: flex;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  94)   justify-content: center;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  95)   align-items: center;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  96)   border-radius: 5px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  97)   margin-right: 5px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400  99) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 100) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 101) .guitar-fret.highlight {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 104) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 105) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 106) .note-label {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 107)   font-size: 0.9rem;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 108)   font-weight: bold;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 110) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 111) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 112) .fret:hover {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 114)   color: black;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 115)   cursor: pointer;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 117) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 118) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 119) .hovered-info {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 120)   margin-top: 20px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 123)   padding: 10px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 125)   border-radius: 5px;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 126)   font-size: 1.2em;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 127)   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 128) }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 129) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 130) /* Responsive Adjustments for Smaller Screens */
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 131) @media (max-width: 768px) {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 132)   .guitar-fret {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 133)     width: 12vw;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 134)     height: 12vw;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 135)   }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 136) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 137)   .note-label {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 138)     font-size: 0.8rem;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 139)   }
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 140) 
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 141)   .selection-container select {
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 142)     font-size: 0.9rem;
+feb1cd88 (Lorenzo Bailey    2024-10-02 17:19:50 -0400 143)   }
+
+File: App.js
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  1) import React, { useState } from 'react';
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  2) import './App.css';
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  3) import Fretboard from './Fretboard';
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  4) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  5) function App() {
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  6)   const [rootNote, setRootNote] = useState('');
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  7)   const [scaleType, setScaleType] = useState('major');
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  8)   const [shapeType, setShapeType] = useState('fullScale'); // New state for shape
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  9)   const [hoveredNote, setHoveredNote] = useState(null); // Track hovered note state
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 10) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 11)   // Updated root notes with sharps
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 12)   const rootNotes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 13)   const scaleTypes = ['major', 'minor', 'diminished', 'augmented', 'pentatonic'];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 14)   const shapeTypes = ['fullScale', 'triads', 'classic'];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 15) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 16)   return (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 17)     <div className="App">
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 18)       <header className="App-header">
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 19)         <h1>Dynamic Fretboard Visualizer</h1>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 20)         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="ChordScales Logo" className="logo" />
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 21)         <p>Select a root note, scale/chord, and shape to visualize on the fretboard</p>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 22)       </header>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 23) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 24)       {/* Selection container for dropdowns */}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 25)       <div className="selection-container">
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 26)         <label htmlFor="root-note">Root Note: </label>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 27)         <select
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 28)           id="root-note"
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 29)           value={rootNote}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 30)           onChange={(e) => setRootNote(e.target.value)}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 31)         >
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 32)           <option value="">Select</option>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 33)           {rootNotes.map((note) => (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 34)             <option key={note} value={note}>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 35)               {note}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 36)             </option>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 37)           ))}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 38)         </select>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 39) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 40)         <label htmlFor="scale-type">Scale/Chord Type: </label>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 41)         <select
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 42)           id="scale-type"
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 43)           value={scaleType}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 44)           onChange={(e) => setScaleType(e.target.value)}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 45)         >
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 46)           {scaleTypes.map((type) => (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 47)             <option key={type} value={type}>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 48)               {type.charAt(0).toUpperCase() + type.slice(1)}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 49)             </option>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 50)           ))}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 51)         </select>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 52) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 53)         {/* Shape Selection Dropdown */}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 54)         <label htmlFor="shape-type">Shape: </label>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 55)         <select
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 56)           id="shape-type"
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 57)           value={shapeType}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 58)           onChange={(e) => setShapeType(e.target.value)}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 59)         >
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 60)           {shapeTypes.map((shape) => (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 61)             <option key={shape} value={shape}>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 62)               {shape.charAt(0).toUpperCase() + shape.slice(1)}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 63)             </option>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 64)           ))}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 65)         </select>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 66)       </div>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 67) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 68)       <div className="fretboard-container">
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 69)         {/* Pass setHoveredNote and shapeType as props to Fretboard */}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 70)         <Fretboard 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 71)           rootNote={rootNote} 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 72)           scaleType={scaleType} 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 73)           shapeType={shapeType} 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 74)           setHoveredNote={setHoveredNote} 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 75)         />
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 76)       </div>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 77) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 78)       {/* Hovered info below fretboard */}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 79)       {hoveredNote && (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 80)         <div className="hovered-info">
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 81)           <p>Hovered Note: {hoveredNote.note} (String: {hoveredNote.string}, Fret: {hoveredNote.fret})</p>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 82)         </div>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 83)       )}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 84)     </div>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 85)   );
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 86) }
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 87) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 88) export default App;
+
+File: Fretboard.js
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  1) import React from 'react';
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  2) import { getScaleNotes, noteNames } from './utils';
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  3) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  4) const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote }) => {
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  6)   const strings = ['E', 'A', 'D', 'G', 'B', 'E']; // Guitar standard tuning
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  7)   const scaleNotes = getScaleNotes(rootNote, scaleType);
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  8) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  9)   let displayedNotes = scaleNotes;
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 10) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 11)   if (shapeType === 'triads') {
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 12)     displayedNotes = [scaleNotes[0], scaleNotes[2], scaleNotes[4]];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 13)   } else if (shapeType === 'classic') {
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 14)     displayedNotes = [scaleNotes[0], scaleNotes[3], scaleNotes[4]];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 15)   }
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 16) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 17)   return (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 18)     <div className="guitar-neck">
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 19)       {strings.map((string, stringIndex) => (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 20)         <div key={stringIndex} className="guitar-string">
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 21)           {frets.map((fret) => {
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 23) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 24)             return (
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 25)               <div
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 26)                 key={fret}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 27)                 className={`guitar-fret ${displayedNotes.includes(noteAtFret) ? 'highlight' : ''}`}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 28)                 onMouseEnter={() => setHoveredNote({ string, fret, note: noteAtFret })}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 29)                 onMouseLeave={() => setHoveredNote(null)}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 30)               >
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 31)                 <p className="note-label">{noteAtFret}</p>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 32)               </div>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 33)             );
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 34)           })}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 35)         </div>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 36)       ))}
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 37)     </div>
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 38)   );
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 39) };
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 40) 
+
+File: utils.js
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  1) const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  2) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  3) export const getScaleNotes = (rootNote, scaleType) => {
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  4)   const scaleIntervals = {
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  5)     major: [0, 2, 4, 5, 7, 9, 11], // W W H W W W H
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  6)     minor: [0, 2, 3, 5, 7, 8, 10], // W H W W H W W
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  7)     diminished: [0, 2, 3, 5, 6, 8, 9], // Diminished scale
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  8)     augmented: [0, 3, 4, 7, 8, 11], // Augmented scale
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400  9)     pentatonic: [0, 2, 4, 7, 9], // Pentatonic scale
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 10)   };
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 11) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 12)   if (!noteNames.includes(rootNote) || !scaleIntervals[scaleType]) return [];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 13) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 14)   const rootIndex = noteNames.indexOf(rootNote);
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 15)   const intervals = scaleIntervals[scaleType];
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 16) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 17)   return intervals.map(interval => noteNames[(rootIndex + interval) % 12]);
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 18) };
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 19) 
+feb1cd88 (Lorenzo Bailey 2024-10-02 17:19:50 -0400 20) export { noteNames };
+

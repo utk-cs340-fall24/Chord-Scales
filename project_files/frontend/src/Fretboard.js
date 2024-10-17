@@ -1,7 +1,7 @@
 import React from 'react';
 import { getScaleNotes, noteNames } from './utils';
 
-const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote }) => {
+const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote, handleNoteClick }) => {
   const frets = Array.from({ length: 12 }, (_, index) => 12 - index); // Reverse fret numbering
   const strings = ['E', 'A', 'D', 'G', 'B', 'E']; // Guitar standard tuning
   const scaleNotes = getScaleNotes(rootNote, scaleType);
@@ -27,6 +27,7 @@ const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote }) => {
                 className={`guitar-fret ${displayedNotes.includes(noteAtFret) ? 'highlight' : ''}`}
                 onMouseEnter={() => setHoveredNote({ string, fret, note: noteAtFret })}
                 onMouseLeave={() => setHoveredNote(null)}
+                onClick={() => handleNoteClick(noteAtFret)} // Play sound when note is clicked
               >
                 <p className="note-label">{noteAtFret}</p>
               </div>
