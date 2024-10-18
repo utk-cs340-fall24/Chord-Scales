@@ -4,6 +4,7 @@ Name: Matt Templeton, github id: turtlev, groupname: Chordscales
 # What you planned to do #
 - User authentication | issue number: #3 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/3
 - Make User accounts | issue number: #2 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/2
+- Webpage Setup | Issue #5 | issue link: https://github.com/utk-cs340-fall24/Chord-Scales/issues/5
 
 
 # What did you not do
