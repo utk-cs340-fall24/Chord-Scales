@@ -5,17 +5,25 @@
 
 using namespace std;
 
+int extended = 0;
+int sus = 0;
+
 bool valid_chord(const vector<pair<int, int>>& current_chord, const vector<vector<string>> strings, vector<string> final, string quality){
     bool first = false;
     bool third = false;
     bool fifth = false;
+    bool seventh = false;
+    bool ninth = false;
+    bool eleventh = false;
+    bool thirteenth = false;
     bool playable = true;
     int min_val = 1000;
     int max_val = 0;
+
     for(const auto& note: current_chord){
-        //cout << note.first << " " << note.second << endl;
         
         for(int i = 0; i < final.size(); i++){
+            //cout << current_chord.size() << endl;
             //cout << strings[note.first][note.second] << " == " << final.at(i) << endl;
             if(strings[note.first][note.second] == final.at(i)){
                 if(i == 0){   
@@ -24,29 +32,54 @@ bool valid_chord(const vector<pair<int, int>>& current_chord, const vector<vecto
                     third = true;
                 }if(i == 2){
                     fifth = true;
+                }if(i == 3){
+                    seventh = true;
+                }if(i == 4){
+                    ninth = true;
+                }if(i == 5){
+                    eleventh = true;
+                }if(i == 6){
+                    thirteenth = true;
                 }
             }
             
-            if(note.second > max_val && note.second != 0){
-                max_val = note.second;
-            }
-            if(note.second < min_val && note.second != 0){
-                min_val = note.second;
-            }
+                if(note.second > max_val && note.second != 0){
+                    max_val = note.second;
+                }
+                if(note.second < min_val && note.second != 0){
+                    min_val = note.second;
+                }
         }
     }
-    if((max_val - min_val) > 2){
+    if((max_val - min_val) > 2 ){
         return false;
     }
-    return first && third && fifth;
+    if(seventh = true){
+        return first && third && fifth && seventh;
+    }if(ninth = true){
+        return first && third && fifth && seventh && ninth;
+    }if(eleventh = true){
+        return first && third && fifth && seventh && ninth && eleventh;
+    }if(thirteenth = true){
+        return first && third && fifth && seventh && ninth && thirteenth;
+    }else{
+        return first && third && fifth;
+    }
 }
 
 void Chord_gen(vector<vector<pair<int, int>>>& chord_scale, vector<pair<int, int>>& current_chord, int index, vector<vector<pair<int, int>>>& valid_chords, const vector<vector<string>> strings, vector<string> final, string quality){
+    int x = 0;
     if (index == chord_scale.size()) {
         // Output the current chord combination
         if(valid_chord(current_chord, strings, final, quality) == true){
             for (const auto& note : current_chord) {
                 //cout << "(" << note.second << ", String " << note.first << ") ";  // Print the pair (note, string)
+                //omits the 11th (or maybe 9th) in case of 13th chord
+                if(extended == 13 && x == 4){
+                    x++;
+                    continue;
+                }
+                x++;
                 valid_chords.push_back(current_chord);
             }
         }
@@ -77,7 +110,6 @@ int main(int argc, char *argv[]){
     cin >> scaleChord;
 
     string quality;
-    int sus;
 
     if(scaleChord == "Chord"){
         cout << "Major, Minor, Diminished, Augmented?" << endl;
@@ -89,7 +121,7 @@ int main(int argc, char *argv[]){
         cin >> sus;
     }
 
-    bool blues;
+    bool blues = 0;
     bool pentatonic;
     if(scaleChord == "Scale"){
         cout << "Blues scale? (0/1)" << endl;
@@ -114,7 +146,6 @@ int main(int argc, char *argv[]){
 
     vector<string> OurScale(7);
 
-    int extended = 0;
     if(scaleChord == "Chord"){
         cout << "Extended Chord? (0 (if no), 7, 9, 11, 13)" << endl;
         cin >> extended;
@@ -229,7 +260,7 @@ int main(int argc, char *argv[]){
                 final.push_back(OurScale.at((6) % OurScale.size()));
             }if(extended >= 9){
                 final.push_back(OurScale.at((8) % OurScale.size()));
-            }if(extended >= 11){
+            }if(extended >= 11 && extended != 13){
                 final.push_back(OurScale.at((10) % OurScale.size()));
             }if(extended >= 13){
                 final.push_back(OurScale.at((12) % OurScale.size()));
