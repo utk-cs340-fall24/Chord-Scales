@@ -147,6 +147,10 @@ bool isDuplicate(const auto &current_chord, const auto &valid_chords)
                   });
 }
 
+void Scale_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int>> &current_chord, int index, vector<vector<pair<int, int>>> &valid_chords, const vector<vector<string>> strings, vector<string> final, string quality)
+{
+}
+
 void Chord_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int>> &current_chord, int index, vector<vector<pair<int, int>>> &valid_chords, const vector<vector<string>> strings, vector<string> final, string quality)
 {
     int x = 0;
@@ -480,6 +484,15 @@ int main(int argc, char *argv[])
 
     vector<pair<int, int>> current_chord;
     vector<vector<pair<int, int>>> valid_chords;
+
+    for (int i = 0; i < chord_scale.size(); i++)
+    {
+        for (const auto &note : chord_scale[i])
+        {
+            cout << "(" << note.second << ", String " << note.first << ") ";
+        }
+        cout << endl;
+    }
 
     // after this call we should have filled valid_chords with chords
     Chord_gen(chord_scale, current_chord, 0, valid_chords, strings, final, quality);
