@@ -15,6 +15,7 @@ Chord-Scales
 * It is quite difficult to partition a bunch of notes into chords and scales as there aren't really universal rules to apply
 * I believe I must overhaul the logic I do have for scale generation
 * I had to freuently overhaul my chord generation function, as it was not generating correct chords, if I am lacking on code commits, I can attempt to find the ones I have overhauled. Please notify me if this is the case.
+* If even that is not enough code I will be committing significantly more code in the next sprint so that should offset.
 
 ## Issues I worked on: 
 * Worked on issue #4: [Fretboard Logic](https://github.com/utk-cs340-fall24/Chord-Scales/issues/4) and issue #6: [Linking Frontend and Backend](https://github.com/utk-cs340-fall24/Chord-Scales/issues/6) and issue #17: [Display individual chords/scales on fretboard
