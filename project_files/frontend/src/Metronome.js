@@ -1,111 +1,142 @@
-// Metronome.js
-
 import React, { useState, useEffect, useRef } from 'react';
 
 const Metronome = () => {
-  const [bpm, setBpm] = useState(100); // Default BPM
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [beatActive, setBeatActive] = useState(false);
-  const timerRef = useRef(null);
-  const audioContextRef = useRef(null);
+    const [bpm, setBpm] = useState(100); // Default BPM
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [beatActive, setBeatActive] = useState(false);
+    const [timeSignature, setTimeSignature] = useState('4/4');
+    const [accents, setAccents] = useState(new Array(4).fill(false));
+    const timerRef = useRef(null);
+    const audioContextRef = useRef(null);
+    const beatCountRef = useRef(0);
 
-  useEffect(() => {
-    // Initialize AudioContext
-    audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    useEffect(() => {
+        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+        return () => {
+            stopMetronome();
+            if (audioContextRef.current) {
+                audioContextRef.current.close();
+            }
+        };
+    }, []);
 
-    // Cleanup function
-    return () => {
-      stopMetronome();
-      if (audioContextRef.current) {
-        audioContextRef.current.close();
-      }
+    const startMetronome = () => {
+        if (isPlaying) return;
+
+        if (audioContextRef.current.state === 'suspended') {
+            audioContextRef.current.resume();
+        }
+
+        setIsPlaying(true);
+        playClickSound();
+        const interval = (60 / bpm) * 1000;
+        timerRef.current = setInterval(() => {
+            incrementBeat();
+            playClickSound();
+        }, interval);
     };
-  }, []);
 
-  const startMetronome = () => {
-    if (isPlaying) return;
+    const incrementBeat = () => {
+        const beatsPerMeasure = parseInt(timeSignature.split('/')[0]);
+        beatCountRef.current = (beatCountRef.current + 1) % beatsPerMeasure;
+    };
 
-    if (audioContextRef.current.state === 'suspended') {
-      audioContextRef.current.resume();
-    }
+    const playClickSound = () => {
+        const audioCtx = audioContextRef.current;
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
 
-    setIsPlaying(true);
-    playClickSound(); // Play the first click immediately
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
 
-    const interval = (60 / bpm) * 1000; // Calculate interval in milliseconds
-    timerRef.current = setInterval(() => {
-      playClickSound();
-    }, interval);
-  };
+        const isAccent = accents[beatCountRef.current];
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(isAccent ? 1200 : 880, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
 
-  const stopMetronome = () => {
-    setIsPlaying(false);
-    clearInterval(timerRef.current);
-  };
+        oscillator.start(audioCtx.currentTime);
+        oscillator.stop(audioCtx.currentTime + 0.05);
 
-  const toggleMetronome = () => {
-    if (isPlaying) {
-      stopMetronome();
-    } else {
-      startMetronome();
-    }
-  };
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        setBeatActive(true);
+        setTimeout(() => setBeatActive(false), 100);
+    };
 
-  const playClickSound = () => {
-    const audioCtx = audioContextRef.current;
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
+    const stopMetronome = () => {
+        setIsPlaying(false);
+        clearInterval(timerRef.current);
+        beatCountRef.current = 0;
+    };
 
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+    const toggleMetronome = () => {
+        if (isPlaying) {
+            stopMetronome();
+        } else {
+            startMetronome();
+        }
+    };
 
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(880, audioCtx.currentTime); 
-    gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+    const handleBpmChange = (e) => {
+        const newBpm = Number(e.target.value);
+        setBpm(newBpm);
+        if (isPlaying) {
+            stopMetronome();
+            startMetronome();
+        }
+    };
 
-    oscillator.start(audioCtx.currentTime);
-    oscillator.stop(audioCtx.currentTime + 0.05); 
+    const handleTimeSignatureChange = (e) => {
+        setTimeSignature(e.target.value);
+        setAccents(new Array(parseInt(e.target.value.split('/')[0])).fill(false));
+        if (isPlaying) {
+            stopMetronome();
+            startMetronome();
+        }
+    };
 
-    // Fade out the sound
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+    const handleAccentChange = (index) => {
+        const updatedAccents = [...accents];
+        updatedAccents[index] = !updatedAccents[index];
+        setAccents(updatedAccents);
+    };
 
-    // Toggle beat indicator
-    setBeatActive(true);
-    setTimeout(() => setBeatActive(false), 100); 
-  };
-
-  const handleBpmChange = (e) => {
-    const newBpm = Number(e.target.value);
-    setBpm(newBpm);
-
-    if (isPlaying) {
-      stopMetronome();
-      startMetronome();
-    }
-  };
-
-  return (
-    <div className="metronome-container">
-      <h3>Metronome</h3>
-      <div className="metronome-controls">
-        <label htmlFor="bpm">BPM:</label>
-        <input
-          type="number"
-          id="bpm"
-          value={bpm}
-          onChange={handleBpmChange}
-          min="40"
-          max="240"
-        />
-        <button onClick={toggleMetronome}>
-          {isPlaying ? 'Stop' : 'Start'}
-        </button>
-      </div>
-      <div
-        className={`beat-indicator ${beatActive ? 'active' : ''}`}
-      ></div>
-    </div>
-  );
+    return (
+        <div className="metronome-container">
+            <h3>Metronome</h3>
+            <div className="metronome-controls">
+                <label htmlFor="bpm">BPM:</label>
+                <input
+                    type="number"
+                    id="bpm"
+                    value={bpm}
+                    onChange={handleBpmChange}
+                    min="40"
+                    max="240"
+                />
+                <button onClick={toggleMetronome}>
+                    {isPlaying ? 'Stop' : 'Start'}
+                </button>
+            </div>
+            <label htmlFor="time-signature">Time Signature:</label>
+            <select id="time-signature" value={timeSignature} onChange={handleTimeSignatureChange}>
+                <option value="2/4">2/4</option>
+                <option value="3/4">3/4</option>
+                <option value="4/4">4/4</option>
+                <option value="6/8">6/8</option>
+            </select>
+            <div>
+                {accents.map((accent, index) => (
+                    <input
+                        key={index}
+                        type="checkbox"
+                        checked={accent}
+                        onChange={() => handleAccentChange(index)}
+                    />
+                ))}
+            </div>
+            <div className={`beat-indicator ${beatActive ? 'active' : ''}`}></div>
+        </div>
+    );
 };
 
 export default Metronome;
