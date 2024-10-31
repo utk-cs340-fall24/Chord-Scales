@@ -28,5 +28,5 @@ Evan Newport, evannewport, Chord-Scales
 - Fully fleshed out metronome & moved it to upper right corner to give Playlist feature room
 - Added time signature functionality to metronome
 - Added ability for user to select accent beats within Metronome for better playing experience
-- Added dynamic button that gives information about current chord/scale including its common uses, mood, theory
+- Added dynamic button that gives information about current chord/scale including its common uses, mood, theory 
 

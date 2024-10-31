@@ -136,6 +136,7 @@ e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  86)     };
 2c721c3c (evannewport 2024-10-31 14:28:26 -0400 138)         </div>
 2c721c3c (evannewport 2024-10-31 14:28:26 -0400 139)     );
 
+
 ScaleInfoSidebar.js:
 302e79a4 (evannewport 2024-10-31 15:06:37 -0400  1) import React, { useState } from 'react';
 302e79a4 (evannewport 2024-10-31 15:06:37 -0400  2) 
@@ -166,6 +167,7 @@ ScaleInfoSidebar.js:
 302e79a4 (evannewport 2024-10-31 15:06:37 -0400 27) };
 302e79a4 (evannewport 2024-10-31 15:06:37 -0400 28) 
 302e79a4 (evannewport 2024-10-31 15:06:37 -0400 29) export default ScaleInfoSidebar;
+
 
 App.css:
 302e79a4 (evannewport    2024-10-31 15:06:37 -0400 246) }
