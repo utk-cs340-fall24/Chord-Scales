@@ -13,7 +13,7 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 
 ### What problems you encountered
 
-* I couldn't find a way to extended the sound to more than the lengh of the .wav files so the length of each notes are fixed to around half a second. 
+* I couldn't find a way to extended the sound for each note to more than the lengh of the .wav files so the length of each notes are fixed to around half a second.
 
 ### Issues you worked on
 
