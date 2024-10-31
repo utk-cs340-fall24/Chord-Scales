@@ -1,0 +1,191 @@
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400   9) string scaleChord;
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  12) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  13) bool valid_chord(const vector<pair<int, int>> &current_chord, const vector<vector<string>> strings, vector<string> final, string quality)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  14) {
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  15)     bool first = false;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  16)     bool third = false;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  17)     bool fifth = false;
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  18)     bool seventh = false;
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  19)     bool ninth = false;
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  20)     bool eleventh = false;
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  21)     bool thirteenth = false;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  22)     bool playable = true;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  23)     int min_val = 1000;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  24)     int max_val = 0;
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  25) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  26)     vector<pair<pair<int, int>, int>> perms;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  27) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  28)     for (const auto &note : current_chord)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  29)     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  30) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  31)         for (int i = 0; i < final.size(); i++)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  32)         {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  33)             // cout << current_chord.size() << endl;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  34)             // cout << strings[note.first][note.second] << " == " << final.at(i) << endl;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  35)             if (strings[note.first][note.second] == final.at(i))
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  36)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  37)                 perms.push_back({note, i});
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  38)                 if (i == 0)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  39)                 {
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  40)                     first = true;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  41)                 }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  42)                 if (i == 1)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  43)                 {
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  44)                     third = true;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  45)                 }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  46)                 if (i == 2)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  47)                 {
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  48)                     fifth = true;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  49)                 }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  50)                 if (i == 3)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  51)                 {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  52)                     seventh = true;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  53)                 }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  54)                 if (i == 4)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  55)                 {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  56)                     ninth = true;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  57)                 }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  58)                 if (i == 5)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  59)                 {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  60)                     eleventh = true;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  61)                 }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  62)                 if (i == 6)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  63)                 {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  64)                     thirteenth = true;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  65)                 }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  66)             }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  67) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  68)             if (note.second > max_val && note.second != 0)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  69)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  70)                 max_val = note.second;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  71)             }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  72)             if (note.second < min_val && note.second != 0)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  73)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  74)                 min_val = note.second;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  75)             }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  76)         }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  77)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  78)     if ((max_val - min_val) > 2)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  79)     {
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  80)         return false;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400  81)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  82) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  83)     if (seventh = true)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  84)     {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  85)         return first && third && fifth && seventh;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  86)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  87)     if (ninth = true)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  88)     {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  89)         return first && third && fifth && seventh && ninth;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  90)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  91)     if (eleventh = true)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  92)     {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  93)         return first && third && fifth && seventh && ninth && eleventh;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  94)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  95)     if (thirteenth = true)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  96)     {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400  97)         return first && third && fifth && seventh && ninth && thirteenth;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  98)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400  99)     else
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 100)     {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400 101)         return first && third && fifth;
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400 102)     }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 103) }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 104) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 105) bool valid_scale(const vector<pair<int, int>> &current_chord, const vector<vector<string>> strings, vector<string> final, string quality)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 106) {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 107)     vector<int> bools(12, 0);
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 108)     int max_val = 1000;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 109)     int min_val = 0;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 110)     for (const auto &note : current_chord)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 111)     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 112)         for (int i = 0; i < final.size(); i++)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 113)         {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 114)             if (strings[note.first][note.second] == final.at(i))
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 115)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 116)                 bools.at(i) = 1;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 117)             }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 118) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 119)             if (note.second > max_val)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 120)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 121)                 max_val = note.second;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 122)             }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 123)             if (note.second < min_val)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 124)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 125)                 min_val = note.second;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 126)             }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 127)         }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 128)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 129) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 130)     if ((max_val - min_val) > 3)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 131)     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 132)         return false;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 133)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 134) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 135)     for (int i = 0; i < bools.size(); i++)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 136)     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 137)         cout << bools.at(i) << endl;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 138)     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 139) }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 140) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 141) bool isDuplicate(const auto &current_chord, const auto &valid_chords)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 142) {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 143)     return any_of(valid_chords.begin(), valid_chords.end(),
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 144)                   [&current_chord](const auto &chord)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 145)                   {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 146)                       return chord == current_chord;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 147)                   });
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 148) }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 149) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 150) void Chord_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int>> &current_chord, int index, vector<vector<pair<int, int>>> &valid_chords, const vector<vector<string>> strings, vector<string> final, string quality)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 151) {
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400 152)     int x = 0;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 153)     if (index == chord_scale.size())
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 154)     {
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 155)         // Output the current chord combination
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 156)         if (scaleChord == "Chord")
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 157)         {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 158)             if (valid_chord(current_chord, strings, final, quality) == true)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 159)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 160)                 for (const auto &note : current_chord)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 161)                 {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 162)                     // omits the 11th (or maybe 9th) in case of 13th chord
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 163)                     if (extended == 13 && x == 4)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 164)                     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 165)                         x++;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 166)                         continue;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 167)                     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 168) 
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400 169)                     x++;
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 170)                     if (!isDuplicate(current_chord, valid_chords))
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 171)                     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 172)                         valid_chords.push_back(current_chord);
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 173)                     }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 174)                 }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 175)             }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 176)         }
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 177)         if (scaleChord == "Scale")
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 178)         {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 179)             if (valid_scale(current_chord, strings, final, quality) == true)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 180)             {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 181)                 for (const auto &note : current_chord)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 182)                 {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 183)                     if (!isDuplicate(current_chord, valid_chords))
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 184)                     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 185)                         valid_chords.push_back(current_chord);
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 186)                     }
+e39072be (Ethan Holland     2024-10-23 20:08:32 -0400 187)                 }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 188)             }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 189)         }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 190)         return;
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 191)     }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 192) 
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 193)     for (int i = 0; i < chord_scale[index].size(); i++)
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 194)     {
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 195)         current_chord.push_back(chord_scale[index][i]);
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 196)         Chord_gen(chord_scale, current_chord, index + 1, valid_chords, strings, final, quality);
+00000000 (Not Committed Yet 2024-10-31 16:43:36 -0400 197)         current_chord.pop_back();
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 198)     }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 199) }
+^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 200) 
+
