@@ -1,4 +1,4 @@
-# Sprint 2
+# Sprint 3
 Ethan Holland
 eholla12
 Chord-Scales
