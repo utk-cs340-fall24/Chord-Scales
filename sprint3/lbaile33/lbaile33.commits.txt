@@ -1,0 +1,344 @@
+File: App.css
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 144) }	144) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 144) }
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 145)	145) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 145) 
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 146) .playlist-container {	146) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 146) .playlist-container {
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 147) position: fixed;	147) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 147)   position: fixed;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 148) bottom: 20px;	148) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 148)   bottom: 20px;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 149) left: 20px;	149) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 149)   left: 20px;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 150) background-color: #2e2d2b;	150) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 150)   background-color: #2e2d2b;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 151) color: #f4f4f2;	151) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 151)   color: #f4f4f2;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 152) padding: 15px;	152) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 152)   padding: 15px;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 153) border-radius: 5px;	153) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 153)   border-radius: 5px;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 154) box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);	154) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 154)   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 155) max-width: 300px;	155) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 155)   max-width: 300px;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 156) }	156) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 156) }
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 157)	157) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 157) 
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 158) .playlist-container h3 {	158) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 158) .playlist-container h3 {
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 159) margin: 0 0 10px;	159) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 159)   margin: 0 0 10px;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 160) font-size: 1.2em;	160) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 160)   font-size: 1.2em;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 161) }	161) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 161) }
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 162)	162) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 162) 
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 163) .playlist-container ul {	163) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 163) .playlist-container ul {
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 164) list-style: none;	164) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 164)   list-style: none;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 165) padding: 0;	165) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 165)   padding: 0;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 166) }	166) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 166) }
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 167)	167) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 167) 
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 168) .playlist-container li {	168) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 168) .playlist-container li {
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 169) margin-bottom: 5px;	169) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 169)   margin-bottom: 5px;
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 170) font-size: 1em;	170) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 170)   font-size: 1em;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 171) }	171) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 171) }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 172)	172) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 172) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 173) /* Metronome Styles */	173) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 173) /* Metronome Styles */
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 174)	174) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 174) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 175) .metronome-container {	175) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 175) .metronome-container {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 176) border: 1px solid #ddd;	176) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 176)   border: 1px solid #ddd;
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 177) padding: 5px; /* Reduced padding to make the metronome smaller */	177) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 177)   padding: 5px; /* Reduced padding to make the metronome smaller */
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 178) position: absolute;	178) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 178)   position: absolute;
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 179) top: 9px;	179) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 179)   top: 9px;
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 180) left: 10px;	180) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 180)   left: 10px;
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 181) max-width: 200px; /* Reduced width to fit in the header */	181) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 181)   max-width: 200px; /* Reduced width to fit in the header */
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 182) text-align: center;	182) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 182)   text-align: center;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 183) background-color: #6A2A00;	183) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 183)   background-color: #6A2A00;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 184) }	184) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 184) }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 185)	185) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 185) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 186) .metronome-controls {	186) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 186) .metronome-controls {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 187) display: flex;	187) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 187)   display: flex;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 188) align-items: center;	188) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 188)   align-items: center;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 189) justify-content: center;	189) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 189)   justify-content: center;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 190) margin-top: 10px;	190) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 190)   margin-top: 10px;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 191) }	191) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 191) }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 192)	192) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 192) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 193) .metronome-controls label {	193) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 193) .metronome-controls label {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 194) margin-right: 10px;	194) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 194)   margin-right: 10px;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 195) }	195) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 195) }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 196)	196) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 196) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 197) .metronome-controls input {	197) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 197) .metronome-controls input {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 198) width: 60px;	198) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 198)   width: 60px;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 199) text-align: center;	199) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 199)   text-align: center;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 200) margin-right: 10px;	200) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 200)   margin-right: 10px;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 201) }	201) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 201) }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 202)	202) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 202) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 203) .metronome-controls button {	203) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 203) .metronome-controls button {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 204) padding: 5px 15px;	204) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 204)   padding: 5px 15px;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 205) }	205) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 205) }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 206)	206) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 206) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 207) .beat-indicator {	207) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 207) .beat-indicator {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 208) width: 20px;	208) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 208)   width: 20px;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 209) height: 20px;	209) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 209)   height: 20px;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 210) background-color: #ddd;	210) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 210)   background-color: #ddd;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 211) margin: 10px auto;	211) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 211)   margin: 10px auto;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 212) border-radius: 50%;	212) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 212)   border-radius: 50%;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 213) transition: background-color 0.1s;	213) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 213)   transition: background-color 0.1s;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 214) }	214) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 214) }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 215)	215) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 215) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 216) .beat-indicator.active {	216) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 216) .beat-indicator.active {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 217) background-color: #ff4d4d;	217) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400 217)   background-color: #ff4d4d;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 218) }	218) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 218) }
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 219)	219) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 219) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 220) .play-playlist-button {	220) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 220) .play-playlist-button {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 221) margin: 10px 0;	221) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 221)   margin: 10px 0;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 222) padding: 10px 20px;	222) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 222)   padding: 10px 20px;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 223) background-color: #6A2A00;	223) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 223)   background-color: #6A2A00;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 224) color: #f4f4f2;	224) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 224)   color: #f4f4f2;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 225) border: none;	225) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 225)   border: none;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 226) border-radius: 5px;	226) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 226)   border-radius: 5px;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 227) cursor: pointer;	227) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 227)   cursor: pointer;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 228) }	228) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 228) }
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 229)	229) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 229) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 230) .play-playlist-button:hover {	230) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 230) .play-playlist-button:hover {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 231) background-color: #8B3D00;	231) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 231)   background-color: #8B3D00;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 232) }	232) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 232) }
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 233)	233) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 233) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 234) .clear-playlist-button {	234) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 234) .clear-playlist-button {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 235) margin: 10px;	235) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 235)   margin: 10px;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 236) padding: 10px 20px;	236) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 236)   padding: 10px 20px;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 237) background-color: #b24c32;	237) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 237)   background-color: #b24c32;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 238) color: #f4f4f2;	238) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 238)   color: #f4f4f2;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 239) border: none;	239) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 239)   border: none;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 240) border-radius: 5px;	240) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 240)   border-radius: 5px;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 241) cursor: pointer;	241) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 241)   cursor: pointer;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 242) }	242) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 242) }
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 243)	243) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 243) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 244) .clear-playlist-button:hover {	244) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 244) .clear-playlist-button:hover {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 245) background-color: #d65c4c;	245) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 245)   background-color: #d65c4c;
+File: App.js
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 4) import Metronome from './Metronome';	4) e2897aa3 (evannewport     2024-10-17 16:31:16 -0400   4) import Metronome from './Metronome';
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 9) const [shapeType, setShapeType] = useState('fullScale');	9) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400   9)   const [shapeType, setShapeType] = useState('fullScale');
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 10) const [hoveredNote, setHoveredNote] = useState(null);	10) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400  10)   const [hoveredNote, setHoveredNote] = useState(null);
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 11) const [playlist, setPlaylist] = useState([]);	11) 055d267d (evannewport     2024-10-17 16:00:40 -0400  11)   const [playlist, setPlaylist] = useState([]);
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 17) const handleNoteClick = (string, fret) => {	17) 055d267d (evannewport     2024-10-17 16:00:40 -0400  17)   const handleNoteClick = (string, fret) => {
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 18) const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${string}_${fret}.wav`);	18) 055d267d (evannewport     2024-10-17 16:00:40 -0400  18)     const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${string}_${fret}.wav`);
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 19) audio.play().catch((error) => {	19) 055d267d (evannewport     2024-10-17 16:00:40 -0400  19)     audio.play().catch((error) => {
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 20) console.error(`Error playing sound: ${error}`);	20) 055d267d (evannewport     2024-10-17 16:00:40 -0400  20)       console.error(`Error playing sound: ${error}`);
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 21) });	21) 055d267d (evannewport     2024-10-17 16:00:40 -0400  21)     });
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 22) };	22) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400  22)   };
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 23)	23) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400  23) 
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 24) const addToPlaylist = () => {	24) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400  24)   const addToPlaylist = () => {
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 25) if (rootNote && scaleType && shapeType) {	25) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400  25)     if (rootNote && scaleType && shapeType) {
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 26) const newEntry = `${rootNote} ${scaleType} (${shapeType})`;	26) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400  26)       const newEntry = `${rootNote} ${scaleType} (${shapeType})`;
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 27) if (!playlist.includes(newEntry)) {	27) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  27)       if (!playlist.includes(newEntry)) {
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 28) setPlaylist((prevPlaylist) => [...prevPlaylist, newEntry]);	28) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  28)         setPlaylist((prevPlaylist) => [...prevPlaylist, newEntry]);
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 29) }	29) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  29)       }
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 30) }	30) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  30)     }
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 31) };	31) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  31)   };
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 32)	32) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  32) 
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 33) const handlePlaylistClick = (entry) => {	33) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  33)   const handlePlaylistClick = (entry) => {
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 34) const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;	34) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  34)     const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 35) const match = entry.match(regex);	35) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  35)     const match = entry.match(regex);
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 36) if (match) {	36) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  36)     if (match) {
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 37) const [, root, scale, shape] = match;	37) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  37)       const [, root, scale, shape] = match;
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 38) setRootNote(root);	38) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  38)       setRootNote(root);
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 39) setScaleType(scale);	39) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  39)       setScaleType(scale);
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 40) setShapeType(shape);	40) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  40)       setShapeType(shape);
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 41) }	41) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400  41)     }
+fe6aef95 (Lorenzo Bailey	Bailey 2024-10-31 01:03:29 -0400 42) };	42) fe6aef95 (Lorenzo Bailey  2024-10-17 01:03:29 -0400  42)   };
+fe6aef95 (Lorenzo Bailey	Bailey 2024-10-31 01:03:29 -0400 43)	43) fe6aef95 (Lorenzo Bailey  2024-10-17 01:03:29 -0400  43) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 44) const playPlaylist = () => {	44) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  44)   const playPlaylist = () => {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 45) if (playlist.length === 0) return;	45) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  45)     if (playlist.length === 0) return;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 46)	46) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  46) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 47) let currentIndex = 0;	47) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  47)     let currentIndex = 0;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 48)	48) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  48) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 49) const playNext = () => {	49) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  49)     const playNext = () => {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 50) if (currentIndex >= playlist.length) {	50) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  50)       if (currentIndex >= playlist.length) {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 51) return;	51) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  51)         return;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 52) }	52) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  52)       }
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 53)	53) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  53) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 54) const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;	54) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  54)       const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 55) const match = playlist[currentIndex].match(regex);	55) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  55)       const match = playlist[currentIndex].match(regex);
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 56) if (match) {	56) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  56)       if (match) {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 57) const [, root] = match;	57) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  57)         const [, root] = match;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 58) const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${root}.wav`);	58) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  58)         const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${root}.wav`);
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 59)	59) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  59) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 60) audio.addEventListener('ended', () => {	60) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  60)         audio.addEventListener('ended', () => {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 61) currentIndex++;	61) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  61)           currentIndex++;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 62) playNext(); // Play the next audio when the current one ends	62) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  62)           playNext(); // Play the next audio when the current one ends
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 63) });	63) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  63)         });
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 64)	64) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  64) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 65) audio.play().catch((error) => {	65) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  65)         audio.play().catch((error) => {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 66) console.error(`Error playing sound: ${error}`);	66) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  66)           console.error(`Error playing sound: ${error}`);
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 67) currentIndex++;	67) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  67)           currentIndex++;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 68) playNext(); // Proceed to the next audio even if there's an error	68) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  68)           playNext(); // Proceed to the next audio even if there's an error
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 69) });	69) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  69)         });
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 70) } else {	70) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  70)       } else {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 71) currentIndex++;	71) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  71)         currentIndex++;
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 72) playNext(); // Skip to next if no match	72) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  72)         playNext(); // Skip to next if no match
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 73) }	73) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  73)       }
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 74) };	74) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  74)     };
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 75)	75) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  75) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 76) playNext();	76) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  76)     playNext();
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 77) };	77) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  77)   };
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 78)	78) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  78) 
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 79) const clearPlaylist = () => {	79) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  79)   const clearPlaylist = () => {
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 80) setPlaylist([]);	80) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  80)     setPlaylist([]);
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 81) };	81) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  81)   };
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 82)	82) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400  82) 
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 86) <div className="metronome-header">	86) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  86)         <div className="metronome-header">
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 87) <Metronome />	87) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  87)           <Metronome />
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 88) </div>	88) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400  88)         </div>
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 101) <option value="">Select</option>	101) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 101)           <option value="">Select</option>
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 134)	134) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 134) 
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 135) <button onClick={addToPlaylist}>Add to Playlist</button>	135) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 135)         <button onClick={addToPlaylist}>Add to Playlist</button>
+fe6aef95 (Lorenzo Bailey	Bailey 2024-10-31 01:03:29 -0400 143) setHoveredNote={setHoveredNote}	143) fe6aef95 (Lorenzo Bailey  2024-10-17 01:03:29 -0400 143)           setHoveredNote={setHoveredNote}
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 144) handleNoteClick={handleNoteClick}	144) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 144)           handleNoteClick={handleNoteClick}
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 148) <div className="hovered-info-container">	148) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 148)       <div className="hovered-info-container">
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 149) <div className="hovered-info" style={{ visibility: hoveredNote ? 'visible' : 'hidden', height: '40px' }}>	149) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 149)         <div className="hovered-info" style={{ visibility: hoveredNote ? 'visible' : 'hidden', height: '40px' }}>
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 150) <p>Hovered Note: {hoveredNote ? `${hoveredNote.note} (String: ${hoveredNote.string}, Fret: ${hoveredNote.fret})` : ''}</p>	150) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 150)           <p>Hovered Note: {hoveredNote ? `${hoveredNote.note} (String: ${hoveredNote.string}, Fret: ${hoveredNote.fret})` : ''}</p>
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 152) </div>	152) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 152)       </div>
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 153)	153) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 153) 
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 154) {/* Playlist display */}	154) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 154)       {/* Playlist display */}
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 155) <div className="playlist-container">	155) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 155)       <div className="playlist-container">
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 156) <h3>Playlist</h3>	156) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 156)         <h3>Playlist</h3>
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 157) <button onClick={playPlaylist} className="play-playlist-button">Play Playlist</button>	157) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 157)         <button onClick={playPlaylist} className="play-playlist-button">Play Playlist</button>
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 158) <button onClick={clearPlaylist} className="clear-playlist-button">Clear Playlist</button>	158) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 158)         <button onClick={clearPlaylist} className="clear-playlist-button">Clear Playlist</button>
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 159) <ul>	159) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 159)         <ul>
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 160) {playlist.map((entry, index) => (	160) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 160)           {playlist.map((entry, index) => (
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 161) <li key={index} onClick={() => handlePlaylistClick(entry)} style={{ cursor: 'pointer' }}>	161) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 161)             <li key={index} onClick={() => handlePlaylistClick(entry)} style={{ cursor: 'pointer' }}>
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 162) {entry}	162) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 162)               {entry}
+c48150e8 (Lorenzo Bailey	Bailey 2024-10-31 07:21:26 -0400 163) </li>	163) c48150e8 (Lorenzo Bailey  2024-10-31 07:21:26 -0400 163)             </li>
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 164) ))}	164) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 164)           ))}
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 165) </ul>	165) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 165)         </ul>
+bab3e803 (Lorenzo Bailey	Bailey 2024-10-31 02:01:48 -0400 166) </div>	166) bab3e803 (Lorenzo Bailey  2024-10-17 02:01:48 -0400 166)       </div>
+4d3a3155 (Lorenzo Bailey	Bailey 2024-10-31 07:40:45 -0400 171) export default App;	171) 4d3a3155 (Lorenzo Bailey  2024-10-31 07:40:45 -0400 171) export default App;
+File: App.test.js
+File: Fretboard.js
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 3) const stringNotes = { 'E2': 'E', 'A': 'A', 'D': 'D', 'G': 'G', 'B': 'B', 'E': 'E' };	3) 055d267d (evannewport     2024-10-17 16:00:40 -0400  3) const stringNotes = { 'E2': 'E', 'A': 'A', 'D': 'D', 'G': 'G', 'B': 'B', 'E': 'E' };
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 4)	4) 055d267d (evannewport     2024-10-17 16:00:40 -0400  4) 
+fe6aef95 (Lorenzo Bailey	Bailey 2024-10-31 01:03:29 -0400 5) const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote, handleNoteClick }) => {	5) fe6aef95 (Lorenzo Bailey  2024-10-17 01:03:29 -0400  5) const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote, handleNoteClick }) => {
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 6) const frets = Array.from({ length: 13 }, (_, index) => index); // 0 to 12 frets	6) 055d267d (evannewport     2024-10-17 16:00:40 -0400  6)   const frets = Array.from({ length: 13 }, (_, index) => index); // 0 to 12 frets
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 7) const strings = ['E2', 'A', 'D', 'G', 'B', 'E']; // Distinguish between low E (E2) and high E	7) 055d267d (evannewport     2024-10-17 16:00:40 -0400  7)   const strings = ['E2', 'A', 'D', 'G', 'B', 'E']; // Distinguish between low E (E2) and high E
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 20) {strings.map((string, stringIndex) => {	20) 055d267d (evannewport     2024-10-17 16:00:40 -0400 20)       {strings.map((string, stringIndex) => {
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 21) const baseNoteName = stringNotes[string];	21) 055d267d (evannewport     2024-10-17 16:00:40 -0400 21)         const baseNoteName = stringNotes[string];
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 22) const baseNoteIndex = noteNames.indexOf(baseNoteName);	22) 055d267d (evannewport     2024-10-17 16:00:40 -0400 22)         const baseNoteIndex = noteNames.indexOf(baseNoteName);
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 23) return (	23) 055d267d (evannewport     2024-10-17 16:00:40 -0400 23)         return (
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 24) <div key={stringIndex} className="guitar-string">	24) 055d267d (evannewport     2024-10-17 16:00:40 -0400 24)           <div key={stringIndex} className="guitar-string">
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 25) {frets.map((fret) => {	25) 055d267d (evannewport     2024-10-17 16:00:40 -0400 25)             {frets.map((fret) => {
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 26) const noteAtFret = noteNames[(baseNoteIndex + fret) % 12];	26) 055d267d (evannewport     2024-10-17 16:00:40 -0400 26)               const noteAtFret = noteNames[(baseNoteIndex + fret) % 12];
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 28) return (	28) 055d267d (evannewport     2024-10-17 16:00:40 -0400 28)               return (
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 29) <div	29) 055d267d (evannewport     2024-10-17 16:00:40 -0400 29)                 <div
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 30) key={fret}	30) 055d267d (evannewport     2024-10-17 16:00:40 -0400 30)                   key={fret}
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 31) className={`guitar-fret ${displayedNotes.includes(noteAtFret) ? 'highlight' : ''}`}	31) 055d267d (evannewport     2024-10-17 16:00:40 -0400 31)                   className={`guitar-fret ${displayedNotes.includes(noteAtFret) ? 'highlight' : ''}`}
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 32) onMouseEnter={() => setHoveredNote({ string, fret, note: noteAtFret })}	32) 055d267d (evannewport     2024-10-17 16:00:40 -0400 32)                   onMouseEnter={() => setHoveredNote({ string, fret, note: noteAtFret })}
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 33) onMouseLeave={() => setHoveredNote(null)}	33) 055d267d (evannewport     2024-10-17 16:00:40 -0400 33)                   onMouseLeave={() => setHoveredNote(null)}
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 34) onClick={() => handleNoteClick(string, fret)}	34) 055d267d (evannewport     2024-10-17 16:00:40 -0400 34)                   onClick={() => handleNoteClick(string, fret)}
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 35) >	35) 055d267d (evannewport     2024-10-17 16:00:40 -0400 35)                 >
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 36) <p className="note-label">{noteAtFret}</p>	36) 055d267d (evannewport     2024-10-17 16:00:40 -0400 36)                   <p className="note-label">{noteAtFret}</p>
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 37) </div>	37) 055d267d (evannewport     2024-10-17 16:00:40 -0400 37)                 </div>
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 38) );	38) 055d267d (evannewport     2024-10-17 16:00:40 -0400 38)               );
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 39) })}	39) 055d267d (evannewport     2024-10-17 16:00:40 -0400 39)             })}
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 40) </div>	40) 055d267d (evannewport     2024-10-17 16:00:40 -0400 40)           </div>
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 41) );	41) 055d267d (evannewport     2024-10-17 16:00:40 -0400 41)         );
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 42) })}	42) 055d267d (evannewport     2024-10-17 16:00:40 -0400 42)       })}
+055d267d (Lorenzo Bailey	2024-10-31 16:00:40 -0400 47) export default Fretboard;	47) 055d267d (evannewport     2024-10-17 16:00:40 -0400 47) export default Fretboard;
+File: Metronome.js
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 1) // Metronome.js	1) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   1) // Metronome.js
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 2)	2) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   2) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 3) import React, { useState, useEffect, useRef } from 'react';	3) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   3) import React, { useState, useEffect, useRef } from 'react';
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 4)	4) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   4) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 5) const Metronome = () => {	5) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   5) const Metronome = () => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 6) const [bpm, setBpm] = useState(100); // Default BPM	6) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   6)   const [bpm, setBpm] = useState(100); // Default BPM
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 7) const [isPlaying, setIsPlaying] = useState(false);	7) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   7)   const [isPlaying, setIsPlaying] = useState(false);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 8) const [beatActive, setBeatActive] = useState(false);	8) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   8)   const [beatActive, setBeatActive] = useState(false);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 9) const timerRef = useRef(null);	9) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400   9)   const timerRef = useRef(null);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 10) const audioContextRef = useRef(null);	10) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  10)   const audioContextRef = useRef(null);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 11)	11) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  11) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 12) useEffect(() => {	12) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  12)   useEffect(() => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 13) // Initialize AudioContext	13) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  13)     // Initialize AudioContext
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 14) audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();	14) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  14)     audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 15)	15) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  15) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 16) // Cleanup function	16) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  16)     // Cleanup function
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 17) return () => {	17) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  17)     return () => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 18) stopMetronome();	18) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  18)       stopMetronome();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 19) if (audioContextRef.current) {	19) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  19)       if (audioContextRef.current) {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 20) audioContextRef.current.close();	20) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  20)         audioContextRef.current.close();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 21) }	21) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  21)       }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 22) };	22) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  22)     };
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 23) }, []);	23) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  23)   }, []);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 24)	24) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  24) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 25) const startMetronome = () => {	25) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  25)   const startMetronome = () => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 26) if (isPlaying) return;	26) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  26)     if (isPlaying) return;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 27)	27) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  27) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 28) if (audioContextRef.current.state === 'suspended') {	28) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  28)     if (audioContextRef.current.state === 'suspended') {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 29) audioContextRef.current.resume();	29) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  29)       audioContextRef.current.resume();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 30) }	30) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  30)     }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 31)	31) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  31) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 32) setIsPlaying(true);	32) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  32)     setIsPlaying(true);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 33) playClickSound(); // Play the first click immediately	33) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  33)     playClickSound(); // Play the first click immediately
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 34)	34) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  34) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 35) const interval = (60 / bpm) * 1000; // Calculate interval in milliseconds	35) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  35)     const interval = (60 / bpm) * 1000; // Calculate interval in milliseconds
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 36) timerRef.current = setInterval(() => {	36) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  36)     timerRef.current = setInterval(() => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 37) playClickSound();	37) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  37)       playClickSound();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 38) }, interval);	38) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  38)     }, interval);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 39) };	39) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  39)   };
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 40)	40) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  40) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 41) const stopMetronome = () => {	41) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  41)   const stopMetronome = () => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 42) setIsPlaying(false);	42) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  42)     setIsPlaying(false);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 43) clearInterval(timerRef.current);	43) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  43)     clearInterval(timerRef.current);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 44) };	44) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  44)   };
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 45)	45) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  45) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 46) const toggleMetronome = () => {	46) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  46)   const toggleMetronome = () => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 47) if (isPlaying) {	47) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  47)     if (isPlaying) {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 48) stopMetronome();	48) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  48)       stopMetronome();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 49) } else {	49) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  49)     } else {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 50) startMetronome();	50) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  50)       startMetronome();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 51) }	51) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  51)     }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 52) };	52) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  52)   };
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 53)	53) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  53) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 54) const playClickSound = () => {	54) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  54)   const playClickSound = () => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 55) const audioCtx = audioContextRef.current;	55) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  55)     const audioCtx = audioContextRef.current;
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 56) const oscillator = audioCtx.createOscillator();	56) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  56)     const oscillator = audioCtx.createOscillator();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 57) const gainNode = audioCtx.createGain();	57) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  57)     const gainNode = audioCtx.createGain();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 58)	58) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  58) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 59) oscillator.connect(gainNode);	59) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  59)     oscillator.connect(gainNode);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 60) gainNode.connect(audioCtx.destination);	60) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  60)     gainNode.connect(audioCtx.destination);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 61)	61) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  61) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 62) oscillator.type = 'sine';	62) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  62)     oscillator.type = 'sine';
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 63) oscillator.frequency.setValueAtTime(880, audioCtx.currentTime);	63) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  63)     oscillator.frequency.setValueAtTime(880, audioCtx.currentTime); 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 64) gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);	64) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  64)     gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 65)	65) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  65) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 66) oscillator.start(audioCtx.currentTime);	66) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  66)     oscillator.start(audioCtx.currentTime);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 67) oscillator.stop(audioCtx.currentTime + 0.05);	67) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  67)     oscillator.stop(audioCtx.currentTime + 0.05); 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 68)	68) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  68) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 69) // Fade out the sound	69) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  69)     // Fade out the sound
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 70) gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);	70) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  70)     gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 71)	71) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  71) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 72) // Toggle beat indicator	72) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  72)     // Toggle beat indicator
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 73) setBeatActive(true);	73) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  73)     setBeatActive(true);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 74) setTimeout(() => setBeatActive(false), 100);	74) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  74)     setTimeout(() => setBeatActive(false), 100); 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 75) };	75) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  75)   };
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 76)	76) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  76) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 77) const handleBpmChange = (e) => {	77) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  77)   const handleBpmChange = (e) => {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 78) const newBpm = Number(e.target.value);	78) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  78)     const newBpm = Number(e.target.value);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 79) setBpm(newBpm);	79) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  79)     setBpm(newBpm);
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 80)	80) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  80) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 81) if (isPlaying) {	81) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  81)     if (isPlaying) {
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 82) stopMetronome();	82) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  82)       stopMetronome();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 83) startMetronome();	83) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  83)       startMetronome();
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 84) }	84) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  84)     }
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 85) };	85) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  85)   };
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 86)	86) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  86) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 87) return (	87) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  87)   return (
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 88) <div className="metronome-container">	88) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  88)     <div className="metronome-container">
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 89) <h3>Metronome</h3>	89) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  89)       <h3>Metronome</h3>
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 90) <div className="metronome-controls">	90) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  90)       <div className="metronome-controls">
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 91) <label htmlFor="bpm">BPM:</label>	91) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  91)         <label htmlFor="bpm">BPM:</label>
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 92) <input	92) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  92)         <input
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 93) type="number"	93) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  93)           type="number"
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 94) id="bpm"	94) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  94)           id="bpm"
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 95) value={bpm}	95) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  95)           value={bpm}
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 96) onChange={handleBpmChange}	96) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  96)           onChange={handleBpmChange}
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 97) min="40"	97) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  97)           min="40"
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 98) max="240"	98) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  98)           max="240"
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 99) />	99) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  99)         />
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 100) <button onClick={toggleMetronome}>	100) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 100)         <button onClick={toggleMetronome}>
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 101) {isPlaying ? 'Stop' : 'Start'}	101) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 101)           {isPlaying ? 'Stop' : 'Start'}
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 102) </button>	102) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 102)         </button>
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 103) </div>	103) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 103)       </div>
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 104) <div	104) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 104)       <div
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 105) className={`beat-indicator ${beatActive ? 'active' : ''}`}	105) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 105)         className={`beat-indicator ${beatActive ? 'active' : ''}`}
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 106) ></div>	106) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 106)       ></div>
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 107) </div>	107) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 107)     </div>
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 108) );	108) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 108)   );
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 109) };	109) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 109) };
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 110)	110) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 110) 
+e2897aa3 (Lorenzo Bailey	2024-10-31 16:31:16 -0400 111) export default Metronome;	111) e2897aa3 (evannewport 2024-10-17 16:31:16 -0400 111) export default Metronome;
+
