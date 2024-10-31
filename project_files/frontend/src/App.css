@@ -244,3 +244,29 @@ body {
 .clear-playlist-button:hover {
   background-color: #d65c4c;
 }
+
+.scale-info-sidebar {
+  position: fixed;
+  right: 20px;
+  top: 150px;
+  width: 200px;
+  background-color: #3e3d36;
+  color: #f4f4f2;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.scale-info-sidebar button {
+  margin-top: 10px;
+  background-color: #6A2A00;
+  color: #f4f4f2;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.scale-info-sidebar button:hover {
+  background-color: #8B3D00;
+}

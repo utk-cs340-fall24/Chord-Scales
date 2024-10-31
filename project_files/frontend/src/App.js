@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Fretboard from './Fretboard';
 import Metronome from './Metronome';
+import ScaleInfoSidebar from './ScaleInfoSidebar.js'; // Import the new sidebar component
 
 function App() {
   const [rootNote, setRootNote] = useState('');
@@ -144,6 +145,8 @@ function App() {
           handleNoteClick={handleNoteClick}
         />
       </div>
+
+      <ScaleInfoSidebar scaleType={scaleType} /> {/* Sidebar displaying scale/chord info */}
 
       <div className="hovered-info-container">
         <div className="hovered-info" style={{ visibility: hoveredNote ? 'visible' : 'hidden', height: '40px' }}>
