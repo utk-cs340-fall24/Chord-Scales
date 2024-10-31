@@ -9,7 +9,7 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-const double duration = 1; // Duration for each note in seconds
+const double duration = 5; // Duration for each note in seconds
 
 // Define the structure of the fretboard
 vector<vector<string>> fretboard_files(6, vector<string>(12));
