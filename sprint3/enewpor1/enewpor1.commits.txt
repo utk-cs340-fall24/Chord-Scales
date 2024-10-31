@@ -1,0 +1,203 @@
+Metronome.js:
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400   4)     const [bpm, setBpm] = useState(100); // Default BPM
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400   5)     const [isPlaying, setIsPlaying] = useState(false);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400   6)     const [beatActive, setBeatActive] = useState(false);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400   7)     const [timeSignature, setTimeSignature] = useState('4/4');
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400   8)     const [accents, setAccents] = useState(new Array(4).fill(false));
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400   9)     const timerRef = useRef(null);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  10)     const audioContextRef = useRef(null);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  11)     const beatCountRef = useRef(0);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  12) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  13)     useEffect(() => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  14)         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  15)         return () => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  16)             stopMetronome();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  17)             if (audioContextRef.current) {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  18)                 audioContextRef.current.close();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  19)             }
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  20)         };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  21)     }, []);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  22) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  23)     const startMetronome = () => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  24)         if (isPlaying) return;
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  25) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  26)         if (audioContextRef.current.state === 'suspended') {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  27)             audioContextRef.current.resume();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  28)         }
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  29) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  30)         setIsPlaying(true);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  31)         playClickSound();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  32)         const interval = (60 / bpm) * 1000;
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  33)         timerRef.current = setInterval(() => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  34)             incrementBeat();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  35)             playClickSound();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  36)         }, interval);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  37)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  38) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  39)     const incrementBeat = () => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  40)         const beatsPerMeasure = parseInt(timeSignature.split('/')[0]);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  41)         beatCountRef.current = (beatCountRef.current + 1) % beatsPerMeasure;
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  42)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  43) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  44)     const playClickSound = () => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  45)         const audioCtx = audioContextRef.current;
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  46)         const oscillator = audioCtx.createOscillator();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  47)         const gainNode = audioCtx.createGain();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  48) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  49)         oscillator.connect(gainNode);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  50)         gainNode.connect(audioCtx.destination);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  51) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  52)         const isAccent = accents[beatCountRef.current];
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  53)         oscillator.type = 'sine';
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  54)         oscillator.frequency.setValueAtTime(isAccent ? 1200 : 880, audioCtx.currentTime);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  55)         gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  56) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  57)         oscillator.start(audioCtx.currentTime);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  58)         oscillator.stop(audioCtx.currentTime + 0.05);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  59) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  60)         gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  61)         setBeatActive(true);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  62)         setTimeout(() => setBeatActive(false), 100);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  63)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  64) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  65)     const stopMetronome = () => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  66)         setIsPlaying(false);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  67)         clearInterval(timerRef.current);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  68)         beatCountRef.current = 0;
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  69)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  70) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  71)     const toggleMetronome = () => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  72)         if (isPlaying) {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  73)             stopMetronome();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  74)         } else {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  75)             startMetronome();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  76)         }
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  77)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  78) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  79)     const handleBpmChange = (e) => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  80)         const newBpm = Number(e.target.value);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  81)         setBpm(newBpm);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  82)         if (isPlaying) {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  83)             stopMetronome();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  84)             startMetronome();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  85)         }
+e2897aa3 (evannewport 2024-10-17 16:31:16 -0400  86)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  87) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  88)     const handleTimeSignatureChange = (e) => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  89)         setTimeSignature(e.target.value);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  90)         setAccents(new Array(parseInt(e.target.value.split('/')[0])).fill(false));
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  91)         if (isPlaying) {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  92)             stopMetronome();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  93)             startMetronome();
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  94)         }
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  95)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  96) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  97)     const handleAccentChange = (index) => {
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  98)         const updatedAccents = [...accents];
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400  99)         updatedAccents[index] = !updatedAccents[index];
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 100)         setAccents(updatedAccents);
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 101)     };
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 102) 
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 103)     return (
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 104)         <div className="metronome-container">
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 105)             <h3>Metronome</h3>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 106)             <div className="metronome-controls">
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 107)                 <label htmlFor="bpm">BPM:</label>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 108)                 <input
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 109)                     type="number"
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 110)                     id="bpm"
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 111)                     value={bpm}
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 112)                     onChange={handleBpmChange}
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 113)                     min="40"
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 114)                     max="240"
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 115)                 />
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 116)                 <button onClick={toggleMetronome}>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 117)                     {isPlaying ? 'Stop' : 'Start'}
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 118)                 </button>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 119)             </div>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 120)             <label htmlFor="time-signature">Time Signature:</label>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 121)             <select id="time-signature" value={timeSignature} onChange={handleTimeSignatureChange}>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 122)                 <option value="2/4">2/4</option>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 123)                 <option value="3/4">3/4</option>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 124)                 <option value="4/4">4/4</option>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 125)                 <option value="6/8">6/8</option>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 126)             </select>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 127)             <div>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 128)                 {accents.map((accent, index) => (
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 129)                     <input
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 130)                         key={index}
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 131)                         type="checkbox"
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 132)                         checked={accent}
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 133)                         onChange={() => handleAccentChange(index)}
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 134)                     />
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 135)                 ))}
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 136)             </div>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 137)             <div className={`beat-indicator ${beatActive ? 'active' : ''}`}></div>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 138)         </div>
+2c721c3c (evannewport 2024-10-31 14:28:26 -0400 139)     );
+
+ScaleInfoSidebar.js:
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  1) import React, { useState } from 'react';
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  2) 
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  3) const scaleDetails = {
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  4)   major: "Major scale: Happy and bright in nature. It is used in a wide variety of music genres.",
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  5)   minor: "Minor scale: Sad and emotional. It's commonly used in genres that require emotional depth.",
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  6)   diminished: "Diminished scale: Creates a sense of tension and suspense, suitable for jazz and experimental music.",
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  7)   augmented: "Augmented scale: Often used for solos in jazz music, providing a complex and intriguing sound.",
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  8)   pentatonic: "Pentatonic scale: Commonly used for solos in rock, blues, and pop music due to its simplicity and effectiveness."
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400  9) };
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 10) 
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 11) const ScaleInfoSidebar = ({ scaleType }) => {
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 12)   const [visible, setVisible] = useState(false);
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 13) 
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 14)   const toggleVisibility = () => setVisible(!visible);
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 15) 
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 16)   return (
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 17)     <div className="scale-info-sidebar">
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 18)       <button onClick={toggleVisibility}>{visible ? 'Hide Info' : 'Show Info'}</button>
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 19)       {visible && scaleType && (
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 20)         <div>
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 21)           <h3>Scale Information</h3>
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 22)           <p>{scaleDetails[scaleType] || 'Select a scale or chord to see more information.'}</p>
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 23)         </div>
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 24)       )}
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 25)     </div>
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 26)   );
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 27) };
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 28) 
+302e79a4 (evannewport 2024-10-31 15:06:37 -0400 29) export default ScaleInfoSidebar;
+
+App.css:
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 246) }
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 247) 
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 248) .scale-info-sidebar {
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 249)   position: fixed;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 250)   right: 20px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 251)   top: 150px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 252)   width: 200px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 253)   background-color: #3e3d36;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 254)   color: #f4f4f2;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 255)   padding: 15px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 256)   border-radius: 5px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 257)   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 258) }
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 259) 
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 260) .scale-info-sidebar button {
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 261)   margin-top: 10px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 262)   background-color: #6A2A00;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 263)   color: #f4f4f2;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 264)   border: none;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 265)   padding: 8px 16px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 266)   border-radius: 5px;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 267)   cursor: pointer;
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 268) }
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 269) 
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 270) .scale-info-sidebar button:hover {
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 271)   background-color: #8B3D00;
+ff0c63a9 (evannewport    2024-10-03 17:25:48 -0400 272) }
+
+
+App.js:
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400   5) import ScaleInfoSidebar from './ScaleInfoSidebar.js'; // Import the new sidebar component
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 149)       <ScaleInfoSidebar scaleType={scaleType} /> {/* Sidebar displaying scale/chord info */}
+302e79a4 (evannewport    2024-10-31 15:06:37 -0400 150) 
