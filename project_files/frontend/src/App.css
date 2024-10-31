@@ -174,9 +174,11 @@ body {
 
 .metronome-container {
   border: 1px solid #ddd;
-  padding: 15px;
-  margin: 20px auto;
-  max-width: 300px;
+  padding: 5px; /* Reduced padding to make the metronome smaller */
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  max-width: 200px; /* Reduced width to fit in the header */
   text-align: center;
   background-color: #6A2A00;
 }
@@ -201,7 +203,6 @@ body {
 .metronome-controls button {
   padding: 5px 15px;
 }
-
 
 .beat-indicator {
   width: 20px;

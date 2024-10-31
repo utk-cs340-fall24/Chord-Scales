@@ -24,13 +24,29 @@ function App() {
   const addToPlaylist = () => {
     if (rootNote && scaleType && shapeType) {
       const newEntry = `${rootNote} ${scaleType} (${shapeType})`;
-      setPlaylist((prevPlaylist) => [...prevPlaylist, newEntry]);
+      if (!playlist.includes(newEntry)) {
+        setPlaylist((prevPlaylist) => [...prevPlaylist, newEntry]);
+      }
+    }
+  };
+
+  const handlePlaylistClick = (entry) => {
+    const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;
+    const match = entry.match(regex);
+    if (match) {
+      const [, root, scale, shape] = match;
+      setRootNote(root);
+      setScaleType(scale);
+      setShapeType(shape);
     }
   };
 
   return (
     <div className="App">
       <header className="App-header">
+        <div className="metronome-header">
+          <Metronome />
+        </div>
         <h1>Dynamic Fretboard Visualizer</h1>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="ChordScales Logo" className="logo" />
         <p>Select a root note, scale/chord, and shape to visualize on the fretboard</p>
@@ -90,26 +106,23 @@ function App() {
         />
       </div>
 
-      {hoveredNote && (
-        <div className="hovered-info">
-          <p>Hovered Note: {hoveredNote.note} (String: {hoveredNote.string}, Fret: {hoveredNote.fret})</p>
+      <div className="hovered-info-container">
+        <div className="hovered-info" style={{ visibility: hoveredNote ? 'visible' : 'hidden', height: '40px' }}>
+          <p>Hovered Note: {hoveredNote ? `${hoveredNote.note} (String: ${hoveredNote.string}, Fret: ${hoveredNote.fret})` : ''}</p>
         </div>
-      )}
+      </div>
 
       {/* Playlist display */}
       <div className="playlist-container">
         <h3>Playlist</h3>
         <ul>
           {playlist.map((entry, index) => (
-            <li key={index}>{entry}</li>
+            <li key={index} onClick={() => handlePlaylistClick(entry)} style={{ cursor: 'pointer' }}>
+              {entry}
+            </li>
           ))}
         </ul>
       </div>
-
-      <div className="metronome-section">
-        <Metronome />
-      </div>
-
     </div>
   );
 }
