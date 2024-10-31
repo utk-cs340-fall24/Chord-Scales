@@ -188,4 +188,12 @@ e39072be (Ethan Holland     2024-10-23 20:08:32 -0400 187)                 }
 ^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 198)     }
 ^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 199) }
 ^d9a38d0 (afflix            2024-10-18 00:14:58 -0400 200) 
-
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 488)     for (int i = 0; i < chord_scale.size(); i++)
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 489)     {
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 490)         for (const auto &note : chord_scale[i])
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 491)         {
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 492)             cout << "(" << note.second << ", String " << note.first << ") ";
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 493)         }
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 494)         cout << endl;
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 495)     }
+13762931 (Ethan Holland 2024-10-31 17:19:53 -0400 496) 
