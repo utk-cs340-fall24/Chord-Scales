@@ -216,3 +216,31 @@ body {
 .beat-indicator.active {
   background-color: #ff4d4d;
 }
+
+.play-playlist-button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: #6A2A00;
+  color: #f4f4f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.play-playlist-button:hover {
+  background-color: #8B3D00;
+}
+
+.clear-playlist-button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #b24c32;
+  color: #f4f4f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-playlist-button:hover {
+  background-color: #d65c4c;
+}

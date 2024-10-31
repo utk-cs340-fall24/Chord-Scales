@@ -41,6 +41,45 @@ function App() {
     }
   };
 
+  const playPlaylist = () => {
+    if (playlist.length === 0) return;
+
+    let currentIndex = 0;
+
+    const playNext = () => {
+      if (currentIndex >= playlist.length) {
+        return;
+      }
+
+      const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;
+      const match = playlist[currentIndex].match(regex);
+      if (match) {
+        const [, root] = match;
+        const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${root}.wav`);
+
+        audio.addEventListener('ended', () => {
+          currentIndex++;
+          playNext(); // Play the next audio when the current one ends
+        });
+
+        audio.play().catch((error) => {
+          console.error(`Error playing sound: ${error}`);
+          currentIndex++;
+          playNext(); // Proceed to the next audio even if there's an error
+        });
+      } else {
+        currentIndex++;
+        playNext(); // Skip to next if no match
+      }
+    };
+
+    playNext();
+  };
+
+  const clearPlaylist = () => {
+    setPlaylist([]);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -115,6 +154,8 @@ function App() {
       {/* Playlist display */}
       <div className="playlist-container">
         <h3>Playlist</h3>
+        <button onClick={playPlaylist} className="play-playlist-button">Play Playlist</button>
+        <button onClick={clearPlaylist} className="clear-playlist-button">Clear Playlist</button>
         <ul>
           {playlist.map((entry, index) => (
             <li key={index} onClick={() => handlePlaylistClick(entry)} style={{ cursor: 'pointer' }}>
