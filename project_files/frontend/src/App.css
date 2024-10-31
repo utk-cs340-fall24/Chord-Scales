@@ -142,3 +142,105 @@ body {
     font-size: 0.9rem;
   }
 }
+
+.playlist-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #2e2d2b;
+  color: #f4f4f2;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  max-width: 300px;
+}
+
+.playlist-container h3 {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+}
+
+.playlist-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.playlist-container li {
+  margin-bottom: 5px;
+  font-size: 1em;
+}
+
+/* Metronome Styles */
+
+.metronome-container {
+  border: 1px solid #ddd;
+  padding: 5px; /* Reduced padding to make the metronome smaller */
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  max-width: 200px; /* Reduced width to fit in the header */
+  text-align: center;
+  background-color: #6A2A00;
+}
+
+.metronome-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.metronome-controls label {
+  margin-right: 10px;
+}
+
+.metronome-controls input {
+  width: 60px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.metronome-controls button {
+  padding: 5px 15px;
+}
+
+.beat-indicator {
+  width: 20px;
+  height: 20px;
+  background-color: #ddd;
+  margin: 10px auto;
+  border-radius: 50%;
+  transition: background-color 0.1s;
+}
+
+.beat-indicator.active {
+  background-color: #ff4d4d;
+}
+
+.play-playlist-button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: #6A2A00;
+  color: #f4f4f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.play-playlist-button:hover {
+  background-color: #8B3D00;
+}
+
+.clear-playlist-button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #b24c32;
+  color: #f4f4f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-playlist-button:hover {
+  background-color: #d65c4c;
+}

@@ -1,0 +1,509 @@
+App.tsx
+b2238657 (afflix 2024-10-17 23:48:26 -0400  1) import React, { useState } from 'react';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  2) import './App.css';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  3) import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  4) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  5) function App() {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  6)   // login stat
+b2238657 (afflix 2024-10-17 23:48:26 -0400  7)   const [isLoggedIn, setIsLoggedIn] = useState(false);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  8)   const [errorMessage, setErrorMessage] = useState('');
+b2238657 (afflix 2024-10-17 23:48:26 -0400  9) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 10)   const handleLoginSuccess = (credentialResponse: CredentialResponse) => {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 11)     console.log(credentialResponse);
+b2238657 (afflix 2024-10-17 23:48:26 -0400 12)     setIsLoggedIn(true);
+b2238657 (afflix 2024-10-17 23:48:26 -0400 13)     setErrorMessage(''); // clear msgs
+b2238657 (afflix 2024-10-17 23:48:26 -0400 14)   };
+b2238657 (afflix 2024-10-17 23:48:26 -0400 15) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 16)   const handleLoginError = () => :...skipping...
+b2238657 (afflix 2024-10-17 23:48:26 -0400  1) import React, { useState } from 'react';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  2) import './App.css';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  3) import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  4) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  5) function App() {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  6)   // login stat
+b2238657 (afflix 2024-10-17 23:48:26 -0400  7)   const [isLoggedIn, setIsLoggedIn] = useState(false);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  8)   const [errorMessage, setErrorMessage] = useState('');
+b2238657 (afflix 2024-10-17 23:48:26 -0400  9) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 10)   const handleLoginSuccess = (credentialResponse: CredentialResponse) => {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 11)     console.log(credentialResponse);
+b2238657 (afflix 2024-10-17 23:48:26 -0400 12)     setIsLoggedIn(true);
+b2238657 (afflix 2024-10-17 23:48:26 -0400 13)     setErrorMessage(''); // clear msgs
+b2238657 (afflix 2024-10-17 23:48:26 -0400 14)   };
+b2238657 (afflix 2024-10-17 23:48:26 -0400 15) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 16)   const handleLoginError = () => {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 17)     console.log('Login Failed');
+:...skipping...
+b2238657 (afflix 2024-10-17 23:48:26 -0400  1) import React, { useState } from 'react';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  2) import './App.css';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  3) import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  4) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  5) function App() {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  6)   // login stat
+b2238657 (afflix 2024-10-17 23:48:26 -0400  7)   const [isLoggedIn, setIsLoggedIn] = useState(false);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  8)   const [errorMessage, setErrorMessage] = useState('');
+b2238657 (afflix 2024-10-17 23:48:26 -0400  9) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 10)   const handleLoginSuccess = (credentialResponse: CredentialResponse) => {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 11)     console.log(credentialResponse);
+b2238657 (afflix 2024-10-17 23:48:26 -0400 12)     setIsLoggedIn(true);
+b2238657 (afflix 2024-10-17 23:48:26 -0400 13)     setErrorMessage(''); // clear msgs
+b2238657 (afflix 2024-10-17 23:48:26 -0400 14)   };
+b2238657 (afflix 2024-10-17 23:48:26 -0400 15) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 16)   const handleLoginError = () => {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 17)     console.log('Login Failed');
+b2238657 (afflix 2024-10-17 23:48:26 -0400 18)     setErrorMessage('Login Failed'); // set error message
+b2238657 (afflix 2024-10-17 23:48:26 -0400 19)   };
+b2238657 (afflix 2024-10-17 23:48:26 -0400 20) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 21)   const handleLogout = () => {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 22)     setIsLoggedIn(false); // reset state 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 23)     setErrorMessage(''); // clear msg
+b2238657 (afflix 2024-10-17 23:48:26 -0400 24)   };
+b2238657 (afflix 2024-10-17 23:48:26 -0400 25) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 26)   return (
+b2238657 (afflix 2024-10-17 23:48:26 -0400 27)     <div className="App">
+b2238657 (afflix 2024-10-17 23:48:26 -0400 28)       <div className="login-container">
+b2238657 (afflix 2024-10-17 23:48:26 -0400 29)         <h1 className="welcome-message">
+b2238657 (afflix 2024-10-17 23:48:26 -0400 30)           {isLoggedIn ? 'ChordScales' : 'Welcome to ChordScales!'}
+b2238657 (afflix 2024-10-17 23:48:26 -0400 31)         </h1>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 32)         
+b2238657 (afflix 2024-10-17 23:48:26 -0400 33)         {!isLoggedIn ? (
+b2238657 (afflix 2024-10-17 23:48:26 -0400 34)           <>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 35)             <p className="app-description">Sign in with Google to access exclusive features and content.</p>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 36)             <GoogleLogin
+b2238657 (afflix 2024-10-17 23:48:26 -0400 37)               onSuccess={handleLoginSuccess}
+b2238657 (afflix 2024-10-17 23:48:26 -0400 38)               onError={handleLoginError}
+b2238657 (afflix 2024-10-17 23:48:26 -0400 39)             />
+b2238657 (afflix 2024-10-17 23:48:26 -0400 40)             {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message */}
+b2238657 (afflix 2024-10-17 23:48:26 -0400 41)           </>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 42)         ) : (
+b2238657 (afflix 2024-10-17 23:48:26 -0400 43)           <button onClick={handleLogout} className="logout-button">Logout</button>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 44)         )}
+b2238657 (afflix 2024-10-17 23:48:26 -0400 45)       </div>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 46)     </div>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 47)   );
+b2238657 (afflix 2024-10-17 23:48:26 -0400 48) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 49) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 50) export default App;
+
+App.css
+b2238657 (afflix 2024-10-17 23:48:26 -0400   1) .App {
+b2238657 (afflix 2024-10-17 23:48:26 -0400   2)   text-align: center;
+b2238657 (afflix 2024-10-17 23:48:26 -0400   3) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400   4) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400   5) .App-logo {
+b2238657 (afflix 2024-10-17 23:48:26 -0400   6)   height: 40vmin;
+b2238657 (afflix 2024-10-17 23:48:26 -0400   7)   pointer-events: none;
+b2238657 (afflix 2024-10-17 23:48:26 -0400   8) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400   9) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  10) @media (prefers-reduced-motion: no-preference) {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  11)   .App-logo {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  12)     animation: App-logo-spin infinite 20s linear;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  13)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  14) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  15) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  16) .App-header {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  17)   background-color: #282c34;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  18)   min-height: 100vh;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  19)   display: flex;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  20)   flex-direction: column;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  21)   align-items: center;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  22)   justify-content: center;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  23)   font-size: calc(10px + 2vmin);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  24)   color: white;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  25) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  26) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  27) .App-link {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  28)   color: #61dafb;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  29) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  30) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  31) @keyframes App-logo-spin {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  32)   from {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  33)     transform: rotate(0deg);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  34)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  35)   to {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  36)     transform: rotate(360deg);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  37)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  38) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  39) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  40) .App {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  41)   background: linear-gradient(135deg, #1b1c21, #4e545e);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  42)   height: 100vh; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  43)   display: flex; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  44)   justify-content: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  45)   align-items: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  46) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  47) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  48) .login-container {   /* sign */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  49)   text-align: center;  
+b2238657 (afflix 2024-10-17 23:48:26 -0400  50)   padding: 30px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  51)   background-color: #2c2d32; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  52)   border-radius: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  53)   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  54)   position: relative;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  55) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  56) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  57) .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  58)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  59)   font-size: 28px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  60)   margin-bottom: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  61)   font-family: 'Arial', sans-serif;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  62)   animation: fadeIn 1s ease-in; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  63) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  64) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  65) .app-description {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  66)   color: #ccc; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  67)   margin-bottom: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  68)   font-size: 18px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  69) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  70) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  71) .logout-button {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  72)   background-color: #e74c3c; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  73)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  74)   border: none; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  75)   border-radius: 5px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  76)   padding: 10px 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  77)   font-size: 16px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  78)   cursor: pointer; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  79)   transition: background-color 0.3s, transform 0.2s;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  80)   margin-top: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  81) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  82) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  83) .logout-button:hover {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  84)   background-color: #c0392b; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  85)   transform: scale(1.05); 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  86) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  87) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  88) .error-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  89)   color: #e74c3c;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  90)   margin-top: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  91) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  92) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  93) /* animation */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  94) @keyframes fadeIn {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  95)   from {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  96)     opacity: 0; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  97)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  98)   to {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  99)     opacity: 1; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 100)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 101) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 102) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 103) @media (max-width: 600px) {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 104)   .login-container {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 105)     padding: 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 106)     width: 90%; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 107)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 108) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 109)   .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 110)     font-size: 24px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 111)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 112) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 113)   .app-description {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 114)     font-size: 16px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 115)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 116) }
+(END)
+b2238657 (afflix 2024-10-17 23:48:26 -0400  44)   justify-content: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  45)   align-items: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  46) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  47) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  48) .login-container {   /* sign */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  49)   text-align: center;  
+b2238657 (afflix 2024-10-17 23:48:26 -0400  50)   padding: 30px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  51)   background-color: #2c2d32; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  52)   border-radius: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  53)   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  54)   position: relative;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  55) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  56) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  57) .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  58)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  59)   font-size: 28px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  60)   margin-bottom: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  61)   font-family: 'Arial', sans-serif;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  62)   animation: fadeIn 1s ease-in; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  63) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  64) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  65) .app-description {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  66)   color: #ccc; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  67)   margin-bottom: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  68)   font-size: 18px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  69) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  70) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  71) .logout-button {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  72)   background-color: #e74c3c; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  73)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  74)   border: none; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  75)   border-radius: 5px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  76)   padding: 10px 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  77)   font-size: 16px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  78)   cursor: pointer; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  79)   transition: background-color 0.3s, transform 0.2s;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  80)   margin-top: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  81) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  82) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  83) .logout-button:hover {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  84)   background-color: #c0392b; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  85)   transform: scale(1.05); 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  86) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  87) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  88) .error-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  89)   color: #e74c3c;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  90)   margin-top: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  91) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  92) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  93) /* animation */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  94) @keyframes fadeIn {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  95)   from {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  96)     opacity: 0; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  97)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  98)   to {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  99)     opacity: 1; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 100)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 101) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 102) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 103) @media (max-width: 600px) {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 104)   .login-container {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 105)     padding: 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 106)     width: 90%; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 107)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 108) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 109)   .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 110)     font-size: 24px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 111)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 112) 
+:
+b2238657 (afflix 2024-10-17 23:48:26 -0400  44)   justify-content: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  45)   align-items: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  46) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  47) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  48) .login-container {   /* sign */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  49)   text-align: center;  
+b2238657 (afflix 2024-10-17 23:48:26 -0400  50)   padding: 30px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  51)   background-color: #2c2d32; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  52)   border-radius: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  53)   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  54)   position: relative;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  55) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  56) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  57) .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  58)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  59)   font-size: 28px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  60)   margin-bottom: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  61)   font-family: 'Arial', sans-serif;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  62)   animation: fadeIn 1s ease-in; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  63) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  64) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  65) .app-description {
+:
+b2238657 (afflix 2024-10-17 23:48:26 -0400  44)   justify-content: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  45)   align-items: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  46) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  47) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  48) .login-container {   /* sign */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  49)   text-align: center;  
+b2238657 (afflix 2024-10-17 23:48:26 -0400  50)   padding: 30px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  51)   background-color: #2c2d32; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  52)   border-radius: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  53)   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  54)   position: relative;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  55) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  56) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  57) .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  58)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  59)   font-size: 28px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  60)   margin-bottom: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  61)   font-family: 'Arial', sans-serif;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  62)   animation: fadeIn 1s ease-in; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  63) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  64) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  65) .app-description {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  66)   color: #ccc; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  67)   margin-bottom: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  41)   background: linear-gradient(135deg, #1b1c21, #4e545e);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  42)   height: 100vh; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  43)   display: flex; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  44)   justify-content: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  45)   align-items: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  46) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  47) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  48) .login-container {   /* sign */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  49)   text-align: center;  
+b2238657 (afflix 2024-10-17 23:48:26 -0400  50)   padding: 30px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  51)   background-color: #2c2d32; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  52)   border-radius: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  53)   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  54)   position: relative;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  55) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  56) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  57) .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  58)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  59)   font-size: 28px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  60)   margin-bottom: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  61)   font-family: 'Arial', sans-serif;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  62)   animation: fadeIn 1s ease-in; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  63) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  64) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  65) .app-description {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  66)   color: #ccc; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  67)   margin-bottom: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  68)   font-size: 18px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  69) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  70) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  71) .logout-button {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  72)   background-color: #e74c3c; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  73)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  74)   border: none; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  75)   border-radius: 5px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  76)   padding: 10px 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  77)   font-size: 16px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  78)   cursor: pointer; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  79)   transition: background-color 0.3s, transform 0.2s;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  80)   margin-top: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  81) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  82) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  83) .logout-button:hover {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  84)   background-color: #c0392b; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  85)   transform: scale(1.05); 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  86) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  87) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  88) .error-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  89)   color: #e74c3c;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  90)   margin-top: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  91) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  92) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  93) /* animation */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  94) @keyframes fadeIn {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  95)   from {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  96)     opacity: 0; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  97)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  98)   to {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  99)     opacity: 1; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 100)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 101) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 102) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 103) @media (max-width: 600px) {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 104)   .login-container {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 105)     padding: 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 106)     width: 90%; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 107)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 108) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 109)   .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 110)     font-size: 24px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 111)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 112) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 113)   .app-description {
+:
+b2238657 (afflix 2024-10-17 23:48:26 -0400  41)   background: linear-gradient(135deg, #1b1c21, #4e545e);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  42)   height: 100vh; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  43)   display: flex; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  44)   justify-content: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  45)   align-items: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  46) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  47) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  48) .login-container {   /* sign */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  49)   text-align: center;  
+b2238657 (afflix 2024-10-17 23:48:26 -0400  50)   padding: 30px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  51)   background-color: #2c2d32; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  52)   border-radius: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  53)   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  54)   position: relative;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  55) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  56) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  57) .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  58)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  59)   font-size: 28px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  60)   margin-bottom: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  61)   font-family: 'Arial', sans-serif;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  62)   animation: fadeIn 1s ease-in; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  63) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  64) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  65) .app-description {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  66)   color: #ccc; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  67)   margin-bottom: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  68)   font-size: 18px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  69) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  70) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  71) .logout-button {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  72)   background-color: #e74c3c; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  73)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  74)   border: none; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  75)   border-radius: 5px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  76)   padding: 10px 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  77)   font-size: 16px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  78)   cursor: pointer; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  79)   transition: background-color 0.3s, transform 0.2s;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  80)   margin-top: 20px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  81) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  82) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  83) .logout-button:hover {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  84)   background-color: #c0392b; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  85)   transform: scale(1.05); 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  86) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  87) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  88) .error-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  89)   color: #e74c3c;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  90)   margin-top: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  91) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  92) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  93) /* animation */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  94) @keyframes fadeIn {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  95)   from {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  96)     opacity: 0; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  97)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  98)   to {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  99)     opacity: 1; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 100)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 101) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 102) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 103) @media (max-width: 600px) {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 104)   .login-container {
+b2238657 (afflix 2024-10-17 23:48:26 -0400 105)     padding: 15px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 106)     width: 90%; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 107)   }
+b2238657 (afflix 2024-10-17 23:48:26 -0400 108) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400 109)   .welcome-message {
+:
+b2238657 (afflix 2024-10-17 23:48:26 -0400  41)   background: linear-gradient(135deg, #1b1c21, #4e545e);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  42)   height: 100vh; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  43)   display: flex; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  44)   justify-content: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  45)   align-items: center; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  46) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  47) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  48) .login-container {   /* sign */
+b2238657 (afflix 2024-10-17 23:48:26 -0400  49)   text-align: center;  
+b2238657 (afflix 2024-10-17 23:48:26 -0400  50)   padding: 30px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  51)   background-color: #2c2d32; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  52)   border-radius: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  53)   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+b2238657 (afflix 2024-10-17 23:48:26 -0400  54)   position: relative;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  55) }
+b2238657 (afflix 2024-10-17 23:48:26 -0400  56) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  57) .welcome-message {
+b2238657 (afflix 2024-10-17 23:48:26 -0400  58)   color: white; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  59)   font-size: 28px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  60)   margin-bottom: 10px; 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  61)   font-family: 'Arial', sans-serif;
+b2238657 (afflix 2024-10-17 23:48:26 -0400  62)   animation: fadeIn 1s ease-in; 
+
+index.tsx
+b2238657 (afflix 2024-10-17 23:48:26 -0400  1) import React from 'react';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  2) import ReactDOM from 'react-dom/client';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  3) import './index.css';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  4) import App from './App';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  5) import reportWebVitals from './reportWebVitals';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  6) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  7) import { GoogleOAuthProvider } from '@react-oauth/google';
+b2238657 (afflix 2024-10-17 23:48:26 -0400  8) 
+b2238657 (afflix 2024-10-17 23:48:26 -0400  9) const root = ReactDOM.createRoot(
+b2238657 (afflix 2024-10-17 23:48:26 -0400 10)   document.getElementById('root') as HTMLElement
+b2238657 (afflix 2024-10-17 23:48:26 -0400 11) );
+b2238657 (afflix 2024-10-17 23:48:26 -0400 12) root.render(
+b2238657 (afflix 2024-10-17 23:48:26 -0400 13)   <React.StrictMode>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 14)     <GoogleOAuthProvider clientId="156313015518-bold3cmsvsa7q1k76ji8osif0mmbp33p.apps.googleusercontent.com">
+b2238657 (afflix 2024-10-17 23:48:26 -0400 15)       <App />
+b2238657 (afflix 2024-10-17 23:48:26 -0400 16)     </GoogleOAuthProvider>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 17)   </React.StrictMode>
+b2238657 (afflix 2024-10-17 23:48:26 -0400 18) );
+:
+

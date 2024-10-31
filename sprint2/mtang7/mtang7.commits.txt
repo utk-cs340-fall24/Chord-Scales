@@ -1,0 +1,4 @@
+play_notes.cpp
+
+project_files/play_notes.cpp (Not Committed Yet 2024-10-17 17:35:35 -0400 112)     // Updated folder path to the .wavfiles directory in the current working directory
+project_files/play_notes.cpp (Not Committed Yet 2024-10-17 17:35:35 -0400 113)     string folderPath = fs::current_path().string() + "/.wav_files";

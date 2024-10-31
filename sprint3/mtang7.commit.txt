@@ -1,0 +1,55 @@
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  92) // Play notes as a scale or chord
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  93) void playNotesWav(const vector<pair<int, int>>& notes, bool isChord) {
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  94)     if (isChord) {
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  95)         // Play all notes together (chord)
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  96)         vector<thread> threads;
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  97)         for (const auto& note : notes) {
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  98)             threads.push_back(thread(playSingleNoteWav, note.first, note.second));
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400  99)         }
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400 100)         for (auto& t : threads) {
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400 101)             if (t.joinable()) t.join();
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400 102)         }
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400 103)     } else {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 104)         // Play each note in overlapping sequence (scale) with fade-out
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 105)         ma_engine engine;
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 106)         if (ma_engine_init(NULL, &engine) != MA_SUCCESS) {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 107)             cerr << "Failed to initialize MiniAudio engine." << endl;
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 108)             return;
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 109)         }
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 110) 
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 111)         vector<ma_sound> sounds(notes.size());
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 112) 
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 113)         for (size_t i = 0; i < notes.size(); ++i) {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 114)             int stringNum = notes[i].first;
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 115)             int fretNum = notes[i].second;
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 116)             string filePath = fretboard_files[stringNum][fretNum];
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 117) 
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 118)             if (!filePath.empty()) {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 119)                 if (ma_sound_init_from_file(&engine, filePath.c_str(), 0, NULL, NULL, &sounds[i]) == MA_SUCCESS) {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 120)                     ma_sound_start(&sounds[i]); // Start sound without looping
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 121) 
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 122)                     // Fade out logic for previous notes
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 123)                     for (size_t j = 0; j < i; ++j) {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 124)                         // Gradually decrease volume for each previous note
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 125)                         float fadeVolume = 1.0f - (float(j) / (i + 1)); // Fade out for all previous notes
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 126)                         ma_sound_set_volume(&sounds[j], fadeVolume);
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 127)                     }
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 128) 
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 129)                     // Wait for the specified duration before starting the next note
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 130)                     this_thread::sleep_for(chrono::milliseconds(static_cast<int>(25 * duration)));
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 131)                 } else {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 132)                     cerr << "Failed to load sound file: " << filePath << endl;
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 133)                 }
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 134)             }
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 135)         }
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 136) 
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 137)         // Clean up each sound after playback
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 138)         for (auto& sound : sounds) {
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 139)             ma_sound_stop(&sound); // Stop each sound after it has played
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 140)             ma_sound_uninit(&sound);
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400 141)         }
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 142) 
+00000000 (Not Committed Yet 2024-10-31 08:48:18 -0400 143)         ma_engine_uninit(&engine);
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400 144)     }
+^e77e1c5 (CozyRainningInn   2024-10-16 20:07:05 -0400 145) }
+

@@ -1,7 +1,98 @@
 #include <vector>
 #include <iostream>
+#include <algorithm>
+#include <set>
 
 using namespace std;
+
+int extended = 0;
+int sus = 0;
+
+bool valid_chord(const vector<pair<int, int>>& current_chord, const vector<vector<string>> strings, vector<string> final, string quality){
+    bool first = false;
+    bool third = false;
+    bool fifth = false;
+    bool seventh = false;
+    bool ninth = false;
+    bool eleventh = false;
+    bool thirteenth = false;
+    bool playable = true;
+    int min_val = 1000;
+    int max_val = 0;
+
+    for(const auto& note: current_chord){
+        
+        for(int i = 0; i < final.size(); i++){
+            //cout << current_chord.size() << endl;
+            //cout << strings[note.first][note.second] << " == " << final.at(i) << endl;
+            if(strings[note.first][note.second] == final.at(i)){
+                if(i == 0){   
+                    first = true;
+                }if(i == 1){
+                    third = true;
+                }if(i == 2){
+                    fifth = true;
+                }if(i == 3){
+                    seventh = true;
+                }if(i == 4){
+                    ninth = true;
+                }if(i == 5){
+                    eleventh = true;
+                }if(i == 6){
+                    thirteenth = true;
+                }
+            }
+            
+                if(note.second > max_val && note.second != 0){
+                    max_val = note.second;
+                }
+                if(note.second < min_val && note.second != 0){
+                    min_val = note.second;
+                }
+        }
+    }
+    if((max_val - min_val) > 2 ){
+        return false;
+    }
+    if(seventh = true){
+        return first && third && fifth && seventh;
+    }if(ninth = true){
+        return first && third && fifth && seventh && ninth;
+    }if(eleventh = true){
+        return first && third && fifth && seventh && ninth && eleventh;
+    }if(thirteenth = true){
+        return first && third && fifth && seventh && ninth && thirteenth;
+    }else{
+        return first && third && fifth;
+    }
+}
+
+void Chord_gen(vector<vector<pair<int, int>>>& chord_scale, vector<pair<int, int>>& current_chord, int index, vector<vector<pair<int, int>>>& valid_chords, const vector<vector<string>> strings, vector<string> final, string quality){
+    int x = 0;
+    if (index == chord_scale.size()) {
+        // Output the current chord combination
+        if(valid_chord(current_chord, strings, final, quality) == true){
+            for (const auto& note : current_chord) {
+                //cout << "(" << note.second << ", String " << note.first << ") ";  // Print the pair (note, string)
+                //omits the 11th (or maybe 9th) in case of 13th chord
+                if(extended == 13 && x == 4){
+                    x++;
+                    continue;
+                }
+                x++;
+                valid_chords.push_back(current_chord);
+            }
+        }
+        return;
+    }
+
+    for (int i = 0; i < chord_scale[index].size(); i++) {
+        current_chord.push_back(chord_scale[index][i]);  
+        Chord_gen(chord_scale, current_chord, index + 1, valid_chords, strings, final, quality); 
+        current_chord.pop_back();  
+    }
+}
+
 
 int main(int argc, char *argv[]){
     //each vector will contain 12 notes (the first twelve frets) the first being the open string
@@ -11,6 +102,7 @@ int main(int argc, char *argv[]){
     vector<string> G_string = {"G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#"};
     vector<string> B_string = {"B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#"};
     vector<string> e_string = {"E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#"};
+    vector<vector<string>> strings = {E_string, A_string, D_string, G_string, B_string, e_string};
 
     cout << "Scale or Chord?" <<endl;
 
@@ -23,14 +115,28 @@ int main(int argc, char *argv[]){
         cout << "Major, Minor, Diminished, Augmented?" << endl;
 
         cin >> quality;
+
+        cout << "Suspended chord? (0), 2, 4" << endl;
+        
+        cin >> sus;
     }
 
+    bool blues = 0;
     bool pentatonic;
     if(scaleChord == "Scale"){
-        cout << "Pentatonic? (0/1)" << endl;
-        cin >> pentatonic;
+        cout << "Blues scale? (0/1)" << endl;
+        cin >> blues;
 
-        cout << "Mode: Ionian(Major), Dorian, Phrygian, Lydian, Mixolydian, Aeolian(Minor), Locrian(Diminished)" << endl;
+        if(blues == 0){
+            cout << "Pentatonic? (0/1)" << endl;
+            cin >> pentatonic;
+
+            cout << "Mode: Ionian(Major), Dorian, Phrygian, Lydian, Mixolydian, Aeolian(Minor), Locrian(Diminished)" << endl;
+            cin >> quality;
+        }else{
+            pentatonic = true;
+        }
+
     }
 
     cout << "Enter root note" << endl;
@@ -40,7 +146,6 @@ int main(int argc, char *argv[]){
 
     vector<string> OurScale(7);
 
-    int extended = 0;
     if(scaleChord == "Chord"){
         cout << "Extended Chord? (0 (if no), 7, 9, 11, 13)" << endl;
         cin >> extended;
@@ -86,26 +191,29 @@ int main(int argc, char *argv[]){
                 OurScale[6] = A_string[(indexOfNote + 11) % A_string.size()];
             }
         }
-    }if(quality == "Minor" || quality == "Dorian" || quality == "Phrygian" || quality == "Aeolian"){
+    }if(quality == "Minor" || quality == "Dorian" || quality == "Phrygian" || quality == "Aeolian" || blues == 1){
         OurScale[0] = A_string[indexOfNote % A_string.size()];
         if(pentatonic == 0){
             if(quality == "Dorian"){
-                OurScale[1] = A_string[(indexOfNote + 1) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 1) % A_string.size()]);
             }else{
-                OurScale[1] = A_string[(indexOfNote + 2) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 2) % A_string.size()]);
             }
         }
-        OurScale[2] = A_string[(indexOfNote + 3) % A_string.size()];
-        OurScale[3] = A_string[(indexOfNote + 5) % A_string.size()];
-        OurScale[4] = A_string[(indexOfNote + 7) % A_string.size()];
+        OurScale.push_back(A_string[(indexOfNote + 3) % A_string.size()]);
+        OurScale.push_back(A_string[(indexOfNote + 5) % A_string.size()]);
+        if(blues == true){
+            OurScale.push_back(A_string[(indexOfNote + 6) % A_string.size()]);
+        }
+        OurScale.push_back(A_string[(indexOfNote + 7) % A_string.size()]);
         if(pentatonic == 0){
             if(quality == "Dorian"){
-                OurScale[5] = A_string[(indexOfNote + 9) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 9) % A_string.size()]);
             }else{
-                OurScale[5] = A_string[(indexOfNote + 8) % A_string.size()];
+                OurScale.push_back(A_string[(indexOfNote + 8) % A_string.size()]);
             }
-        }
-        OurScale[6] = A_string[(indexOfNote + 10) % A_string.size()];
+        } 
+        OurScale.push_back(A_string[(indexOfNote + 10) % A_string.size()]);
     }if(quality == "Augmented"){
          OurScale[0] = A_string[indexOfNote % A_string.size()];
         OurScale[1] = A_string[(indexOfNote + 3) % A_string.size()];
@@ -138,7 +246,13 @@ int main(int argc, char *argv[]){
     }if(scaleChord == "Chord"){
 
         final.push_back(OurScale.at(0));
-        final.push_back(OurScale.at(2));
+        if(sus == 2){
+            final.push_back(OurScale.at(1));
+        }if(sus == 4){
+            final.push_back(OurScale.at(3));
+        }if(sus == 0){
+            final.push_back(OurScale.at(2));
+        }
         final.push_back(OurScale.at(4));
 
         if(extended != 0){
@@ -146,7 +260,7 @@ int main(int argc, char *argv[]){
                 final.push_back(OurScale.at((6) % OurScale.size()));
             }if(extended >= 9){
                 final.push_back(OurScale.at((8) % OurScale.size()));
-            }if(extended >= 11){
+            }if(extended >= 11 && extended != 13){
                 final.push_back(OurScale.at((10) % OurScale.size()));
             }if(extended >= 13){
                 final.push_back(OurScale.at((12) % OurScale.size()));
@@ -163,4 +277,61 @@ int main(int argc, char *argv[]){
     //Because of this I want to try and translate these chords/scales to their fretboard positions.
     //Below I take a chord/scale and output the fret of each note within it
 
+    vector<pair<int, int>> E_final;
+    vector<pair<int, int>> A_final;
+    vector<pair<int, int>> D_final;
+    vector<pair<int, int>> G_final;
+    vector<pair<int, int>> B_final;
+    vector<pair<int, int>> e_final;
+
+    //with each pair, the first element is the string and the second is the fret on that string
+    for(int i = 0; i < final.size(); i++){
+        for(int s = 0; s < E_string.size(); s++){
+            if(final.at(i) == e_string.at(s)){
+                e_final.push_back(make_pair(5, s));
+            }
+            if(final.at(i) == B_string.at(s)){
+                B_final.push_back(make_pair(4, s));
+            }
+            if(final.at(i) == G_string.at(s)){
+                G_final.push_back(make_pair(3, s));
+            }
+            if(final.at(i) == D_string.at(s)){
+                D_final.push_back(make_pair(2, s));
+            }
+            if(final.at(i) == A_string.at(s)){
+                A_final.push_back(make_pair(1, s));
+            }
+            if(final.at(i) == E_string.at(s)){
+                E_final.push_back(make_pair(0,s));
+            }
+        }
+    }
+
+    vector<vector<pair<int, int>>> chord_scale;
+    chord_scale.push_back(E_final);
+    chord_scale.push_back(A_final);
+    chord_scale.push_back(D_final);
+    chord_scale.push_back(G_final);
+    chord_scale.push_back(B_final);
+    chord_scale.push_back(e_final);
+
+    if(scaleChord == "Chord"){
+        vector<pair<int, int>> current_chord;
+        vector<vector<pair<int, int>>> valid_chords;
+
+        //after this call we should have filled valid_chords with chords
+        Chord_gen(chord_scale, current_chord, 0, valid_chords, strings, final, quality);
+
+       for(int i = 0; i < valid_chords.size(); i++){
+        for (const auto& note : valid_chords[i]) {
+            cout << "(" << note.second << ", String " << note.first << ") "; 
+        }
+            cout << endl;
+       }
+
+        
+        
+    }
 }
+
