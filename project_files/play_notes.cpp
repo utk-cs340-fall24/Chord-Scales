@@ -9,7 +9,7 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-const double duration = 0.8; // Duration for each note in seconds
+const double duration = 5; // Duration for each note in seconds
 
 // Define the structure of the fretboard
 vector<vector<string>> fretboard_files(6, vector<string>(12));
@@ -55,10 +55,8 @@ void loadWavFiles(const string& folderPath) {
 // Play a .wav file
 void playWavFile(const string& filename) {
     ma_result result;
-    ma_device_config deviceConfig;
-    ma_device device;
-    ma_sound sound;
     ma_engine engine;
+    ma_sound sound;
 
     result = ma_engine_init(NULL, &engine);
     if (result != MA_SUCCESS) {
@@ -103,15 +101,51 @@ void playNotesWav(const vector<pair<int, int>>& notes, bool isChord) {
             if (t.joinable()) t.join();
         }
     } else {
-        // Play each note in sequence (scale)
-        for (const auto& note : notes) {
-            playSingleNoteWav(note.first, note.second);
+        // Play each note in overlapping sequence (scale) with fade-out
+        ma_engine engine;
+        if (ma_engine_init(NULL, &engine) != MA_SUCCESS) {
+            cerr << "Failed to initialize MiniAudio engine." << endl;
+            return;
         }
+
+        vector<ma_sound> sounds(notes.size());
+
+        for (size_t i = 0; i < notes.size(); ++i) {
+            int stringNum = notes[i].first;
+            int fretNum = notes[i].second;
+            string filePath = fretboard_files[stringNum][fretNum];
+
+            if (!filePath.empty()) {
+                if (ma_sound_init_from_file(&engine, filePath.c_str(), 0, NULL, NULL, &sounds[i]) == MA_SUCCESS) {
+                    ma_sound_start(&sounds[i]); // Start sound without looping
+
+                    // Fade out logic for previous notes
+                    for (size_t j = 0; j < i; ++j) {
+                        // Gradually decrease volume for each previous note
+                        float fadeVolume = 1.0f - (float(j) / (i + 1)); // Fade out for all previous notes
+                        ma_sound_set_volume(&sounds[j], fadeVolume);
+                    }
+
+                    // Wait for the specified duration before starting the next note
+                    this_thread::sleep_for(chrono::milliseconds(static_cast<int>(25 * duration)));
+                } else {
+                    cerr << "Failed to load sound file: " << filePath << endl;
+                }
+            }
+        }
+
+        // Clean up each sound after playback
+        for (auto& sound : sounds) {
+            ma_sound_stop(&sound); // Stop each sound after it has played
+            ma_sound_uninit(&sound);
+        }
+
+        ma_engine_uninit(&engine);
     }
 }
-
 int main() {
-    string folderPath = std::filesystem::path;
+    // Updated folder path to the .wavfiles directory in the current working directory
+    string folderPath = fs::current_path().string() + "/.wav_files";
 
     loadWavFiles(folderPath);
 
