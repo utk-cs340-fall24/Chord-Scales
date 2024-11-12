@@ -5,23 +5,25 @@
 #include <thread>
 #include <unordered_map>
 #include <filesystem>
+#include <chrono>
+#include <future>
 
 using namespace std;
-namespace fs = std::filesystem;
+namespace fs = filesystem;
 
-const double duration = 5; // Duration for each note in seconds
+const double duration = 5.0; // Duration for each note in seconds
 
 // Define the structure of the fretboard
 vector<vector<string>> fretboard_files(6, vector<string>(12));
 
-// Map string numbers to string labels (E, A, D, G, B, e)
+// Map string numbers to string labels (E, A, D, G, B, e or E2)
 unordered_map<int, string> stringLabels = {
-    {0, "E"}, // 6th string (E)
-    {1, "A"}, // 5th string (A)
-    {2, "D"}, // 4th string (D)
-    {3, "G"}, // 3rd string (G)
-    {4, "B"}, // 2nd string (B)
-    {5, "e"}  // 1st string (e)
+    {0, "E"},  // 6th string (E)
+    {1, "A"},  // 5th string (A)
+    {2, "D"},  // 4th string (D)
+    {3, "G"},  // 3rd string (G)
+    {4, "B"},  // 2nd string (B)
+    {5, "E2"}  // 1st string (e, but represented as E2)
 };
 
 // Function to map the folder's .wav files to the correct fretboard positions
@@ -30,7 +32,7 @@ void loadWavFiles(const string& folderPath) {
         if (entry.is_regular_file() && entry.path().extension() == ".wav") {
             string filename = entry.path().filename().string();
 
-            // Extract the string label and fret number from the file name (e.g., "E_0.wav" or "e_0.wav")
+            // Extract the string label and fret number from the file name
             char stringLabel[3];
             int fretNum;
             if (sscanf(filename.c_str(), "%2[^_]_%d.wav", stringLabel, &fretNum) == 2) {
@@ -55,8 +57,10 @@ void loadWavFiles(const string& folderPath) {
 // Play a .wav file
 void playWavFile(const string& filename) {
     ma_result result;
-    ma_engine engine;
+    ma_device_config deviceConfig;
+    ma_device device;
     ma_sound sound;
+    ma_engine engine;
 
     result = ma_engine_init(NULL, &engine);
     if (result != MA_SUCCESS) {
@@ -101,51 +105,26 @@ void playNotesWav(const vector<pair<int, int>>& notes, bool isChord) {
             if (t.joinable()) t.join();
         }
     } else {
-        // Play each note in overlapping sequence (scale) with fade-out
-        ma_engine engine;
-        if (ma_engine_init(NULL, &engine) != MA_SUCCESS) {
-            cerr << "Failed to initialize MiniAudio engine." << endl;
-            return;
-        }
-
-        vector<ma_sound> sounds(notes.size());
+        vector<future<void>> futures;
+        vector<thread> threads;
 
         for (size_t i = 0; i < notes.size(); ++i) {
-            int stringNum = notes[i].first;
-            int fretNum = notes[i].second;
-            string filePath = fretboard_files[stringNum][fretNum];
-
-            if (!filePath.empty()) {
-                if (ma_sound_init_from_file(&engine, filePath.c_str(), 0, NULL, NULL, &sounds[i]) == MA_SUCCESS) {
-                    ma_sound_start(&sounds[i]); // Start sound without looping
-
-                    // Fade out logic for previous notes
-                    for (size_t j = 0; j < i; ++j) {
-                        // Gradually decrease volume for each previous note
-                        float fadeVolume = 1.0f - (float(j) / (i + 1)); // Fade out for all previous notes
-                        ma_sound_set_volume(&sounds[j], fadeVolume);
-                    }
-
-                    // Wait for the specified duration before starting the next note
-                    this_thread::sleep_for(chrono::milliseconds(static_cast<int>(25 * duration)));
-                } else {
-                    cerr << "Failed to load sound file: " << filePath << endl;
-                }
-            }
+        futures.push_back(async(launch::async, [stringNum = notes[i].first, fretNum = notes[i].second, delay = static_cast<int>(250 * i)]() {
+            // Wait for the specified delay
+            this_thread::sleep_for(chrono::milliseconds(delay));
+            playSingleNoteWav(stringNum, fretNum);
+            }));
         }
 
-        // Clean up each sound after playback
-        for (auto& sound : sounds) {
-            ma_sound_stop(&sound); // Stop each sound after it has played
-            ma_sound_uninit(&sound);
+        // Wait for all threads to complete
+        for (auto& fut : futures) {
+            fut.get(); // This will wait for each thread to finish
         }
-
-        ma_engine_uninit(&engine);
     }
 }
+
 int main() {
-    // Updated folder path to the .wavfiles directory in the current working directory
-    string folderPath = fs::current_path().string() + "/.wav_files";
+    string folderPath = "C:\\Users\\david\\Documents\\Notes";
 
     loadWavFiles(folderPath);
 
