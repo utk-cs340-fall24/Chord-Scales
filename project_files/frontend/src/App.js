@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { ThemeProvider, useTheme } from './ThemeContext';
 import './App.css';
 import Fretboard from './Fretboard';
 import Metronome from './Metronome';
-import ScaleInfoSidebar from './ScaleInfoSidebar.js'; // Import the new sidebar component
+import ScaleInfoSidebar from './ScaleInfoSidebar'; // Import the new sidebar component
 
 function App() {
+  const { changeTheme } = useTheme();
   const [rootNote, setRootNote] = useState('');
   const [scaleType, setScaleType] = useState('major');
   const [shapeType, setShapeType] = useState('fullScale');
@@ -90,6 +92,15 @@ function App() {
         <h1>Dynamic Fretboard Visualizer</h1>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="ChordScales Logo" className="logo" />
         <p>Select a root note, scale/chord, and shape to visualize on the fretboard</p>
+        <div style={{ display: 'inline-block' }}> 
+          <label htmlFor="theme-select" style={{ marginRight: '10px' }}>Theme:</label>
+          <select id="theme-select" onChange={(e) => changeTheme(e.target.value)}>
+            <option value="default">Default</option>
+            <option value="coolBlues">Cool Blues</option>
+            <option value="warmSunset">Warm Sunset</option>
+            <option value="nightOwl">Night Owl</option>
+          </select>
+        </div>
       </header>
 
       <div className="selection-container">
@@ -99,11 +110,8 @@ function App() {
           value={rootNote}
           onChange={(e) => setRootNote(e.target.value)}
         >
-          <option value="">Select</option>
           {rootNotes.map((note) => (
-            <option key={note} value={note}>
-              {note}
-            </option>
+            <option key={note} value={note}>{note}</option>
           ))}
         </select>
 
@@ -114,9 +122,7 @@ function App() {
           onChange={(e) => setScaleType(e.target.value)}
         >
           {scaleTypes.map((type) => (
-            <option key={type} value={type}>
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </option>
+            <option key={type} value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
           ))}
         </select>
 
@@ -127,9 +133,7 @@ function App() {
           onChange={(e) => setShapeType(e.target.value)}
         >
           {shapeTypes.map((shape) => (
-            <option key={shape} value={shape}>
-              {shape.charAt(0).toUpperCase() + shape.slice(1)}
-            </option>
+            <option key={shape} value={shape}>{shape.charAt(0).toUpperCase() + shape.slice(1)}</option>
           ))}
         </select>
 
@@ -171,4 +175,8 @@ function App() {
   );
 }
 
-export default App;
+export default () => (
+    <ThemeProvider>
+        <App />
+    </ThemeProvider>
+);

@@ -1,6 +1,14 @@
+:root {
+  --background-color: #1c1b18; /* Default theme background */
+  --foreground-color: #3e3d36; /* Default theme foreground */
+  --text-color: #e0e0e0; /* Default theme text color */
+  --accent-color: #d4a373; /* Default theme accent color */
+  --highlight-color: #b24c32; /* Default theme highlight color */
+}
+
 body {
-  background: linear-gradient(135deg, #1c1b18, #3e3d36);
-  color: #e0e0e0; 
+  background: linear-gradient(135deg, var(--background-color), var(--foreground-color));
+  color: var(--text-color); 
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -21,9 +29,9 @@ body {
 }
 
 .App-header {
-  background-color: #2e2d2b; 
+  background-color: var(--foreground-color); 
   padding: 20px;
-  color: #f4f4f2; 
+  color: var(--text-color); 
   position: relative;
 }
 
@@ -36,7 +44,7 @@ body {
 
 .selection-container label {
   margin-right: 10px;
-  color: #f4f4f2; 
+  color: var(--text-color); 
 }
 
 .selection-container select {
@@ -45,18 +53,18 @@ body {
   font-size: 1rem;
   border: 1px solid #5c5a58; 
   border-radius: 5px;
-  background-color: #3e3d36; 
-  color: #e0e0e0; 
+  background-color: var(--foreground-color); 
+  color: var(--text-color); 
   transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
 .selection-container select:focus {
-  box-shadow: 0 0 5px #d4a373; 
-  border-color: #d4a373; 
+  box-shadow: 0 0 5px var(--accent-color); 
+  border-color: var(--accent-color); 
 }
 
 .selection-container select:hover {
-  border-color: #d4a373;
+  border-color: var(--accent-color);
   background-color: #4b4a43; 
 }
 
@@ -65,7 +73,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #2b2a27; 
+  background-color: var(--foreground-color); 
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
@@ -88,7 +96,7 @@ body {
   height: 8vw;
   max-width: 60px; 
   max-height: 60px;
-  background-color: #4f4e4a; 
+  background-color: var(--background-color); 
   border: 1px solid #33312e;
   display: flex;
   justify-content: center;
@@ -99,14 +107,14 @@ body {
 }
 
 .guitar-fret.highlight {
-  background-color: #b24c32; 
-  color: #f4f4f2; 
+  background-color: var(--highlight-color); 
+  color: var(--text-color); 
 }
 
 .note-label {
   font-size: 0.9rem;
   font-weight: bold;
-  color: #f4f4f2; 
+  color: var(--text-color); 
 }
 
 .fret:hover {
@@ -118,155 +126,11 @@ body {
 
 .hovered-info {
   margin-top: 20px;
-  background-color: #3e3d36;
-  color: #f4f4f2;
+  background-color: var(--foreground-color);
+  color: var(--text-color);
   padding: 10px;
   border: 1px solid #b2a680; 
   border-radius: 5px;
   font-size: 1.2em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Adjustments for Smaller Screens */
-@media (max-width: 768px) {
-  .guitar-fret {
-    width: 12vw;
-    height: 12vw;
-  }
-
-  .note-label {
-    font-size: 0.8rem;
-  }
-
-  .selection-container select {
-    font-size: 0.9rem;
-  }
-}
-
-.playlist-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background-color: #2e2d2b;
-  color: #f4f4f2;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  max-width: 300px;
-}
-
-.playlist-container h3 {
-  margin: 0 0 10px;
-  font-size: 1.2em;
-}
-
-.playlist-container ul {
-  list-style: none;
-  padding: 0;
-}
-
-.playlist-container li {
-  margin-bottom: 5px;
-  font-size: 1em;
-}
-
-/* Metronome Styles */
-
-.metronome-container {
-  border: 1px solid #ddd;
-  padding: 5px; /* Reduced padding to make the metronome smaller */
-  position: absolute;
-  top: 9px;
-  left: 10px;
-  max-width: 200px; /* Reduced width to fit in the header */
-  text-align: center;
-  background-color: #6A2A00;
-}
-
-.metronome-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.metronome-controls label {
-  margin-right: 10px;
-}
-
-.metronome-controls input {
-  width: 60px;
-  text-align: center;
-  margin-right: 10px;
-}
-
-.metronome-controls button {
-  padding: 5px 15px;
-}
-
-.beat-indicator {
-  width: 20px;
-  height: 20px;
-  background-color: #ddd;
-  margin: 10px auto;
-  border-radius: 50%;
-  transition: background-color 0.1s;
-}
-
-.beat-indicator.active {
-  background-color: #ff4d4d;
-}
-
-.play-playlist-button {
-  margin: 10px 0;
-  padding: 10px 20px;
-  background-color: #6A2A00;
-  color: #f4f4f2;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.play-playlist-button:hover {
-  background-color: #8B3D00;
-}
-
-.clear-playlist-button {
-  margin: 10px;
-  padding: 10px 20px;
-  background-color: #b24c32;
-  color: #f4f4f2;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.clear-playlist-button:hover {
-  background-color: #d65c4c;
-}
-
-.scale-info-sidebar {
-  position: fixed;
-  right: 20px;
-  top: 150px;
-  width: 200px;
-  background-color: #3e3d36;
-  color: #f4f4f2;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-}
-
-.scale-info-sidebar button {
-  margin-top: 10px;
-  background-color: #6A2A00;
-  color: #f4f4f2;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.scale-info-sidebar button:hover {
-  background-color: #8B3D00;
 }
