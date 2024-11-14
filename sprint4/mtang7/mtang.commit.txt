@@ -1,1 +1,158 @@
-
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500   8) #include <chrono>
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500   9) #include <future>
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  10) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  11) using namespace std;
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  12) namespace fs = filesystem;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  13) 
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  14) const double duration = 5.0; // Duration for each note in seconds
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  15) 
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500  16) // Define the structure of the fretboard (now with 13 frets per string)
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500  17) vector<vector<string>> fretboard_files(6, vector<string>(13));  // Now 13 for frets 0-12
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  18) 
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  19) // Map string numbers to string labels (E, A, D, G, B, e or E2)
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  20) unordered_map<int, string> stringLabels = {
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  21)     {0, "E"},  // 6th string (E)
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  22)     {1, "A"},  // 5th string (A)
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  23)     {2, "D"},  // 4th string (D)
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  24)     {3, "G"},  // 3rd string (G)
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  25)     {4, "B"},  // 2nd string (B)
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  26)     {5, "E2"}  // 1st string (e, but represented as E2)
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  27) };
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  28) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  29) // Function to map the folder's .wav files to the correct fretboard positions
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  30) void loadWavFiles(const string& folderPath) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  31)     for (const auto& entry : fs::directory_iterator(folderPath)) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  32)         if (entry.is_regular_file() && entry.path().extension() == ".wav") {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  33)             string filename = entry.path().filename().string();
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  34) 
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  35)             // Extract the string label and fret number from the file name
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  36)             char stringLabel[3];
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  37)             int fretNum;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  38)             if (sscanf(filename.c_str(), "%2[^_]_%d.wav", stringLabel, &fretNum) == 2) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  39)                 // Find the corresponding string number
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  40)                 int stringNum = -1;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  41)                 for (const auto& [key, label] : stringLabels) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  42)                     if (label == stringLabel) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  43)                         stringNum = key;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  44)                         break;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  45)                     }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  46)                 }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  47) 
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500  48)                 // Ensure the string number and fret number are valid (0 <= fretNum <= 12)
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500  49)                 if (stringNum >= 0 && fretNum >= 0 && fretNum < 13) {  // Changed condition to include fret 12
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  50)                     fretboard_files[stringNum][fretNum] = entry.path().string();
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  51)                 }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  52)             }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  53)         }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  54)     }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  55) }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  56) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  57) // Play a .wav file
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  58) void playWavFile(const string& filename) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  59)     ma_result result;
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  60)     ma_device_config deviceConfig;
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  61)     ma_device device;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  62)     ma_sound sound;
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500  63)     ma_engine engine;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  64) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  65)     result = ma_engine_init(NULL, &engine);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  66)     if (result != MA_SUCCESS) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  67)         cerr << "Failed to initialize MiniAudio engine." << endl;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  68)         return;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  69)     }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  70) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  71)     result = ma_sound_init_from_file(&engine, filename.c_str(), 0, NULL, NULL, &sound);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  72)     if (result != MA_SUCCESS) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  73)         cerr << "Failed to load sound file: " << filename << endl;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  74)         ma_engine_uninit(&engine);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  75)         return;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  76)     }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  77) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  78)     ma_sound_start(&sound);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  79)     this_thread::sleep_for(chrono::milliseconds(static_cast<int>(1000 * duration)));
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  80)     ma_sound_stop(&sound);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  81) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  82)     ma_sound_uninit(&sound);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  83)     ma_engine_uninit(&engine);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  84) }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  85) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  86) // Play a single note for a given duration using the .wav file
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  87) void playSingleNoteWav(int stringNum, int fretNum) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  88)     string filePath = fretboard_files[stringNum][fretNum];
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  89)     if (!filePath.empty()) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  90)         playWavFile(filePath);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  91)     } else {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  92)         cerr << "No .wav file found for string " << stringLabels[stringNum] << " fret " << fretNum << endl;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  93)     }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  94) }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  95) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  96) // Play notes as a scale or chord
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  97) void playNotesWav(const vector<pair<int, int>>& notes, bool isChord) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  98)     if (isChord) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400  99)         // Play all notes together (chord)
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 100)         vector<thread> threads;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 101)         for (const auto& note : notes) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 102)             threads.push_back(thread(playSingleNoteWav, note.first, note.second));
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 103)         }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 104)         for (auto& t : threads) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 105)             if (t.joinable()) t.join();
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 106)         }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 107)     } else {
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500 108)         vector<future<void>> futures;
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500 109)         vector<thread> threads;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 110) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 111)         for (size_t i = 0; i < notes.size(); ++i) {
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500 112)             futures.push_back(async(launch::async, [stringNum = notes[i].first, fretNum = notes[i].second, delay = static_cast<int>(250 * i)]() {
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500 113)                 // Wait for the specified delay
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500 114)                 this_thread::sleep_for(chrono::milliseconds(delay));
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500 115)                 playSingleNoteWav(stringNum, fretNum);
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500 116)             }));
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 117)         }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 118) 
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500 119)         // Wait for all threads to complete
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500 120)         for (auto& fut : futures) {
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500 121)             fut.get(); // This will wait for each thread to finish
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 122)         }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 123)     }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 124) }
+605174a2 (CozyRainningInn 2024-11-11 19:44:39 -0500 125) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 126) int main() {
+a52a0fbc (CozyRainningInn 2024-11-11 20:16:02 -0500 127)     string folderPath = fs::current_path().string() + "/.wav_files";
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 128) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 129)     loadWavFiles(folderPath);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 130) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 131)     while (true) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 132)         vector<pair<int, int>> selectedNotes;
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500 133)         cout << "Enter the string number (0 to 5) and fret number (0 to 12) separated by a space (e.g., '0 0'). Type 'done' when finished:" << endl;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 134)         
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 135)         string input;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 136)         while (true) {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 137)             cin >> input;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 138)             if (input == "done") break;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 139) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 140)             int stringNum = stoi(input);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 141)             int fretNum;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 142)             cin >> fretNum;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 143) 
+3d5dbd84 (CozyRainningInn 2024-11-11 21:25:39 -0500 144)             if (stringNum >= 0 && stringNum < 6 && fretNum >= 0 && fretNum < 13) {  // Adjusted to allow fret 12
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 145)                 selectedNotes.push_back({stringNum, fretNum});
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 146)             } else {
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 147)                 cout << "Invalid input, try again." << endl;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 148)             }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 149)         }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 150) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 151)         string playMode;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 152)         cout << "Do you want to play as a 'chord' or 'scale'? ";
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 153)         cin >> playMode;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 154) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 155)         bool isChord = (playMode == "chord");
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 156)         playNotesWav(selectedNotes, isChord);
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 157) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 158)         string repeat;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 159)         cout << "Do you want to play another sequence? (yes/no): ";
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 160)         cin >> repeat;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 161)         if (repeat == "no") break;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 162)     }
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 163) 
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 164)     return 0;
+^dda86c6 (CozyRainningInn 2024-10-31 17:43:53 -0400 165) }
