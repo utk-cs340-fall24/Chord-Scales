@@ -3,7 +3,7 @@ import { ThemeProvider, useTheme } from './ThemeContext';
 import './App.css';
 import Fretboard from './Fretboard';
 import Metronome from './Metronome';
-import ScaleInfoSidebar from './ScaleInfoSidebar'; // Import the new sidebar component
+import ScaleInfoSidebar from './ScaleInfoSidebar';
 
 function App() {
   const { changeTheme } = useTheme();
@@ -12,6 +12,7 @@ function App() {
   const [shapeType, setShapeType] = useState('fullScale');
   const [hoveredNote, setHoveredNote] = useState(null);
   const [playlist, setPlaylist] = useState([]);
+  const [showMetronome, setShowMetronome] = useState(true); // State to control the visibility of the Metronome
 
   const rootNotes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
   const scaleTypes = ['major', 'minor', 'diminished', 'augmented', 'pentatonic'];
@@ -48,34 +49,29 @@ function App() {
     if (playlist.length === 0) return;
 
     let currentIndex = 0;
-
     const playNext = () => {
       if (currentIndex >= playlist.length) {
         return;
       }
-
       const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;
       const match = playlist[currentIndex].match(regex);
       if (match) {
         const [, root] = match;
         const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${root}.wav`);
-
         audio.addEventListener('ended', () => {
           currentIndex++;
-          playNext(); // Play the next audio when the current one ends
+          playNext();
         });
-
         audio.play().catch((error) => {
           console.error(`Error playing sound: ${error}`);
           currentIndex++;
-          playNext(); // Proceed to the next audio even if there's an error
+          playNext();
         });
       } else {
         currentIndex++;
-        playNext(); // Skip to next if no match
+        playNext();
       }
     };
-
     playNext();
   };
 
@@ -86,14 +82,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="metronome-header">
+        {showMetronome && <div className="metronome-header">
           <Metronome />
-        </div>
+        </div>}
+        <button onClick={() => setShowMetronome(!showMetronome)}>{showMetronome ? 'Hide Metronome' : 'Show Metronome'}</button>
         <h1>Dynamic Fretboard Visualizer</h1>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="ChordScales Logo" className="logo" />
         <p>Select a root note, scale/chord, and shape to visualize on the fretboard</p>
-        <div style={{ display: 'inline-block' }}> 
-          <label htmlFor="theme-select" style={{ marginRight: '10px' }}>Theme:</label>
+        <div style={{ display: 'inline-block' }}>
+          <label htmlFor="theme-select" style={{ marginRight: '10px' }}>Themes:</label>
           <select id="theme-select" onChange={(e) => changeTheme(e.target.value)}>
             <option value="default">Default</option>
             <option value="coolBlues">Cool Blues</option>
@@ -105,33 +102,21 @@ function App() {
 
       <div className="selection-container">
         <label htmlFor="root-note">Root Note: </label>
-        <select
-          id="root-note"
-          value={rootNote}
-          onChange={(e) => setRootNote(e.target.value)}
-        >
+        <select id="root-note" value={rootNote} onChange={(e) => setRootNote(e.target.value)}>
           {rootNotes.map((note) => (
             <option key={note} value={note}>{note}</option>
           ))}
         </select>
 
         <label htmlFor="scale-type">Scale/Chord Type: </label>
-        <select
-          id="scale-type"
-          value={scaleType}
-          onChange={(e) => setScaleType(e.target.value)}
-        >
+        <select id="scale-type" value={scaleType} onChange={(e) => setScaleType(e.target.value)}>
           {scaleTypes.map((type) => (
             <option key={type} value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
           ))}
         </select>
 
         <label htmlFor="shape-type">Shape: </label>
-        <select
-          id="shape-type"
-          value={shapeType}
-          onChange={(e) => setShapeType(e.target.value)}
-        >
+        <select id="shape-type" value={shapeType} onChange={(e) => setShapeType(e.target.value)}>
           {shapeTypes.map((shape) => (
             <option key={shape} value={shape}>{shape.charAt(0).toUpperCase() + shape.slice(1)}</option>
           ))}
@@ -150,7 +135,7 @@ function App() {
         />
       </div>
 
-      <ScaleInfoSidebar scaleType={scaleType} /> {/* Sidebar displaying scale/chord info */}
+      <ScaleInfoSidebar scaleType={scaleType} />
 
       <div className="hovered-info-container">
         <div className="hovered-info" style={{ visibility: hoveredNote ? 'visible' : 'hidden', height: '40px' }}>
@@ -158,7 +143,6 @@ function App() {
         </div>
       </div>
 
-      {/* Playlist display */}
       <div className="playlist-container">
         <h3>Playlist</h3>
         <button onClick={playPlaylist} className="play-playlist-button">Play Playlist</button>
