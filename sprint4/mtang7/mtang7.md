@@ -9,7 +9,7 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 
 ### What you did not do
 
-* adjust the code for the scale functionaility part of the code
+* Connect playnote to the react app
 
 ### What problems you encountered
 
@@ -18,10 +18,11 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 ### Issues you worked on
 
 * keep working on the code for playing the note(https://github.com/utk-cs340-fall24/Chord-Scales/issues/8) Play notes
+* Get the .wav files for all the notes(https://github.com/utk-cs340-fall24/Chord-Scales/issues/7) notes .wav files 
 
 ### Files you worked on
 
-* https://github.com/utk-cs340-fall24/Chord-Scales/blob/main/project_files/play_notes.cpp
+* https://github.com/utk-cs340-fall24/Chord-Scales/blob/main/project_files/frontend/sounds
   
 ### What you accomplished
 * I kept on working on the coding implementation to play the notes.
