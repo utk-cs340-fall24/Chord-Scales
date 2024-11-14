@@ -26,7 +26,6 @@ Evan Newport, evannewport, Chord-Scales
 - project_files/frontend/src/themes.js
 
 ### What I accomplished
-- Fully functioning theme switcher
+- Implemented fully functioning theme switcher
 - Add color palettes that actually look good
 - Made metronome and beat accent toggleable & moved their position
-
