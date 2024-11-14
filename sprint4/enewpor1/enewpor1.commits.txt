@@ -1,0 +1,130 @@
+App.css:
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   1) :root {
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   2)   --background-color: #1c1b18; /* Default theme background */
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   3)   --foreground-color: #3e3d36; /* Default theme foreground */
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   4)   --text-color: #e0e0e0; /* Default theme text color */
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   5)   --accent-color: #d4a373; /* Default theme accent color */
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   6)   --highlight-color: #b24c32; /* Default theme highlight color */
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   7) }
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   8) 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  10)   background: linear-gradient(135deg, var(--background-color), var(--foreground-color));
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  11)   color: var(--text-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  32)   background-color: var(--foreground-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  34)   color: var(--text-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  47)   color: var(--text-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  56)   background-color: var(--foreground-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  57)   color: var(--text-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  62)   box-shadow: 0 0 5px var(--accent-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  63)   border-color: var(--accent-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  67)   border-color: var(--accent-color);
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  76)   background-color: var(--foreground-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  99)   background-color: var(--background-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 110)   background-color: var(--highlight-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 111)   color: var(--text-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 117)   color: var(--text-color); 
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 129)   background-color: var(--foreground-color);
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 130)   color: var(--text-color);
+
+App.js:
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   2) import { ThemeProvider, useTheme } from './ThemeContext';
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500   6) import ScaleInfoSidebar from './ScaleInfoSidebar';
+21245d9a (evannewport    2024-11-14 16:36:05 -0500   9)   const { changeTheme } = useTheme();
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  15)   const [showMetronome, setShowMetronome] = useState(true); // State to control the visibility of the Metronome
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  63)           playNext();
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  68)           playNext();
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  72)         playNext();
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  85)         {showMetronome && <div className="metronome-header">
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  87)         </div>}
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  88)         <button onClick={() => setShowMetronome(!showMetronome)}>{showMetronome ? 'Hide Metronome' : 'Show Metronome'}</button>
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  92)         <div style={{ display: 'inline-block' }}>
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500  93)           <label htmlFor="theme-select" style={{ marginRight: '10px' }}>Themes:</label>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  94)           <select id="theme-select" onChange={(e) => changeTheme(e.target.value)}>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  95)             <option value="default">Default</option>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  96)             <option value="coolBlues">Cool Blues</option>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  97)             <option value="warmSunset">Warm Sunset</option>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  98)             <option value="nightOwl">Night Owl</option>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  99)           </select>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 100)         </div>
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500 105)         <select id="root-note" value={rootNote} onChange={(e) => setRootNote(e.target.value)}>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 107)             <option key={note} value={note}>{note}</option>
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500 112)         <select id="scale-type" value={scaleType} onChange={(e) => setScaleType(e.target.value)}>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 114)             <option key={type} value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500 119)         <select id="shape-type" value={shapeType} onChange={(e) => setShapeType(e.target.value)}>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 121)             <option key={shape} value={shape}>{shape.charAt(0).toUpperCase() + shape.slice(1)}</option>
+6e28c08b (evannewport    2024-11-14 16:49:36 -0500 138)       <ScaleInfoSidebar scaleType={scaleType} />
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 162) export default () => (
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 163)     <ThemeProvider>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 164)         <App />
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 165)     </ThemeProvider>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 166) );
+
+index.js:
+21245d9a (evannewport    2024-11-14 16:36:05 -0500  5) import { ThemeProvider } from './ThemeContext'; // Import the ThemeProvider
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 11)     <ThemeProvider>  
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 12)       <App />
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 13)     </ThemeProvider>
+21245d9a (evannewport    2024-11-14 16:36:05 -0500 20) reportWebVitals();
+
+ThemeContext.js:
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  1) import React, { createContext, useContext, useState, useEffect } from 'react';
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  2) import themes from './themes';
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  3) 
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  4) const ThemeContext = createContext();
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  5) 
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  6) export const useTheme = () => useContext(ThemeContext);
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  7) 
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  8) export const ThemeProvider = ({ children }) => {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  9)     const [theme, setTheme] = useState('default');
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 10) 
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 11)     useEffect(() => {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 12)         const selectedTheme = themes[theme];
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 13)         Object.keys(selectedTheme).forEach(key => {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 14)             const cssKey = `--${key}-color`;
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 15)             document.documentElement.style.setProperty(cssKey, selectedTheme[key]);
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 16)         });
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 17)     }, [theme]);
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 18) 
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 19)     const changeTheme = (themeName) => {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 20)         setTheme(themeName);
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 21)     };
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 22) 
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 23)     return (
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 24)         <ThemeContext.Provider value={{ theme, changeTheme }}>
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 25)             {children}
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 26)         </ThemeContext.Provider>
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 27)     );
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 28) };
+
+themes.js:
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  1) const themes = {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  2)     default: {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  3)         background: '#1c1b18',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  4)         foreground: '#3e3d36',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  5)         text: '#e0e0e0',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  6)         accent: '#d4a373',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  7)         highlight: '#b24c32'
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  8)     },
+21245d9a (evannewport 2024-11-14 16:36:05 -0500  9)     coolBlues: {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 10)         background: '#2b3e50',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 11)         foreground: '#345773',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 12)         text: '#FFFFFF',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 13)         accent: '#88a2d3',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 14)         highlight: '#4978a9'
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 15)     },
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 16)     warmSunset: {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 17)         background: '#3d1f05',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 18)         foreground: '#8a3b12',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 19)         text: '#FFFFFF',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 20)         accent: '#d67e2c',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 21)         highlight: '#f4a261'
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 22)     },
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 23)     nightOwl: {
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 24)         background: '#011627',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 25)         foreground: '#1d3b53',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 26)         text: '#82AAFF',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 27)         accent: '#7e57c2',
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 28)         highlight: '#c792ea'
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 29)     }
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 30) };
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 31) 
+21245d9a (evannewport 2024-11-14 16:36:05 -0500 32) export default themes;
