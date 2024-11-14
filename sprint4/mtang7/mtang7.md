@@ -13,7 +13,7 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 
 ### What problems you encountered
 
-* I couldn't find a way to extended the sound for each note to more than the lengh of the .wav files so the length of each notes are fixed to around half a second.
+* I couldn't find the error causing the play playlist button to not function 
 
 ### Issues you worked on
 
@@ -22,7 +22,8 @@ Name: Mingxuan Tang, GitHub id: CozyRainningInn, Group Name: Chord-Scales
 
 ### Files you worked on
 
-* https://github.com/utk-cs340-fall24/Chord-Scales/blob/main/project_files/frontend/sounds
+* [https://github.com/utk-cs340-fall24/Chord-Scales/blob/main/project_files/frontend/sounds](https://github.com/utk-cs340-fall24/Chord-Scales/tree/main/project_files/frontend/public/sounds)
   
 ### What you accomplished
-* I kept on working on the coding implementation to play the notes.
+* I was able to extend the sounds of the .wav file using a audio editing software called Audocity
+* I add effects like reverb for each notes's .wav files 
