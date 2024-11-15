@@ -22,4 +22,4 @@ Chord-Scales
 * project_files/scale-generation.cpp
 
 ## What I accomplished:
-* I completed the scale generation
+* I completed the scale generation, while the scale function is short it is dense
