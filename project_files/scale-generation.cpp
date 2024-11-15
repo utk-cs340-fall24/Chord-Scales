@@ -147,8 +147,34 @@ bool isDuplicate(const auto &current_chord, const auto &valid_chords)
                   });
 }
 
-void Scale_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int>> &current_chord, int index, vector<vector<pair<int, int>>> &valid_chords, const vector<vector<string>> strings, vector<string> final, string quality)
+void Scale_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int>> &current_chord, vector<vector<pair<int, int>>> &valid_scale, const vector<vector<string>> strings, vector<string> final)
 {
+    for (int i = 0; i < 10; i++)
+    {
+        int lowest = 0;
+        int string = 0;
+        // iterates each string
+        for (const auto &new_note : chord_scale)
+        {
+            for (int q = 0; q < chord_scale[0].size(); q++)
+            {
+                // push to temp scale vector if valid note
+                if (chord_scale[string][q].second > (lowest + 3))
+                {
+                    continue;
+                }
+                else
+                {
+                    current_chord.push_back(chord_scale[string][q]);
+                }
+            }
+            string++;
+        }
+        // push to actual finished scale vector, i.e. valid scale
+        valid_scale.push_back(current_chord);
+        current_chord.clear();
+        lowest++;
+    }
 }
 
 void Chord_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int>> &current_chord, int index, vector<vector<pair<int, int>>> &valid_chords, const vector<vector<string>> strings, vector<string> final, string quality)
@@ -178,19 +204,7 @@ void Chord_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int
                 }
             }
         }
-        if (scaleChord == "Scale")
-        {
-            if (valid_scale(current_chord, strings, final, quality) == true)
-            {
-                for (const auto &note : current_chord)
-                {
-                    if (!isDuplicate(current_chord, valid_chords))
-                    {
-                        valid_chords.push_back(current_chord);
-                    }
-                }
-            }
-        }
+
         return;
     }
 
@@ -494,15 +508,35 @@ int main(int argc, char *argv[])
         cout << endl;
     }
 
-    // after this call we should have filled valid_chords with chords
-    Chord_gen(chord_scale, current_chord, 0, valid_chords, strings, final, quality);
-
-    for (int i = 0; i < valid_chords.size(); i++)
+    if (scaleChord == "Scale")
     {
-        for (const auto &note : valid_chords[i])
+        Scale_gen(chord_scale, current_chord, valid_chords, strings, final);
+
+        for (size_t i = 0; i < valid_chords.size(); i++)
         {
-            cout << "(" << note.second << ", String " << note.first << ") ";
+            cout << "Scale " << i + 1 << ":\n"; // Output for the chord (vector of pairs)
+
+            for (size_t j = 0; j < valid_chords[i].size(); j++)
+            {
+                cout << "(String " << valid_chords[i][j].first << ", Fret" << valid_chords[i][j].second << ") ";
+            }
+
+            cout << endl;
         }
-        cout << endl;
+    }
+
+    else if (scaleChord == "Chord")
+    {
+        // after this call we should have filled valid_chords with chords
+        Chord_gen(chord_scale, current_chord, 0, valid_chords, strings, final, quality);
+
+        for (int i = 0; i < valid_chords.size(); i++)
+        {
+            for (const auto &note : valid_chords[i])
+            {
+                cout << "(" << note.second << ", String " << note.first << ") ";
+            }
+            cout << endl;
+        }
     }
 }
