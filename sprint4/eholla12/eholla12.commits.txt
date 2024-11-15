@@ -1,0 +1,75 @@
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 150) void Scale_gen(vector<vector<pair<int, int>>> &chord_scale, vector<pair<int, int>> &current_chord, vector<vector<pair<int, int>>> &valid_scale, const vector<vector<string>> strings, vector<string> final)
+13762931 (Ethan Holland     2024-10-31 17:19:53 -0400 151) {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 152)     for (int i = 0; i < 10; i++)
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 153)     {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 154)         int lowest = 0;
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 155)         int string = 0;
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 156)         // iterates each string
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 157)         for (const auto &new_note : chord_scale)
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 158)         {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 159)             for (int q = 0; q < chord_scale[0].size(); q++)
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 160)             {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 161)                 // push to temp scale vector if valid note
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 162)                 if (chord_scale[string][q].second > (lowest + 3))
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 163)                 {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 164)                     continue;
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 165)                 }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 166)                 else
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 167)                 {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 168)                     current_chord.push_back(chord_scale[string][q]);
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 169)                 }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 170)             }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 171)             string++;
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 172)         }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 173)         // push to actual finished scale vector, i.e. valid scale
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 174)         valid_scale.push_back(current_chord);
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 175)         current_chord.clear();
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 176)         lowest++;
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 177)     }
+13762931 (Ethan Holland     2024-10-31 17:19:53 -0400 178) }
+b2055d37 (Ethan Holland     2024-10-31 16:53:50 -0400 499)     vector<pair<int, int>> current_chord;
+b2055d37 (Ethan Holland     2024-10-31 16:53:50 -0400 500)     vector<vector<pair<int, int>>> valid_chords;
+64a402f4 (Ethan Holland     2024-10-17 10:53:21 -0400 501) 
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 502)     
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 503)         for (int i = 0; i < chord_scale.size(); i++)
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 504)         {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 505)             for (const auto &note : chord_scale[i])
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 506)             {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 507)                 cout << "(" << note.second << ", String " << note.first << ") ";
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 508)             }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 509)             cout << endl;
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 510)         }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 511)     
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 512) 
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 513)     if (scaleChord == "Scale")
+13762931 (Ethan Holland     2024-10-31 17:19:53 -0400 514)     {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 515)         Scale_gen(chord_scale, current_chord, valid_chords, strings, final);
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 516) 
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 517)         for (size_t i = 0; i < valid_chords.size(); i++)
+13762931 (Ethan Holland     2024-10-31 17:19:53 -0400 518)         {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 519)             cout << "Scale " << i + 1 << ":\n"; // Output for the chord (vector of pairs)
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 520) 
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 521)             for (size_t j = 0; j < valid_chords[i].size(); j++)
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 522)             {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 523)                 cout << "(String " << valid_chords[i][j].first << ", Fret" << valid_chords[i][j].second << ") ";
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 524)             }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 525) 
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 526)             cout << endl;
+13762931 (Ethan Holland     2024-10-31 17:19:53 -0400 527)         }
+13762931 (Ethan Holland     2024-10-31 17:19:53 -0400 528)     }
+13762931 (Ethan Holland     2024-10-31 17:19:53 -0400 529) 
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 530)     else if (scaleChord == "Chord")
+b2055d37 (Ethan Holland     2024-10-31 16:53:50 -0400 531)     {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 532)         // after this call we should have filled valid_chords with chords
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 533)         Chord_gen(chord_scale, current_chord, 0, valid_chords, strings, final, quality);
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 534) 
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 535)         for (int i = 0; i < valid_chords.size(); i++)
+b2055d37 (Ethan Holland     2024-10-31 16:53:50 -0400 536)         {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 537)             for (const auto &note : valid_chords[i])
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 538)             {
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 539)                 cout << "(" << note.second << ", String " << note.first << ") ";
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 540)             }
+00000000 (Not Committed Yet 2024-11-14 19:47:42 -0500 541)             cout << endl;
+1e8c12e7 (Ethan Holland     2024-10-16 17:16:58 -0400 542)         }
+c0f06f09 (Ethan Holland     2024-10-16 16:06:30 -0400 543)     }
+64a402f4 (Ethan Holland     2024-10-17 10:53:21 -0400 544) }
