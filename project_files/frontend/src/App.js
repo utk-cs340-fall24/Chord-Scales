@@ -4,6 +4,7 @@ import './App.css';
 import Fretboard from './Fretboard';
 import Metronome from './Metronome';
 import ScaleInfoSidebar from './ScaleInfoSidebar';
+import Login from './Login';
 
 function App() {
   const { changeTheme } = useTheme();
@@ -98,6 +99,7 @@ function App() {
             <option value="nightOwl">Night Owl</option>
           </select>
         </div>
+        <Login />
       </header>
 
       <div className="selection-container">
