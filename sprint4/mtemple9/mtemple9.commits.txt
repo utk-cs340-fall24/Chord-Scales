@@ -1,0 +1,15 @@
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   1) import React, { useState } from 'react';
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   2) 
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   3) function Login() {
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   4)   const [isLoggedIn, setIsLoggedIn] = useState(false);
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   5)   const [showLogin, setShowLogin] = useState(true);
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   6)   const [showSignUpModal, setShowSignUpModal] = useState(false);
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   7)   const [showLoginModal, setShowLoginModal] = useState(false);
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   8)   const [email, setEmail] = useState('');
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500   9)   const [username, setUsername] = useState('');
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500  10)   const [password, setPassword] = useState('');
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500  11)   const [signUpCredentials, setSignUpCredentials] = useState({
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500  12)     email: '',
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500  13)     username: '',
+8306a0f5 (afflix 2024-11-14 23:23:12 -0500  14)     password: '',
+7767934d (afflix         2024-11-14 23:22:31 -0500   7) import Login from './Login';
