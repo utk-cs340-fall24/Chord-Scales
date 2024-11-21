@@ -9,15 +9,19 @@ import Login from './Login';
 function App() {
   const { changeTheme } = useTheme();
   const [rootNote, setRootNote] = useState('');
-  const [scaleType, setScaleType] = useState('major');
-  const [shapeType, setShapeType] = useState('fullScale');
+  const [category, setCategory] = useState('');
+  const [scaleType, setScaleType] = useState('');
+  const [extensionType, setExtensionType] = useState('');
+  const [bluesPentatonicType, setBluesPentatonicType] = useState('');
   const [hoveredNote, setHoveredNote] = useState(null);
   const [playlist, setPlaylist] = useState([]);
   const [showMetronome, setShowMetronome] = useState(true); // State to control the visibility of the Metronome
 
   const rootNotes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
-  const scaleTypes = ['major', 'minor', 'diminished', 'augmented', 'pentatonic'];
-  const shapeTypes = ['fullScale', 'triads', 'classic'];
+  const scaleOptions = ['Major', 'Minor'];
+  const chordOptions = ['Major', 'Minor', 'Diminished', 'Augmented'];
+  const bluesPentatonicOptions = ['Blues', 'Pentatonic'];
+  const extensions = ['Suspended 2', 'Suspended 4', 'Extended 7', 'Extended 9', 'Extended 11', 'Extended 13'];
 
   const handleNoteClick = (string, fret) => {
     const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${string}_${fret}.wav`);
@@ -27,8 +31,8 @@ function App() {
   };
 
   const addToPlaylist = () => {
-    if (rootNote && scaleType && shapeType) {
-      const newEntry = `${rootNote} ${scaleType} (${shapeType})`;
+    if (rootNote && category && scaleType) {
+      const newEntry = `${rootNote} ${category} ${scaleType}${bluesPentatonicType ? ` (${bluesPentatonicType})` : ''}${extensionType ? ` (${extensionType})` : ''}`;
       if (!playlist.includes(newEntry)) {
         setPlaylist((prevPlaylist) => [...prevPlaylist, newEntry]);
       }
@@ -36,13 +40,15 @@ function App() {
   };
 
   const handlePlaylistClick = (entry) => {
-    const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;
+    const regex = /^([A-G]#?)\s+(Scale|Chord)\s+(\w+)(?:\s+\(([^)]+)\))?(?:\s+\(([^)]+)\))?$/;
     const match = entry.match(regex);
     if (match) {
-      const [, root, scale, shape] = match;
+      const [, root, cat, scale, bluesPentatonic, extension] = match;
       setRootNote(root);
+      setCategory(cat);
       setScaleType(scale);
-      setShapeType(shape);
+      setBluesPentatonicType(bluesPentatonic || '');
+      setExtensionType(extension || '');
     }
   };
 
@@ -54,7 +60,7 @@ function App() {
       if (currentIndex >= playlist.length) {
         return;
       }
-      const regex = /^([A-G]#?)\s+(\w+)\s+\(([^)]+)\)$/;
+      const regex = /^([A-G]#?)\s+(Scale|Chord)\s+(\w+)(?:\s+\(([^)]+)\))?(?:\s+\(([^)]+)\))?$/;
       const match = playlist[currentIndex].match(regex);
       if (match) {
         const [, root] = match;
@@ -89,7 +95,7 @@ function App() {
         <button onClick={() => setShowMetronome(!showMetronome)}>{showMetronome ? 'Hide Metronome' : 'Show Metronome'}</button>
         <h1>Dynamic Fretboard Visualizer</h1>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="ChordScales Logo" className="logo" />
-        <p>Select a root note, scale/chord, and shape to visualize on the fretboard</p>
+        <p>Select a root note and scale/chord to visualize on the fretboard</p>
         <div style={{ display: 'inline-block' }}>
           <label htmlFor="theme-select" style={{ marginRight: '10px' }}>Themes:</label>
           <select id="theme-select" onChange={(e) => changeTheme(e.target.value)}>
@@ -110,19 +116,48 @@ function App() {
           ))}
         </select>
 
-        <label htmlFor="scale-type">Scale/Chord Type: </label>
-        <select id="scale-type" value={scaleType} onChange={(e) => setScaleType(e.target.value)}>
-          {scaleTypes.map((type) => (
-            <option key={type} value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
-          ))}
+        <label htmlFor="category">Scale or Chord: </label>
+        <select id="category" value={category} onChange={(e) => { setCategory(e.target.value); setScaleType(''); setExtensionType(''); setBluesPentatonicType(''); }}>
+          <option value="">Select...</option>
+          <option value="Scale">Scale</option>
+          <option value="Chord">Chord</option>
         </select>
 
-        <label htmlFor="shape-type">Shape: </label>
-        <select id="shape-type" value={shapeType} onChange={(e) => setShapeType(e.target.value)}>
-          {shapeTypes.map((shape) => (
-            <option key={shape} value={shape}>{shape.charAt(0).toUpperCase() + shape.slice(1)}</option>
-          ))}
-        </select>
+        {category && (
+          <>
+            <label htmlFor="scale-type">{category} Type: </label>
+            <select id="scale-type" value={scaleType} onChange={(e) => setScaleType(e.target.value)}>
+              <option value="">Select...</option>
+              {(category === 'Scale' ? scaleOptions : chordOptions).map((type) => (
+                <option key={type} value={type}>{type}</option>
+              ))}
+            </select>
+          </>
+        )}
+
+        {category === 'Scale' && scaleType && (
+          <>
+            <label htmlFor="blues-pentatonic-type">Blues or Pentatonic: </label>
+            <select id="blues-pentatonic-type" value={bluesPentatonicType} onChange={(e) => setBluesPentatonicType(e.target.value)}>
+              <option value="">None</option>
+              {bluesPentatonicOptions.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </>
+        )}
+
+        {category === 'Chord' && scaleType && (
+          <>
+            <label htmlFor="extension-type">Extension: </label>
+            <select id="extension-type" value={extensionType} onChange={(e) => setExtensionType(e.target.value)}>
+              <option value="">None</option>
+              {extensions.map((extension) => (
+                <option key={extension} value={extension}>{extension}</option>
+              ))}
+            </select>
+          </>
+        )}
 
         <button onClick={addToPlaylist}>Add to Playlist</button>
       </div>
@@ -131,7 +166,6 @@ function App() {
         <Fretboard 
           rootNote={rootNote} 
           scaleType={scaleType} 
-          shapeType={shapeType} 
           setHoveredNote={setHoveredNote}
           handleNoteClick={handleNoteClick}
         />
@@ -166,3 +200,4 @@ export default () => (
         <App />
     </ThemeProvider>
 );
+
