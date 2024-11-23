@@ -1,4 +1,4 @@
-## Sprint 2 ##
+## Sprint 3 ##
 Name: Lorenzo Bailey, github id: lbaile33, groupname: Chordscales
 
 # What you planned to do #
