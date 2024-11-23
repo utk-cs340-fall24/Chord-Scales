@@ -2,7 +2,7 @@ import { getScaleNotes, noteNames } from './utils';
 
 const stringNotes = { 'E2': 'E', 'A': 'A', 'D': 'D', 'G': 'G', 'B': 'B', 'E': 'E' };
 
-const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote, handleNoteClick }) => {
+const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote, handleNoteClick, fretRange, highlightInRange }) => {
   const frets = Array.from({ length: 13 }, (_, index) => index); // 0 to 12 frets
   const strings = ['E2', 'A', 'D', 'G', 'B', 'E']; // Distinguish between low E (E2) and high E
   const scaleNotes = getScaleNotes(rootNote, scaleType);
@@ -24,11 +24,12 @@ const Fretboard = ({ rootNote, scaleType, shapeType, setHoveredNote, handleNoteC
           <div key={stringIndex} className="guitar-string">
             {frets.map((fret) => {
               const noteAtFret = noteNames[(baseNoteIndex + fret) % 12];
+              const isHighlighted = displayedNotes.includes(noteAtFret) && fret >= fretRange.min && fret <= fretRange.max;
 
               return (
                 <div
                   key={fret}
-                  className={`guitar-fret ${displayedNotes.includes(noteAtFret) ? 'highlight' : ''}`}
+                  className={`guitar-fret ${isHighlighted ? 'highlight' : ''}`}
                   onMouseEnter={() => setHoveredNote({ string, fret, note: noteAtFret })}
                   onMouseLeave={() => setHoveredNote(null)}
                   onClick={() => handleNoteClick(string, fret)}
