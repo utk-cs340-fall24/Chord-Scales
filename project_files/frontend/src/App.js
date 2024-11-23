@@ -14,8 +14,6 @@ function App() {
   const [hoveredNote, setHoveredNote] = useState(null);
   const [playlist, setPlaylist] = useState([]);
   const [showMetronome, setShowMetronome] = useState(true); // State to control the visibility of the Metronome
-  const [fretRange, setFretRange] = useState({ min: 0, max: 12 }); // State to control the fret range
-  const [selectedFrets, setSelectedFrets] = useState([]); // State to track selected frets for range selection
 
   const rootNotes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
   const scaleTypes = ['major', 'minor', 'diminished', 'augmented', 'pentatonic'];
@@ -82,19 +80,6 @@ function App() {
     setPlaylist([]);
   };
 
-  const handleFretClick = (fret) => {
-    if (selectedFrets.includes(fret)) {
-      setSelectedFrets(selectedFrets.filter(selected => selected !== fret));
-    } else if (selectedFrets.length === 1) {
-      const min = Math.min(selectedFrets[0], fret);
-      const max = Math.max(selectedFrets[0], fret);
-      setFretRange({ min, max });
-      setSelectedFrets(Array.from({ length: max - min + 1 }, (_, i) => min + i)); // Keep buttons lit up
-    } else {
-      setSelectedFrets([fret]);
-    }
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -142,28 +127,6 @@ function App() {
         <button onClick={addToPlaylist}>Add to Playlist</button>
       </div>
 
-      <div className="fret-range-selector">
-        <h3>Select Fret Range:</h3>
-        <div className="fret-tally-container" style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-          {Array.from({ length: 13 }, (_, index) => (
-            <button
-              key={index}
-              className={`fret-tally ${selectedFrets.includes(index) ? 'selected' : ''}`}
-              onClick={() => handleFretClick(index)}
-              style={{
-                backgroundColor: selectedFrets.includes(index) ? '#333' : '#ccc', // Change activation color to dark grey/black
-                border: 'none',
-                width: '15px', // Make the buttons slightly smaller
-                height: '15px', // Make the buttons slightly smaller
-                borderRadius: '50%',
-                transition: 'background-color 0.3s ease',
-                cursor: 'pointer'
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
       <div className="fretboard-container">
         <Fretboard 
           rootNote={rootNote} 
@@ -171,8 +134,6 @@ function App() {
           shapeType={shapeType} 
           setHoveredNote={setHoveredNote}
           handleNoteClick={handleNoteClick}
-          fretRange={fretRange}
-          highlightInRange={true}
         />
       </div>
 
