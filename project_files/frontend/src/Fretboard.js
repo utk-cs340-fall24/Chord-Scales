@@ -3,11 +3,11 @@ import { getScaleNotes, noteNames } from './utils';
 const stringNotes = { 'E2': 'E', 'A': 'A', 'D': 'D', 'G': 'G', 'B': 'B', 'E': 'E' };
 
 const noteToWavMapping = {
-  'C': ['E2_8.wav', 'A_3.wav', 'D_10.wav', 'G_5.wav', 'B_1.wav', 'E_8.wav'],   // Example: C is A string fret 3, D string fret 10
-  'C#': ['E2_9.wav', 'A_4.wav', 'D_11.wav', 'G_6.wav', 'B_2.wav', 'E_9.wav'],  // Example: C# is A string fret 4, D string fret 11
-  'D': ['E2_10.wav', 'A_5.wav', 'D_0.wav', 'D_12.wav','G_7.wav', 'B_3.wav', 'E_10.wav'],   // Continue for all notes
+  'C': ['E2_8.wav', 'A_3.wav', 'D_10.wav', 'G_5.wav', 'B_1.wav', 'E_8.wav'],   
+  'C#': ['E2_9.wav', 'A_4.wav', 'D_11.wav', 'G_6.wav', 'B_2.wav', 'E_9.wav'],  
+  'D': ['E2_10.wav', 'A_5.wav', 'D_0.wav', 'D_12.wav','G_7.wav', 'B_3.wav', 'E_10.wav'],   
   'D#': ['E2_11.wav', 'A_6.wav', 'D_1.wav', 'G_8.wav', 'B_4.wav', 'E_11.wav'],
-  'E': ['E2_0.wav', 'E2_12.wav', 'A_7.wav', 'D_2.wav', 'G_9.wav', 'B_5.wav', 'E_0.wav', 'E_12.wav'], // Example for E
+  'E': ['E2_0.wav', 'E2_12.wav', 'A_7.wav', 'D_2.wav', 'G_9.wav', 'B_5.wav', 'E_0.wav', 'E_12.wav'], 
   'F': ['E2_1.wav', 'A_8.wav', 'D_3.wav', 'G_10.wav', 'B_6.wav', 'E_1.wav'],
   'F#': ['E2_2.wav', 'A_9.wav', 'D_4.wav', 'G_11.wav', 'B_7.wav', 'E_2.wav'],
   'G': ['E2_3.wav', 'A_10.wav', 'D_5.wav', 'G_0.wav', 'G_12.wav', 'B_8.wav', 'E_3.wav'],
