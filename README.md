@@ -2,7 +2,7 @@
 ##### Members & githubIDs:
 * Mingxuan Tang (CozyRainningInn)
 * Lorenzo Bailey (lbaile33)
-*
+* Ethan Holland (eholla12)
 *
 *
 
