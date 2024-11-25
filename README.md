@@ -3,7 +3,7 @@
 * Mingxuan Tang (CozyRainningInn)
 * Lorenzo Bailey (lbaile33)
 * Ethan Holland (eholla12)
-*
+* Matt Templeton (eTurtleV)
 *
 
 ## Table of Contents
