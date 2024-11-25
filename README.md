@@ -23,6 +23,8 @@ Install Dependencies: Ensure you have Node.js installed. Run npm install to inst
 
 Run the Application: To start the application, run npm start (npm start should be ran in your Chord-Scales/project_files/frontend/src/ folder) in your terminal. The app should open in your default browser, showcasing the interactive fretboard and other features.
 
+Alternativly you can browse the website at https://utk-cs340-fall24.github.io/Chord-Scales/
+
 
 ## Product functionality:
 - Interactive Fretboard: Visualizes scales and chords on a virtual guitar fretboard. Users can select root notes and different scale types to see the corresponding notes highlighted.
