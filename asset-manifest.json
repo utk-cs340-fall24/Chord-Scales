@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Chord-Scales/static/css/main.36c881c0.css",
-    "main.js": "/Chord-Scales/static/js/main.45b45c24.js",
+    "main.css": "/Chord-Scales/static/css/main.ec8e3fb6.css",
+    "main.js": "/Chord-Scales/static/js/main.d15c183f.js",
     "static/js/453.6049b003.chunk.js": "/Chord-Scales/static/js/453.6049b003.chunk.js",
     "index.html": "/Chord-Scales/index.html",
-    "main.36c881c0.css.map": "/Chord-Scales/static/css/main.36c881c0.css.map",
-    "main.45b45c24.js.map": "/Chord-Scales/static/js/main.45b45c24.js.map",
+    "main.ec8e3fb6.css.map": "/Chord-Scales/static/css/main.ec8e3fb6.css.map",
+    "main.d15c183f.js.map": "/Chord-Scales/static/js/main.d15c183f.js.map",
     "453.6049b003.chunk.js.map": "/Chord-Scales/static/js/453.6049b003.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.36c881c0.css",
-    "static/js/main.45b45c24.js"
+    "static/css/main.ec8e3fb6.css",
+    "static/js/main.d15c183f.js"
   ]
 }
