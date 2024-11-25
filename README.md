@@ -1,4 +1,4 @@
 # Chord-Scales
-* Members & githubIDs:
-  * Mingxuan Tang (CozyRainningInn)
+##### Members & githubIDs:
+* Mingxuan Tang (CozyRainningInn)
   
