@@ -7,9 +7,9 @@
 *
 
 ## Table of Contents
-1. [Product Description](#Product Description)
-2. [Production setup instruction](#Production setup instruction)
-3. [Product functionality](#Product functionality)
+- [Product Description](#product-description)
+- [Production Setup Instruction](#production-setup-instruction)
+- [Product Functionality](#product-functionality)
 
 ## Product Description:
 
