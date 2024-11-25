@@ -45,7 +45,6 @@ function Login() {
     setEmailError(''); // Reset error if email is valid
 
     setSignUpCredentials({ email, username, password });
-    alert('Account created successfully!');
     setShowSignUpModal(false); // Close the sign-up modal after submission
   };
 
@@ -169,7 +168,7 @@ function Login() {
               marginRight: '10px',
             }}
           >
-            Submit
+            Login
           </button>
           <button
             onClick={handleModalClose}
@@ -263,7 +262,7 @@ function Login() {
               marginRight: '10px',
             }}
           >
-            Submit
+            Sign-Up
           </button>
           <button
             onClick={handleModalClose}
