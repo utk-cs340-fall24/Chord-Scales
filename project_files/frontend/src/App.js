@@ -5,6 +5,7 @@ import Fretboard from './Fretboard';
 import Metronome from './Metronome';
 import ScaleInfoSidebar from './ScaleInfoSidebar';
 import Login from './Login';
+import { getHighlightedWavFiles } from './Fretboard';
 
 function App() {
   const { changeTheme } = useTheme();
@@ -27,6 +28,14 @@ function App() {
       console.error(`Error playing sound: ${error}`);
     });
   };
+
+  const playHighlightedNotes = () => {
+    const wavFiles = getHighlightedWavFiles();
+    wavFiles.forEach((wavFile) => {
+      const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${wavFile}`); // Updated path to reflect the folder structure
+      audio.play(); // Play each file
+    });
+  }
 
   const addToPlaylist = () => {
     if (rootNote && scaleType && shapeType) {
@@ -188,6 +197,7 @@ function App() {
         <h3>Playlist</h3>
         <button onClick={playPlaylist} className="play-playlist-button">Play Playlist</button>
         <button onClick={clearPlaylist} className="clear-playlist-button">Clear Playlist</button>
+        <button onClick={playHighlightedNotes} className="play-highlighted-button">Play HighlightedNotes</button>
         <ul>
           {playlist.map((entry, index) => (
             <li key={index} onClick={() => handlePlaylistClick(entry)} style={{ cursor: 'pointer' }}>
