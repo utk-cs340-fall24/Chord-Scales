@@ -45,7 +45,7 @@ function Login() {
     setEmailError(''); // Reset error if email is valid
 
     setSignUpCredentials({ email, username, password });
-    alert(`Signed up with Email: ${email}\nUsername: ${username}\nPassword: ${password}`);
+    alert('Account created successfully!');
     setShowSignUpModal(false); // Close the sign-up modal after submission
   };
 
