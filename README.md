@@ -4,7 +4,7 @@
 * Lorenzo Bailey (lbaile33)
 * Ethan Holland (eholla12)
 * Matt Templeton (eTurtleV)
-*
+* Evan Newport (evannewport)
 
 ## Table of Contents
 - [Product Description](#product-description)
